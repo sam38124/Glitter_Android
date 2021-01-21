@@ -406,13 +406,32 @@ class GlitterPage(
         fun playSound(rout:String){
             if(!canPlayMedia){return}
             canPlayMedia=false
-            val  file= File("$baseRout/$rout")
-            val mediiaplay = MediaPlayer.create(activity!!,Uri.fromFile(file))
-            mediiaplay.setOnCompletionListener {
-                mediiaplay.release()
-                canPlayMedia=true
+
+            if(baseRout.contains("file:///android_asset")){
+
+                val assetRout="${baseRout.replace("file:///android_asset/","")}/${rout.replace("file:/android_asset/","")}"
+                Log.e("assetRout",assetRout)
+//                activity!!.assets.list("")
+                val afd = activity!!.assets.openFd(assetRout);
+                val mediiaplay = MediaPlayer()
+                mediiaplay.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+                mediiaplay.prepare()
+                mediiaplay.setOnCompletionListener {
+                    mediiaplay.release()
+                    canPlayMedia=true
+                }
+                mediiaplay.start()
+            }else{
+                val  file= File("$baseRout/$rout")
+                val mediiaplay = MediaPlayer.create(activity!!,Uri.fromFile(file))
+                mediiaplay.setOnCompletionListener {
+                    mediiaplay.release()
+                    canPlayMedia=true
+                }
+                mediiaplay.start()
             }
-            mediiaplay.start()
+
+
         }
         @JavascriptInterface
         fun requestGPSPermission(){
