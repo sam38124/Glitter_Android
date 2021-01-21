@@ -1,0 +1,3 @@
+include ':Glitterlib'
+include ':app'
+rootProject.name = "Glitter"

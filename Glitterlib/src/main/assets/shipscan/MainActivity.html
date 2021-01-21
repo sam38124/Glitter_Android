@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+    }
+    iframe{
+        width: 100vw;
+        height: 100vh;
+        border-width: 0;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
+</style>
+<script src="Glitter.js"></script>
+<script src="jquery.js"></script>
+<script src="PublicBeans.js"></script>
+<body>
+</body>
+</html>
+<script>
+    'use strict';
+    var s={}
+    s.admin='12344'
+    s.password='23783'
+    document.cookie={}
+    //宣告你的glitter給子frame調用
+    var glitter=Glitter
+    //宣告你的全域變數
+    var publicBeans=PublicBeans
+    //設定應用類型
+    Glitter.type=AppearType.Web
+    Glitter.setHome('page/OrderListPage.html','OrderListPage','{}')
+</script>

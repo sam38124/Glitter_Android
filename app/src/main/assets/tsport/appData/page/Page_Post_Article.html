@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+    }
+
+    .topBar {
+        display: flex;
+        height: 55px;
+        background-color: #315CA1;
+    }
+
+    .content {
+        width: 100%;
+        height: calc(100vh - 55px);
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .selectDic {
+        height: 55px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+    }
+
+    .flexText {
+        margin-top: 0;
+        color: #6a6a6a;
+        height: 55px;
+        line-height: 55px;
+        font-size: 17px;
+        margin-left: 5px;
+    }
+
+    .select img {
+        width: 20px;
+        height: 20px;
+        margin-top: 20px;
+    }
+
+    .select {
+        flex: auto;
+        text-align: right;
+        margin-right: 5px;
+    }
+
+    .spi {
+        height: 1px;
+        width: 100%;
+        background-color: #aaa;
+    }
+
+    .selectDic .head {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%;
+        margin: 0;
+    }
+
+    .borderInput {
+        margin: 10px;
+        width: calc(100% - 30px);
+        border-radius: 10px;
+        border-color: #aaa;
+        border-width: 1px;
+        min-height: 50px;
+        border-style: solid;
+        font-size: 16px;
+        padding-left: 10px;
+    }
+
+    .borderInputMax {
+        margin: 10px;
+        width: calc(100% - 30px);
+        border-radius: 10px;
+        border-color: #aaa;
+        border-width: 1px;
+        height: calc(100% - 270px);
+        border-style: solid;
+        line-height: 30px;
+        font-size: 16px;
+        padding-left: 10px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .bottomBar {
+        display: flex;
+        height: 55px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .borderInputMax:empty:before{
+        content: '一、推廣正面發文風氣 禁止發表恐嚇公眾、鼓吹犯罪、鼓勵他人輕生等違反善良風俗內容 禁止惡意挑釁、虐待、嘲笑特定群體或引戰行為 禁止竄改新聞標題或內容（致使原意扭曲者始處理） 禁止推起過時的颱風、地震等天災相關資訊（偽造亦同） 禁止抄襲文、盜用創作行為 禁止惡意爆雷 ACGN 或影視作品重大劇情內容行為 禁止在特定大樓同好串發表引起多數人反感內容的引戰行為 轉貼新聞必須在清晰可見處附上原文連結與新聞發布日期 若有討論串後續歪串為嚴重筆戰，板務人員有權移至「吵架擂台」隱藏子板分類 附錄：惡意劇透認定辦法相關公告 附錄：吵架擂台、盜用創作、轉貼新聞規範、大樓串引戰認定相關公告 附錄：轉貼新聞規範修正相關公告';
+        color: gray;
+    }
+    .borderInputMax:focus:before{
+        content:none;
+    }
+    .textArea img{
+        margin-top: 10px;
+    }
+</style>
+<!--<script src="../glitterBundle/ControlInstance.js"></script>-->
+<script src="../glitterBundle/jquery.js"></script>
+<body>
+<div class="topBar">
+    <img src="../img/btn_back_normal.png" style="height: 55px;width: 55px;margin: 0" onclick="getGlitter().goBack()">
+    <h3 style="margin-top:0;color: white;height: 55px;line-height: 55px;width: calc(100% - 110px);font-size: 18px;">
+        發佈文章</h3>
+    <h3 style="margin-top:0;color: white;height: 55px;line-height:  55px;width: 55px;font-size: 18px;text-align: center;">
+        發佈</h3>
+</div>
+<div class="content">
+    <input type="file" accept="image/*" multiple="multiple" style="display: none" id="filed">
+    <div class="selectDic">
+        <h3 class="flexText">選擇圈子</h3>
+        <h3 class="flexText">:</h3>
+        <div class="select">
+            <img src="../img/trangle.png"></div>
+    </div>
+    <div class="spi"></div>
+    <div class="selectDic">
+        <div>
+            <img class="head" src="../img/tsporticon.png">
+        </div>
+        <h3 class="flexText" style="font-size: 16px;font-weight: bold;">王建智</h3>
+    </div>
+    <div class="spi"></div>
+    <input class="borderInput" placeholder="標題">
+    <div contentEditable="true" class="borderInputMax" id="textArea"></div>
+    <div class="spi"></div>
+    <div class="bottomBar">
+        <h3 class="flexText">插入:</h3>
+        <div class="select">
+            <div style="display: inline-flex;margin-right: 5px;">
+                <img src="../img/link.png" style="transform: translateY(-2px)">
+                <h3 class="flexText" style="margin-right: 10px">連結</h3>
+                <img src="../img/photo.png" style="transform: translateY(-2px)" onclick="$('#filed').click()">
+                <h3 class="flexText" onclick="$('#filed').click()">圖片</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
+<script>
+    var imgc=0
+    $('#filed').change(function () {
+        imgc++
+//獲取input file的files檔案陣列;
+//$('#filed')獲取的是jQuery物件，.get(0)轉為原生物件;
+//這邊預設只能選一個，但是存放形式仍然是陣列，所以取第一個元素使用[0];
+        var file = $('#filed').get(0).files[0];
+//建立用來讀取此檔案的物件
+        var reader = new FileReader();
+//使用該物件讀取file檔案
+        reader.readAsDataURL(file);
+//讀取檔案成功後執行的方法函式
+        reader.onload = function (e) {
+//讀取成功後返回的一個引數e，整個的一個進度事件
+            console.log(e);
+//選擇所要顯示圖片的img，要賦值給img的src就是e中target下result裡面
+//的base64編碼格式的地址
+            var width= $('#textArea').width()-20
+            $('#textArea').append('  <br><img id="'+imgc+'" style="max-width: '+width+'px;"><br>')
+            $('#'+imgc).get(0).src = e.target.result;
+        }
+    })
+</script>

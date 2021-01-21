@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: hidden;
+    }
+
+    table {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 10px;
+        width: 100vw;
+        border: none;
+    }
+
+    .No {
+        width: 60px;
+        color: #314B57;
+        text-align: center;
+        background-color: #BFD1DD;
+    }
+
+    .SensorID {
+        color: #314B57;
+        text-align: center;
+        padding: 0;
+    }
+
+    td {
+        margin: 0;
+        padding: 0;
+        border-color: gray;
+        height: 60px;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    .title {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        color: #314B57;
+        text-align: center;
+        line-height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn_class {
+        padding: 0;
+        height: 50px;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 0;
+        width: 100%;
+        display: flex;
+    }
+
+    .btItem {
+        padding: 0;
+        width: 50%;
+        height: 50px;
+        display: inline-block;
+    }
+
+    .btItem h3 {
+        padding: 0;
+        color: white;
+        font-size: 14px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        margin-top: -55px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .btItem img {
+        width: 100%;
+        height: 50px;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .SensorID input {
+        width: calc(100%);
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 18px;
+        border-style: none;
+    }
+</style>
+<script src="../jquery.js"></script>
+<body>
+<script>
+    var glitter = window.parent.glitter
+</script>
+<div style="height: 60px;font-size: 14px;background-color: #374B56;margin-top: 0;display: inline-block;width: 100vw;">
+    <h3 style="line-height: 60px;width: 100%;text-align: center;color: white;height: 60px;margin-top: 0;font-size: 18px;">
+        Order dsjkdskj
+    </h3>
+    <h3 class="title" id="tt">
+        SP201(M)
+    </h3>
+    <div style="overflow-y: scroll;width: 100vw;height: calc(100vh - 180px);margin-bottom:60px;position: relative;">
+        <table id="listData" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="No">No.</td>
+                <td class="SensorID" style="background-color: #BFD1DD;">Sensor ID</td>
+                <td class="No">No.</td>
+                <td class="SensorID" style="background-color: #BFD1DD;">Sensor ID</td>
+            </tr>
+            <!--        <tr>-->
+            <!--            <td class="No">No.</td>-->
+            <!--            <td class="SensorID" >123456</td>-->
+            <!--            <td class="No">No.</td>-->
+            <!--            <td class="SensorID" >SensorID</td>-->
+            <!--        </tr>-->
+        </table>
+    </div>
+
+    <div class="btn_class">
+        <div class="btItem" onclick="glitter.goBack()">
+            <img src="../icon/btn_letf.png">
+            <h3>Menu</h3>
+        </div>
+        <div class="btItem" onclick="Scan()">
+            <img src="../icon/btn_right.png">
+            <h3>Scan</h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var json = JSON.parse(glitter.getJsonBundle('OrderDetail'))
+    var data = json[0]
+    var focus = 0
+    // $('body').append(' <h3 class="title">\n' +data.ino+'</h3>')
+    document.getElementById('tt').innerHTML = data.ino
+    var length = parseInt(data.modqty, 10)
+    console.log('len==' + length)
+    for (var i = 0; i < length; i++) {
+        console.log('i==' + i)
+        if (i % 2 === 0) {
+            $('#listData').append('<tr id="tr' + (i / 2) + '"></tr>')
+        }
+        var id = parseInt(i / 2, 10)
+        console.log(parseInt(i / 2, 10))
+        $('#tr' + id).append(' <td class="No">' + (i + 1) + '</td>\n' +
+            '            <td class="SensorID" ><input id="in' + (i + 1) + '"></td>')
+        document.getElementById('in' + (i + 1)).addEventListener('click', onClick)
+        document.getElementById('in' + (i + 1)).addEventListener("onporpertychange", function (e) {
+            console.log("edit" + this.value)
+        })
+
+        function onClick() {
+            focus = this.id
+        }
+    }
+
+    function Scan() {
+        $('#' + focus).val('sasaas')
+    }
+</script>

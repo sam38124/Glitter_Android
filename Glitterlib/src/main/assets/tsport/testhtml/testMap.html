@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width">
+<head>
+    <title>Simple Marker Icons</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ7sYBih_UO0CUyNu1dVko6_7hwl_WlEk&callback=initMap&libraries=&v=weekly"
+            defer
+    ></script>
+    <!-- jsFiddle will insert css and js -->
+</head>
+<style>
+    #map {
+        height: calc(100vh - 200px);
+        width: 100vw;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<body>
+<div id="map" ></div>
+<script>
+    initMap();
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 5,
+            center: { lat: -33, lng: 151 },
+            disableDefaultUI: true
+        });
+        const image =
+            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+        const beachMarker = new google.maps.Marker({
+            position: { lat: -33.89, lng: 151.274 },
+            map,
+            icon: image,
+        });
+    }
+</script>
+</body>
+</html>

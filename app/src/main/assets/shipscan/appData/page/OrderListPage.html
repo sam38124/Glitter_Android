@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../jsLib/jquery.js"></script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .item {
+        border-radius: 10px;
+        background-color: #BFD1DD;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 15px;
+        width: calc(100% - 40px);
+        border-color: white;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    .toplist {
+        color: white;
+        height: 40px;
+        line-height: 40px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        width: 100%;
+        text-align: center;
+        background-color: #003856;
+    }
+
+    .spi {
+        height: 1px;
+        width: 100%;
+        background-color: white;
+    }
+
+    .itemlist {
+        height: 40px;
+        width: 100%;
+        padding: 0;
+        display: flex;
+    }
+
+    .itemtext {
+        margin-top: 0;
+        color: #314B57;
+        text-align: center;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+    }
+
+    .itemlist_item {
+        color: #314B57;
+        width: 50%;
+        line-height: 40px;
+        height: 40px;
+        text-align: center;
+        overflow: hidden;
+    }
+</style>
+<body>
+<div style="height: 50px;font-size: 14px;background-color: #374B56;margin-top: 0;display: inline-block;width: 100vw;">
+    <h3 style="line-height: 50px;width: 100%;text-align: center;color: white;height: 50px;margin-top: 0;font-size: 14px;">
+        Order list
+    </h3>
+</div>
+<script src="../jsLib/lottie.js"></script>
+<div id="itemlist">
+<!--    <div class="item">-->
+<!--        <div class="toplist">No.1810202020</div>-->
+<!--        <div class="spi"></div>-->
+<!--        <div class="itemlist">-->
+<!--            <h3 class="itemtext">1810202020</h3>-->
+<!--        </div>-->
+<!--        <div class="spi"></div>-->
+<!--        <div class="itemlist">-->
+<!--            <div class="itemlist_item">1</div>-->
+<!--            <div style="width: 1px;height: 40px;background-color: white;"></div>-->
+<!--            <div class="itemlist_item">2</div>-->
+<!--        </div>-->
+<!--        <div class="spi"></div>-->
+<!--        <div class="itemlist">-->
+<!--            <div class="itemlist_item">1</div>-->
+<!--            <div style="width: 1px;height: 40px;background-color: white;"></div>-->
+<!--            <div class="itemlist_item">2</div>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+</body>
+</html>
+<script>
+    var request = {}
+    request.request = 'ShipScan'
+    var jsonData = {}
+    start()
+    function start() {
+        $('#itemlist').append("<div id=\"loadingView\" style=\"height: 100px; width: 100vw;text-align: center;vertical-align: middle;\">" +
+            "    <lottie-player src=\"../lottie/loadinglist.json\"  background=\"transparent\"  speed=\"1\"  style=\"position:relative;width: 50px; height: 50px;transform: translateX(-50%);left: 50%;\"  loop  autoplay></lottie-player>" +
+            "    <br>" +
+            "    <h1 style=\"font-size: 13px;color: gray;margin-top: -20px;\">Waiting...</h1>" +
+            "</div>")
+        $.ajax(
+            {
+                type: 'POST',
+                url: window.parent.publicBeans.apiRoot+'/ShipScan',
+                data: JSON.stringify(request),
+                success: function (data) {
+                    document.getElementById('loadingView').remove()
+                    var json = JSON.parse(JSON.parse(data)["data"])
+                    jsonData=json
+                    for (var i = 0; i < json.length; i++) {
+                        var ordeNo=json[i].OrderNo
+                        var ino=json[i].ino
+                        var name=json[i].custno
+                        var count=json[i].oderqty
+                        if(!document.getElementById(ordeNo)){
+                            $('#itemlist').append(' <div class="item" id="'+ordeNo+'" onclick="toDetail(\''+ordeNo+'\')">\n' +
+                                '        <div class="toplist">'+ordeNo+'</div>\n' +
+                                '        <div class="spi"></div>' +
+                                '</div>')
+                            $('#'+ordeNo).append('        <div class="itemlist">\n' +
+                                '            <h3 class="itemtext">'+name+'</h3>\n' +
+                                '        </div>\n' +
+                                '        <div class="spi"></div>')
+                        }
+                        $('#'+ordeNo).append('   <div class="spi"></div>' +
+                            '<div class="itemlist">\n' +
+                            '            <div class="itemlist_item">'+ino+'</div>\n' +
+                            '            <div style="width: 1px;height: 40px;background-color: white;"></div>\n' +
+                            '            <div class="itemlist_item">'+count+'</div>\n' +
+                            '        </div>')
+                    }
+
+                },
+                error: function (data) {
+                    document.getElementById('loadingView').remove()
+                    start()
+                }
+            }
+        )
+    }
+function toDetail(id) {
+    console.log('id'+id)
+    var dtJson=[]
+    for (var i = 0; i < jsonData.length; i++) {
+        var ordeNo=jsonData[i].OrderNo
+        if(ordeNo === id){
+            dtJson = dtJson.concat(jsonData[i])
+        }
+    }
+    var glitter=window.parent.glitter
+    glitter.changePageWithAnimation('page/OrderDetail.html','OrderDetail',true,glitter.animator.translation,JSON.stringify(dtJson))
+    // console.log(JSON.stringify(dtJson))
+}
+</script>

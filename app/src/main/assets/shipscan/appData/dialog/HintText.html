@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+
+    .relative {
+        width: calc(100% - 20px);
+        height: 70px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        position: relative;
+        background-color: orange;
+        padding: 0;
+    }
+
+    h3 {
+        margin: 0;
+        color: white;
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<script src="../glitterBundle/BundleData.js"></script>
+<body onclick="BundleData.glitter.closeDiaLogWithTag(BundleData.pageTag);">
+<div class="relative">
+    <h3>
+        已有此sensor請重新掃描!!
+    </h3>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="624047ab-d9e2-4cf6-904c-0ff439539059" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/.idea/shipscan.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/BundleData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/Glitter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/MainActivity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/PublicBeans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/dialog/DataLoading.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/dialog/HintText.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/bt_long_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/bt_long_unselect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/btn_letf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/btn_rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/btn_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/btn_time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/forget_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/icon_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/img_data_upload_and_loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/img_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/img_read_open_back_cover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/iv_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/tpms_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/icon/wifi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/jsLib/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/jsLib/lottie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/lottie/loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/lottie/loadinglist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/page/OrderDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/page/OrderListPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/page/OrderSignIn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../shipscan/textScript.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/.idea/zhengxin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/img/img_background_menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/js/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../zhengxin/page/dataList.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1lgNzskU1yx5V8P6WKFfOtjCzmg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="624047ab-d9e2-4cf6-904c-0ff439539059" name="Default Changelist" comment="" />
+      <created>1608015039594</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608015039594</updated>
+      <workItem from="1608015041608" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

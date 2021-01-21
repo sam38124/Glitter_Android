@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../glitterBundle/ControlInstance.js"></script>
+</head>
+<style>
+    html {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+    }
+
+    #topbar {
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+    }
+
+    .headimg {
+        position: absolute;
+        z-index: 2;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        transform: translateX(-50%);
+        left: 50%;
+        margin-top: 25px;
+    }
+
+    .itemClass {
+        margin-top: 0px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        height: 50px;
+        padding: 0;
+    }
+    .itemTitle{
+        line-height: 100%;
+        text-align: left;
+        width: 80%;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    .itemImg{
+        height: 22px;
+        width: 22px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .spilter{
+        margin-top: 5px;
+        height: 1px;
+        background-color: gray;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>
+
+<script src="../model/Md_NaviGation.js"></script>
+<body>
+<div id="topbar">
+    <img src="https://yt3.ggpht.com/a/AATXAJzwiYgSI8nuoaq941vFv23vw8FekK1NP6PNXg=s900-c-k-c0xffffffff-no-rj-mo"
+         class="headimg">
+    <img src="../img/munuback.jpg" style="width: 100%;height: 200px;position: absolute;z-index: 1;">
+</div>
+<div id="itemlist" style="margin:0;width: 100%;height: calc(100vh - 200px);padding: 0;background-color: white;">
+</div>
+</body>
+</html>
+<script>
+    var item=[
+        new Md_Item('../img/admininfo.png','更改資料',function () {
+
+        }),
+        new Md_Item('../img/paw.png','我的追蹤',function () {
+
+        }),
+        new Md_Item('../img/photo.png','更換頭貼',function () {
+
+        }),
+        new Md_Item('../img/info.png','我的資料',function () {
+
+        }),
+        new Md_Item('../img/bell.png','提示通知',function () {
+
+        }),
+        new Md_Item('../img/mail.png','收件箱',function () {
+
+        }),
+        new Md_Item('../img/language.png','多國語言',function () {
+
+        }),
+        new Md_Item('../img/exit.png','登出',function () {
+
+        })
+    ]
+    for(var i=0;i<item.length;i++){
+        $('#itemlist').append(' <div class="itemClass">\n' +
+            '        <img class="itemImg" src="'+item[i].icon+'">\n' +
+            '        <h3 class="itemTitle">'+item[i].title+'</h3>\n' +
+            '    </div>\n' +
+            '    <div class="spilter"></div>')
+    }
+</script>

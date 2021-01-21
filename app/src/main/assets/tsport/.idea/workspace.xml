@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="21cd7681-4539-4a23-9d2d-0ada02eadb99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../../Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../Glitterlib/src/main/res/layout/mainpage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Glitterlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../Glitterlib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Glitterlib/src/main/java/com/jianzhi/glitter/GlitterPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../Glitterlib/src/main/java/com/jianzhi/glitter/GlitterPage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/com/jianzhi/glitter/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/com/jianzhi/glitter/MainActivity.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="1kiqovoDbpqzjCjLqwD2me7qBXH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/glitterBundle" />
+      <recent name="$PROJECT_DIR$/dialog" />
+      <recent name="$PROJECT_DIR$/lottieFile" />
+      <recent name="$PROJECT_DIR$/model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GlitterBundle" />
+      <recent name="$PROJECT_DIR$/Frage" />
+      <recent name="$PROJECT_DIR$/testhtml" />
+      <recent name="$PROJECT_DIR$/model" />
+      <recent name="$PROJECT_DIR$/jslib" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21cd7681-4539-4a23-9d2d-0ada02eadb99" name="Default Changelist" comment="" />
+      <created>1606193937143</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606193937143</updated>
+      <workItem from="1606193938879" duration="2349000" />
+      <workItem from="1606279821414" duration="3655000" />
+      <workItem from="1606366577785" duration="2408000" />
+      <workItem from="1606654795165" duration="9379000" />
+      <workItem from="1606737297994" duration="132000" />
+      <workItem from="1606737545561" duration="4515000" />
+      <workItem from="1606742517721" duration="5486000" />
+      <workItem from="1606807639500" duration="12987000" />
+      <workItem from="1606942055025" duration="221000" />
+      <workItem from="1606942386636" duration="7107000" />
+      <workItem from="1606971962708" duration="2072000" />
+      <workItem from="1606977333359" duration="223000" />
+      <workItem from="1607003387950" duration="11084000" />
+      <workItem from="1607057597624" duration="478000" />
+      <workItem from="1607058556624" duration="729000" />
+      <workItem from="1607251204908" duration="14991000" />
+      <workItem from="1607316800125" duration="126000" />
+      <workItem from="1607317020494" duration="35985000" />
+      <workItem from="1607580079342" duration="118000" />
+      <workItem from="1607580209329" duration="1831000" />
+      <workItem from="1607598819788" duration="116000" />
+      <workItem from="1607598949824" duration="33590000" />
+      <workItem from="1607867453664" duration="1256000" />
+      <workItem from="1607868787589" duration="9781000" />
+      <workItem from="1607914073292" duration="63000" />
+      <workItem from="1607921479381" duration="7659000" />
+      <workItem from="1608267886616" duration="13000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="456" y="221" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1607580781340">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="456" y="221" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1607580781340" />
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607267240013">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1607267240013" />
+    <state x="541" y="280" width="598" height="576" key="find.popup" timestamp="1607875261296">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="541" y="280" width="598" height="576" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1607875261296" />
+    <state x="489" y="259" width="700" height="530" key="recent.locations.popup" timestamp="1607265605063">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="489" y="259" width="700" height="530" key="recent.locations.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1607265605063" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1607600952175">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1607600952175" />
+  </component>
+</project>
