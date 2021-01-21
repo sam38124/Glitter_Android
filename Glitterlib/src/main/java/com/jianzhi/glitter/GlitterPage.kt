@@ -36,6 +36,7 @@ import com.orange.glitter.R
 import com.orango.electronic.jzutil.getWebResource
 import kotlinx.android.synthetic.main.glitter_page.view.*
 import java.io.File
+import java.io.InputStream
 import java.nio.charset.StandardCharsets
 
 
@@ -424,42 +425,49 @@ class GlitterPage(
     /*
     * Ble開發套件
     * */
-    lateinit var bleHelper: BleHelper
+     var bleHelper: BleHelper? =null
 
     inner class BleInterFace {
         @JavascriptInterface
         fun startScan(): Boolean {
-            return bleHelper.startScan()
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            return bleHelper!!.startScan()
         }
 
         @JavascriptInterface
         fun stopScan() {
-            bleHelper.stopScan()
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            bleHelper!!.stopScan()
         }
 
         @JavascriptInterface
         fun writeHex(data: String, rx: String, tx: String) {
-            bleHelper.writeHex(data, rx, tx)
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            bleHelper!!.writeHex(data, rx, tx)
         }
 
         @JavascriptInterface
         fun writeUtf(data: String, rx: String, tx: String) {
-            bleHelper.writeUtf(data, rx, tx)
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            bleHelper!!.writeUtf(data, rx, tx)
         }
 
         @JavascriptInterface
         fun writeBytes(data: ByteArray, rx: String, tx: String) {
-            bleHelper.writeBytes(data, rx, tx)
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            bleHelper!!.writeBytes(data, rx, tx)
         }
 
         @JavascriptInterface
         fun start() {
-            bleHelper = BleHelper(activity!!, this@GlitterPage)
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+
         }
 
         @JavascriptInterface
         fun connect(device: String, sec: Int,id:Int) {
-            bleHelper.connect(device, sec, ConnectResult {
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            bleHelper!!.connect(device, sec, ConnectResult {
                 Thread{
                     Thread.sleep(1000)
                     handler.post {
@@ -473,7 +481,8 @@ class GlitterPage(
 
         @JavascriptInterface
         fun isOpen(): Boolean {
-            return bleHelper.bleadapter.isEnabled
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            return bleHelper!!.bleadapter.isEnabled
         }
 
         @JavascriptInterface
@@ -486,15 +495,18 @@ class GlitterPage(
         }
         @JavascriptInterface
         fun isDiscovering(): Boolean {
-            return bleHelper.bleadapter.isDiscovering
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            return bleHelper!!.bleadapter.isDiscovering
         }
         @JavascriptInterface
         fun disConnect() {
-            return bleHelper.disconnect()
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            return bleHelper!!.disconnect()
         }
         @JavascriptInterface
         fun isConnect():Boolean{
-            return bleHelper.isConnect()
+            if(bleHelper==null){ bleHelper = BleHelper(activity!!, this@GlitterPage)}
+            return bleHelper!!.isConnect()
         }
     }
 
@@ -604,9 +616,18 @@ class GlitterPage(
                 dataMap[name]=JzSqlHelper(activity!!,name)
             }
             dataMap[name]!!.close()
-            val  file= File("$baseRout/$rout")
-            dataMap[name]!!.dbinit(file.inputStream())
-            dataMap[name]!!.create()
+            if(baseRout.contains("file:///android_asset")){
+                val assetRout="${baseRout.replace("file:///android_asset/","")}/${rout.replace("file:/android_asset/","")}"
+                Log.e("assetRout",assetRout)
+//                activity!!.assets.list("")
+                dataMap[name]!!.dbinit(activity!!.assets.open(assetRout))
+                dataMap[name]!!.create()
+            }else{
+                val  file= File("$baseRout/$rout")
+                dataMap[name]!!.dbinit(file.inputStream())
+                dataMap[name]!!.create()
+            }
+
         }
     }
 }
