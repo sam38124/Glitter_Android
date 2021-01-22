@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.ViewParent
+import android.view.WindowManager
 import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,8 @@ class GlitterActivity: AppCompatActivity() {
     var glitterPage = GlitterPage(baseRout, updateRout, appName, onCreate)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window
+            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         setContentView(R.layout.mainpage)
         showGlitterPage()
     }
@@ -51,7 +54,7 @@ class GlitterActivity: AppCompatActivity() {
     fun showGlitterPage(){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.glitterFrag, glitterPage, "GlitterPage").commit()
-        fn_video()
+//        fn_video()
         instance = { this }
     }
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {

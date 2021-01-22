@@ -57,8 +57,7 @@ class MainActivity : JzActivity() {
     }
 
     override fun viewInit(rootview: View) {
-        window
-            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
 Thread{
     handler.post {
 //      GlitterActivity.setUp("http://192.168.3.219/Glitter/Zhexing/appData/","http://192.168.3.219","Zhexing")
