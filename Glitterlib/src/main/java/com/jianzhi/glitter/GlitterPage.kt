@@ -150,7 +150,7 @@ class GlitterPage(
                 }
                 Thread {
                     onUpdate = true
-                    val version = "$updateRout/GlitterVersion?AppName=$appName".getWebResource(3000)
+                    val version = "$updateRout/GlitterVersion?AppName=$appName".getWebResource(10000)
                     if (version == ginterFace.getPro("version") || version == null) {
                         onUpdate = false
                         return@Thread
