@@ -578,20 +578,22 @@ class GlitterPage(
     }
 
     override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary) {
-        val map: MutableMap<String, Any> = mutableMapOf()
-        map["name"] = if (device.name == null) "undefine" else device.name
-        map["address"] = device.address
-        val rec: MutableMap<String, Any> = mutableMapOf()
-        rec["readHEX"] = scanRecord.readHEX().substring(34)
-        rec["readBytes"] = scanRecord.readBytes().copyOfRange(17, scanRecord.readBytes().size)
-        rec["readUTF"] = String(rec["readBytes"] as ByteArray, StandardCharsets.UTF_8);
-        handler.post {
-            webRoot.evaluateJavascript(
-                "glitter.bleUtil.callback.scanBack(" + Gson().toJson(map) + "," + Gson().toJson(
-                    rec
-                ) + ")", null
-            )
-        }
+        try{
+            val map: MutableMap<String, Any> = mutableMapOf()
+            map["name"] = if (device.name == null) "undefine" else device.name
+            map["address"] = device.address
+            val rec: MutableMap<String, Any> = mutableMapOf()
+            rec["readHEX"] = scanRecord.readHEX().substring(34)
+            rec["readBytes"] = scanRecord.readBytes().copyOfRange(17, scanRecord.readBytes().size)
+            rec["readUTF"] = String(rec["readBytes"] as ByteArray, StandardCharsets.UTF_8);
+            handler.post {
+                webRoot.evaluateJavascript(
+                    "glitter.bleUtil.callback.scanBack(" + Gson().toJson(map) + "," + Gson().toJson(
+                        rec
+                    ) + ")", null
+                )
+            }
+        }catch (e:Exception){ }
     }
 
     override fun tx(b: BleBinary) {
