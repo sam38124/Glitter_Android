@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../glitterBundle/src/TouchDragListener.js"></script>
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    video {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .contentList {
+        display: flex;
+        flex-direction: column;
+        overflow-y: hidden;
+    }
+
+    .contentList .tit {
+        margin: 10px;
+        color: black;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .reader {
+        color: hsla(0, 0%, 6.7%, .6);
+        font-size: 13px;
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .imgItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        margin-top: 10px;
+    }
+
+    .imgItem svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .imgItem h3 {
+        color: #6a6a6a;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .clickList {
+        width: calc(100% - 20px);
+        height: 70px;
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: space-around;
+        display: flex;
+    }
+
+    #loveBt {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .spi {
+        height: 1px;
+        background-color: hsla(0, 0%, 53.3%, .4);
+        width: 100%;
+    }
+
+    .adminPlace {
+        display: flex;
+        height: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+        align-items: center;
+
+    }
+
+    .adminPlace img {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+    }
+
+    .content {
+        padding: 10px;
+        font-weight: 600;
+        color: gray;
+        font-size: 14px;
+
+    }
+
+    .topbar .left {
+        width: calc(100% - 40px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="../css/CVideo_Cell.css">
+<body>
+
+</body>
+</html>
+<script>
+    console.log("影片內容" + JSON.stringify(gBundle))
+    lifeCycle.onCreateView = function () {
+        return `` + publicBeans.getVideoView(gBundle, 'width:  100%; height:57vw;background-color: black;margin: 0;border-radius: 0;') + `
+   <div id="scrollView" style="  height: calc(100% - 85vw);margin:0;overflow-y: scroll;width: 100%;">
+    <div class="contentList">
+    <div class="topbar" onclick="toggleContent()">
+    <div class="left">
+      <h3 class="tit">` + glitter.unicodeToString(gBundle.title) + `</h3>
+   <h3 class="reader">觀看次數：${gBundle.reader}</h3>
+</div>
+  <div  class="imgItem" >
+     <div id="toggleImg" style="cursor:pointer;fill: black;position: relative;z-index: 2;transform: translateY(-15px)"  >
+       <svg viewBox="0 0 24 24" fill=""><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+    </div>
+   </div>
+</div>
+
+   <div class="clickList">
+   <div class="imgItem">
+     <div style="cursor:pointer;fill: ${(gBundle.isLike === 'false') ? 'gray' : 'deeppink'};position: relative;z-index: 2;"  onclick="addLove()" id="loveBt">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="heartBt">
+            <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z"
+                  fill-rule="evenodd"></path>
+        </svg>
+    </div>
+   <h3 id="goodCount">${gBundle.good}</h3>
+</div>
+<div class="imgItem">
+     <div style="cursor:pointer;fill:${(gBundle.isSub === 'false') ? 'gray' : '#315CA1'};position: relative;z-index: 2;"  id="subBt" onclick="addSub()">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="subBt">
+            <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+        </svg>
+    </div>
+   <h3 id="subHint">${(gBundle.isSub === 'false') ? '收藏' : '已收藏'}</h3>
+</div>
+<div class="imgItem">
+     <div style="cursor:pointer;fill: grey;position: relative;z-index: 2;"  id="loveBt">
+       <svg viewBox="0 0 24 24" fill=""><path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z"></path></svg>
+    </div>
+   <h3>分享</h3>
+</div>
+<div class="imgItem">
+  <div style="cursor:pointer;fill: grey;position: relative;z-index: 2;"  id="loveBt">
+     <svg viewBox="0 0 24 24" fill=""><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"></path></svg>
+    </div>
+   <h3>檢舉</h3>
+</div>
+</div>
+<div class="spi"></div>
+<div  class="adminPlace">
+<img src="` + gBundle.head + `">
+<div style="display: flex;flex-direction: column;height: 100%;justify-content: center;margin-left: 10px;">
+<h3 style="font-weight:400;color: black;font-size: 14px;margin: 0;">` + glitter.unicodeToString(gBundle.pick) + `</h3>
+<h3 style="font-weight:200;color: black;font-size: 11px;opacity: .6;margin: 0;">5人訂閱</h3>
+</div>
+<div style="flex: auto;"></div>
+<div id="haveSubScrible" onclick="toSubscriber()" style="font-weight:600;color: red;margin-right:10px;font-size: 16px;display: flex;align-items: center;justify-content: center;">訂閱</div>
+</div>
+<div class="spi"></div>
+<div id="contentText" class="content" style="">${glitter.unicodeToString(gBundle.content)}
+</div>
+<div class="spi"></div>
+<div id="videoList" style="margin-left: 10px;margin-right: 10px;display: flex;flex-direction: column;margin-top: 10px;">
+<h3 style="color: black;font-size: 16px;margin-left: 5px;margin-top: 0;">其他影片</h3>
+
+</div>
+
+</div>
+</div>
+    `
+    }
+
+    var toggleBol = true
+
+    function toggleContent() {
+        toggleBol = !toggleBol
+        if (toggleBol) {
+            $('#toggleImg').html('<svg viewBox="0 0 24 24" fill=""><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>')
+            $('#contentText').show()
+        } else {
+            $('#toggleImg').html('<svg viewBox="0 0 24 24" fill=""><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg>')
+            $('#contentText').hide()
+        }
+    }
+
+    lifeCycle.onCreate = function () {
+        var sheetLenstiner = glitter.sheetList[glitter.sheetList.length - 1]
+        $('#scrollView').scroll(function () {
+            console.log('onScroll')
+            var scrollTop = $(this).scrollTop();
+            if (sheetLenstiner !== undefined) {
+                sheetLenstiner.dragAble = (scrollTop === 0)
+                if (scrollTop !== 0) {
+                    sheetLenstiner.sheet.style.setProperty("transform", `translateY(0)`);
+                    sheetLenstiner.sheet.style.setProperty("transition", `unset`);
+                }
+            }
+        });
+        // $('video').click(function (){
+        //     sheetLenstiner.dragAble=true
+        // })
+        new TouchDragListener({
+            el: $('video').get(0),
+            touchStartCallback: ({el, active, initialY, currentY, yOffset}) => {
+                sheetLenstiner.dragAble = true
+            },
+            touchEndCallback: ({el, active, initialY, currentY, yOffset}) => {
+                sheetLenstiner.dragAble = true
+            },
+            touchMoveCallback: ({el, active, initialY, currenty, yOffset}) => {
+                sheetLenstiner.dragAble = true
+            }
+        })
+        glitter.showToast('下滑關閉此頁面')
+        addReader()
+        checkSubscriber()
+        getPromoteVideo()
+    }
+
+    /**添加觀看次數*/
+    function addReader() {
+        glitter.publicBeans.postRequest({
+            request: 'addReader',
+            account: glitter.md_user.account,
+            id: gBundle.id
+        }, function () {
+
+        }, function () {
+            addReader()
+        })
+    }
+
+    /**按讚*/
+    function addLove() {
+        glitter.publicBeans.postWithDialog({
+            request: 'postCVLike',
+            account: glitter.md_user.account,
+            id: gBundle.id
+        }, function () {
+            gBundle.isLike = (gBundle.isLike === 'true') ? 'false' : 'true'
+            gBundle.good = (gBundle.isLike === 'false') ? parseInt(gBundle.good - 1, 10) : parseInt(gBundle.good + 1, 10)
+            $('#loveBt').css('fill', `${(gBundle.isLike === 'false') ? 'gray' : 'deeppink'}`)
+            $('#goodCount').html(gBundle.good)
+        }, function () {
+        })
+    }
+
+    /**收藏*/
+    function addSub() {
+        glitter.publicBeans.postWithDialog({
+            request: 'postCVSub',
+            account: glitter.md_user.account,
+            id: gBundle.id
+        }, function () {
+            gBundle.isSub = (gBundle.isSub === 'true') ? 'false' : 'true'
+            $('#subBt').css('fill', `${(gBundle.isSub === 'false') ? 'gray' : '#315CA1'}`)
+            $('#subHint').html(`${(gBundle.isSub === 'false') ? '收藏' : '已收藏'}`)
+        }, function () {
+        })
+    }
+
+    /**訂閱**/
+    function toSubscriber() {
+        glitter.publicBeans.postWithDialog({
+            request: 'toSubscriber',
+            account: glitter.md_user.account,
+            toAccount: gBundle.account
+        }, function () {
+
+        }, function () {
+        })
+    }
+    /**檢查有無訂閱此用戶**/
+    function checkSubscriber(){
+        glitter.publicBeans.postWithDialog({
+            request: 'checkSubscriber',
+            account: glitter.md_user.account,
+            toAccount: gBundle.account
+        }, function (data) {
+            var result=JSON.parse(data)
+          if(result.result==='true'){
+              if(result.data==='1'){
+                  $('#haveSubScrible').html("已訂閱")
+              }else{
+                  $('#haveSubScrible').html("訂閱")
+              }
+          }else {
+              checkSubscriber()
+          }
+        }, function () {
+
+        })
+    }
+    /**取得推薦影片**/
+    function getPromoteVideo(){
+        glitter.publicBeans.postRequest({
+            request:'getPromoteVideo',
+            account:glitter.md_user.account
+        },function (res){
+            var result=JSON.parse(res)
+            if(result.result==='true'){
+                var item=JSON.parse(result.data)
+                for(var i=0;i<item.length;i++){
+                    var data=item[i]
+                    if(data.id===gBundle.id){continue}
+                    $('#videoList').append(`
+            <div style="display: flex;margin-bottom: 10px;">
+<img src="${glitter.publicBeans.domain + '/' + data.videoLink}thumb.jpg" style="width: 160px;height:90px;">
+<div style="display: flex;flex-direction: column;width: calc(100% - 160px);">
+<h3 style="margin-left:5px;font-size: 14px;overflow:hidden;text-overflow:ellipsis;font-weight: 500;margin-top:0;margin-bottom:0;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;white-space: normal;">Cute love story「 A M V 」Kud wafter MOVIE || Романтический клип Куд Валфет</h3>
+<div style="flex: auto;"></div>
+<span style="margin-left:5px;font-size: 13px;opacity: .6;margin-top: 0px;">${glitter.unicodeToString(gBundle.title)}</span>
+<span style="margin-left:5px;font-size: 11px;opacity: .6;margin-top: 0px;">觀看次數:${data.reader}次</span>
+</div>
+</div>
+            `)
+                }
+            }
+
+        },function (){
+            getPromoteVideo()
+        })
+    }
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #315CA1;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<body>
+<img src="../img/tsporticon.png" style="width: calc(100vw - 30px);margin-left:15px;transform: translateY(50%);top: -50%">
+</body>
+</html>
+<script>
+    function switchPage() {
+        try{
+          glitter.getPro('Md_User',function (userData){
+              userData=JSON.parse(userData)
+              if (userData !== 'NA' && userData !== undefined) {
+                  glitter.publicBeans.account=userData.account
+                  login(userData.account, userData.password)
+              } else {
+                  glitter.setHome('page/Page_Sign_In.html', 'Page_Sign_In', '{}')
+              }
+            })
+
+        }catch (e) {
+            glitter.setHome('page/Page_Sign_In.html', 'Page_Sign_In', '{}')
+        }
+    }
+
+    setTimeout(switchPage, 3000)
+
+    //登入換頁
+    function login(admin, password) {
+        let json = {}
+        json.request = "login"
+        json.account = admin
+        json.password = password
+        glitter.publicBeans.postRequest(json, function (data) {
+            glitter.closeDiaLogWithTag('SignIn')
+            var mapData = JSON.parse(data)
+            if (mapData.result === "true") {
+                glitter.publicBeans.token=mapData.token
+                var dat=JSON.parse(mapData.data)
+                glitter.md_user=dat
+                var map={}
+                map.account=dat.account
+                map.password=dat.password
+                glitter.setPro('Md_User', JSON.stringify(map))
+                glitter.setHome('page/Page_Home.html', 'Page_Home', '{}')
+            } else {
+                glitter.setHome('page/Page_Sign_In.html', 'Page_Sign_In', '{}')
+            }
+        }, function (data) {
+            glitter.openDiaLog('dialog/Dia_DisConnect.html', 'DisConnect', false, false, function () {
+                login(admin, password)
+            })
+        })
+    }
+</script>

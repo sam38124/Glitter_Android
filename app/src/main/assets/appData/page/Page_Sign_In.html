@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<base target="_parent">
+<meta name="viewport" content="width=device-width">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<script src="../model/Md_User.js"></script>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+    h3{
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    .center{
+
+    }
+    span{
+        font-size: 14px;
+    }
+</style>
+<body>
+<div style="width: 100%;display: inline-block;transform: translateY(-50%);top: 50%;position: relative;">
+    <img src="../img/sport.png" style="width: 100%;height: 190px;position: relative;  object-fit: scale-down;z-index: -1">
+    <div style="margin-left: 40px;margin-right: 40px;margin-top: -40px;padding: 0;z-index: 1">
+        <h3 style="color: gray;">login with</h3>
+        <div style="width: 100%;height: 45px;background-color: #0e65d8;border-radius: 10px;">
+            <h3 style="transform:translate(-50%,-50%);top:50%;left:50%;color: white;position: relative;text-align: center;">使用臉書帳號進行登入</h3>
+        </div>
+        <h3 style="color: gray;">or</h3>
+        <h3 style="color: gray;">帳號</h3>
+        <input id='admin' placeholder="請輸入您的帳號" style="padding-left:10px;width: calc(100% - 10px);position:relative;margin-right:10px;height: 45px;stroke-width: 1px;border-radius: 5px;border-width:1px;border-color: gray;">
+        <h3 style="color: gray;margin-top:10px;">密碼</h3>
+        <input id='password' type="password" placeholder="請輸入您的密碼" style="padding-left:10px;width: calc(100% - 10px);position:relative;height: 45px;stroke-width: 1px;border-radius: 5px;border-width:1px;border-color: gray;">
+        <div style="width: 100%;height: 45px;background-color: #323643;text-align: center;margin-top:20px;border-radius: 10px;" onclick="signIn()">
+            <h3 style="transform:translate(-50%,-50%);top:50%;left:50%;color: white;position: relative;text-align: center;">登入</h3>
+        </div>
+        <div style="display:inline-block;width: 100%;height: 60px;margin-top: 10px;top: 10px;">
+            <span style="color: gray;margin-top: 10px;">尚未註冊?</span>
+            <span style="color: dodgerblue;margin-top: 10px;">註冊</span>
+            <span style="color: dodgerblue;margin-right: 0;float: right;" onclick="glitter.changePageWithAnimation('page/Page_Policy.html','Page_Policy',true,glitter.animator.translation,'{}')">隱私權政策</span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    function signIn() {
+        var admin=$('#admin').val()
+        var password=$('#password').val()
+        // glitter.setHome('page/Page_Home.html','Page_Home.html','{}')
+        if(admin===undefined || admin===''||password===''||password===undefined){
+            glitter.openDiaLog('dialog/Dia_Info.html', 'info', false, true, '請輸入帳號和密碼!!')
+        }else{
+            login($('#admin').val(),$('#password').val())
+        }
+    }
+</script>

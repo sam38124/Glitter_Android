@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        background-color: #e8e8e8;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+    }
+
+
+</style>
+
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/lottie.js"></script>
+<script src="../model/Md_CVideo.js"></script>
+<script src="../jslib/widget.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/News_Slider.css"/>
+<link rel="stylesheet" href="../css/CVideo_Cell.css">
+<script src="../jslib/video.js"></script>
+<body>
+<div id="reView">
+    <section class="lazy slider" id="sliderSection">
+    </section>
+</div>
+</body>
+
+</html>
+<script>
+    /**
+     * VideoItem為所有影像的資料陣列
+     * */
+    var dialog = new Dialog()
+    var idIndex = '-1'
+    var onRequest = false
+    var isBt = false
+    var firstRequest = true
+    var videoItem = []
+    startRequest()
+
+    function startRequest() {
+        if (onRequest || isBt) {
+            return
+        }
+        onRequest = true
+        dialog.listLoading('reView')
+        getCVideo(function (json) {
+            dialog.closeListLoading()
+            if (json === 'error') {
+                onRequest = false
+                startRequest()
+            } else {
+                for (let i = 0; i < json.length; i++) {
+                    var data = json[i]
+                    videoItem = videoItem.concat(data)
+                    idIndex = data.id
+                    players = players.concat(json[i].id)
+                    $('#reView').append(`
+                    <div class="videoItem" id="${json[i].id}" style="margin-bottom: 10px;">
+                    ${publicBeans.getVideoView(data, 'pointer-events:none;width:  100%; height:57vw;background-color: black;margin: 0;border-radius: 0;')}
+<div style="background-color: white;display: flex;align-items: center;height: 62px;margin: 0;">
+<img src="${data.head}" style="width: 30px;height: 30px;margin-left: 10px;border-radius: 15px;">
+<div style="white-space:nowrap;max-width:calc(100% - 90px);display: flex;flex-direction: column;margin-left: 10px;justify-content: center;">
+<h3 style="overflow:hidden;text-overflow:ellipsis;font-weight: 500;font-size: 16px;margin: 0;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;white-space: normal;">
+${glitter.unicodeToString(data.title)}</h3>
+<div style="display: flex;margin: 0;align-items: center;">
+<h3 style="opacity: .6;font-size: 11px;margin: 0;">${glitter.unicodeToString(data.pick)}</h3>
+<span style="opacity: .6;font-size: 10px;margin-left: 5px;margin-right: 5px;"> • </span>
+<span style="opacity: .6;font-size: 10px;">${data.reader}次觀看</span>
+<span style="opacity: .6;font-size: 10px;margin-left: 5px;margin-right: 5px;"> • </span>
+<span style="opacity: .6;font-size: 10px;">${data.time}</span>
+</div>
+</div>
+<div style="flex: auto;"></div>
+<div style="width: 20px;height: 20px;margin-right: 10px;">
+<svg viewBox="0 0 24 24" fill=""><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+</div>
+</div>
+</div>
+`)
+                    var videoPlayer = $('#' + json[i].id + ' video').get(0);
+                    videoPlayer.autoplay = false
+                    videoPlayer.controls = false
+                    $('#'+json[i].id).click(function (){
+                        glitter.openBottomSheet('page/Page_Show_Video.html','Page_Show_Video',json[i],window.innerHeight+85,false)
+                    })
+                }
+                playVideos()
+                if (firstRequest) {
+                    firstRequest = false
+                }
+                if (json.length === 0) {
+                    isBt = true
+                }
+                onRequest = false
+            }
+        }, idIndex)
+    }
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight === scrollHeight) {
+            startRequest()
+        }
+        console.log('scroll--scrollTop' + scrollTop + '--scrollHeight' + scrollHeight + '--windowHeight' + windowHeight)
+    });
+    lifeCycle.onResume = function () {
+        playVideos()
+    }
+
+</script>

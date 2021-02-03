@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        background-color: #315CA1;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .topBar2 {
+        padding: 0;
+        width: 100%;
+        display: flex;
+        height: 50px;
+        background-color: #315CA1;
+        margin: 0;
+    }
+
+    .previewContent {
+        margin-top: 0px;
+        line-height: 30px;
+        margin-right: 10px;
+        margin-left: 10px;
+        font-size: 16px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        white-space: normal;
+        height: calc(100vh - 100px);
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+    .selectDic .head {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%;
+    }
+
+    .selectDic {
+        height: 50px;
+        margin: 0px;
+        display: flex;
+    }
+
+    .flexText {
+        margin-top: 0;
+        color: black;
+        height: 50px;
+        line-height: 50px;
+        font-size: 17px;
+        margin-left: 10px;
+    }
+
+    .bottomBar {
+        height: 50px;
+        position: fixed;
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        bottom: 0;
+        display: flex;
+        background-color: white;
+    }
+
+    .bottomBar .head {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%;
+        margin-left: 10px;
+    }
+
+    .ite {
+        width: 20px;
+        height: 20px;
+        transform: translateY(-50%);
+        top: 50%;
+        position: relative;
+        fill: rgba(0, 0, 0, 0.2);
+    }
+
+    .scrollView {
+        overflow-y: scroll;
+    }
+
+    .cList {
+        width: 100%;
+        height: 40px;
+        display: flex;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../glitterBundle/GlAdapter.js"></script>
+<script src="../jslib/moment.js"></script>
+<link href="../css/Video_CSS.css" rel="stylesheet">
+<link href="../css/Reply.css" rel="stylesheet">
+<script src="../jslib/hls.js"></script>
+<script src="../jslib/video.js"></script>
+<script src="../model/Md_Reply_Message.js"></script>
+<script src="../model/Md_Forium.js"></script>
+<body>
+
+<div class="topBar2">
+    <img src="../img/btn_back_normal.png" style="height: 50px;width: 50px;margin: 0" onclick="glitter.goBack()">
+    <h3 id="title"
+        style="margin-top:0;color: white;height: 50px;line-height: 50px;width: calc(100% - 110px);font-size: 18px;">
+        來收聖誕禮物 🎁 你想收到來自聖誕老人的大禮還是命中註定的他/她？</h3>
+    <script>
+
+        $('#title').html(gBundle.title)
+    </script>
+</div>
+<div class="previewContent">
+    <div id="previewContent">
+        <div class="selectDic">
+            <div>
+                <img class="head" src="../img/tsporticon.png" id="headImg">
+            </div>
+            <h3 class="flexText" style="font-size: 16px;font-weight: bold;" id="pickText"></h3>
+        </div>
+        <script>
+            $('#headImg').attr('src', gBundle.head)
+            $('#pickText').html(JSON.parse('{"unicode":"' + gBundle.pick + '"}').unicode)
+        </script>
+        <h3 style="color:black;margin:0;" id="tit">來收聖誕禮物 🎁 你想收到來自聖誕老人的大禮還是命中註定的他/她？</h3>
+        <div style="margin:0;display: flex;height: 30px;padding: 0;">
+            <h3 style="margin:0;padding:0;color: dodgerblue;font-size: 14px;height: 30px;line-height: 30px;"
+                id="circle">
+                跑酷</h3>
+            <h3 id="time"
+                style="margin-top:0;margin-bottom: 0;padding:0;color: gray;font-size: 11px;margin-left: 10px;height: 30px;line-height: 30px;">
+                今天16:40</h3>
+        </div>
+    </div>
+    <div class="cList">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true"
+             class="ite">
+            <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z"
+                  fill-rule="evenodd"></path>
+        </svg>
+        <h3 style="margin-left:5px;font-size: 14px;color: grey;line-height: 40px;height: 40px;margin-top: 0px"
+            id="likeCount"></h3>
+        <script>
+            $('#likeCount').html(gBundle.love)
+        </script>
+        <svg viewBox="0 0 24 24" class="ite" focusable="false" width="24" height="24" role="img" aria-hidden="true"
+             style="fill: rgba(0, 0, 0, 0.2);margin-left: 10px;">
+            <path d="M17 4H7a5 5 0 00-5 5v5a5 5 0 005 5h.5v2.44a.75.75 0 001.22.58L12.5 19H17a5 5 0 005-5V9a5 5 0 00-5-5z"></path>
+        </svg>
+        <h3 style="margin-left:5px;font-size: 14px;color: grey;line-height: 40px;height: 40px;margin-top: 0;"
+            id="replyCount"></h3>
+        <script>
+            $('#replyCount').html(gBundle.replyCount)
+        </script>
+    </div>
+    <div id="listView"></div>
+</div>
+
+<div class="bottomBar">
+    <img class="head" src="../img/tsporticon.png" style="margin-left: 20px;">
+    <script>
+        $(".bottomBar .head").attr("src",  glitter.md_user.head)
+    </script>
+    <h3 style="color: #808080;font-size: 14px;margin-left: 10px;line-height: 50px;margin-top: 0;flex: auto;"
+        onclick="glitter.changePage('page/Page_Post_Message.html','Page_Post_Message',true,postMap)">
+        撰寫回應...</h3>
+    <script>
+        var postMap = {}
+        postMap.id = 'Ut' + gBundle.id
+        postMap.callBack = function () {
+            gBundle.replyCount += 1
+            $('#replyCount').html(gBundle.replyCount)
+            startGetReply()
+        }
+    </script>
+    <div style="width: 35px;height: 100%;" onclick="postLikeF()">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="heartBt">
+            <path d="M16.5 4A5.49 5.49 0 0012 6.344 5.49 5.49 0 007.5 4 5.5 5.5 0 002 9.5C2 16 12 22 12 22s10-6 10-12.5A5.5 5.5 0 0016.5 4z"
+                  fill-rule="evenodd"></path>
+        </svg>
+    </div>
+    <div style="width: 35px;height: 100%;" onclick="postSubF()">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="subBt">
+            <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+        </svg>
+    </div>
+    <div style="width: 35px;height: 100%;">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite">
+            <g transform="translate(148)">
+                <circle cx="2" cy="2" r="2" transform="translate(-138 4)"></circle>
+                <circle cx="2" cy="2" r="2" transform="translate(-138 10)"></circle>
+                <circle cx="2" cy="2" r="2" transform="translate(-138 16)"></circle>
+            </g>
+        </svg>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    $('#tit').html(gBundle.title)
+    $('#circle').html(gBundle.circle)
+    $('#time').html(gBundle.time)
+    $('#previewContent').append('<div>' + gBundle.content + '</div>')
+    var item = []
+    var adapter = new GlAdapter(document.getElementById('listView'), function () {
+        return item.length
+    }, function (position) {
+        var id = item[position].id
+        var pick = JSON.parse('{"unicode":"' + item[position].pick + '"}').unicode
+        var content = JSON.parse('{"unicode":"' + item[position].content + '"}').unicode
+        var like = item[position].like
+        var time = item[position].time
+        var replyCount = item[position].replyCount
+        //判斷有無按讚
+        var mlike=item[position].mLike
+        var html = ''
+        if (position === 0) {
+
+            html += '<div style="height: 1px;background-color: #aaaaaa;width: 100%;margin-top: 0px;"></div>'
+            html += '<h1 style="height: 30px;text-align:center;color: black;' +
+                'font-weight: bold;font-size: 16px;width: 100%;line-height: 30px;">熱門回應</h1>'
+            html += '<div style="height: 1px;background-color: #aaaaaa;width: 100%;margin-bottom: 10px;"></div>'
+        }
+                html += '  <div style="width: 100%;height: 100%;margin-top: 0;margin-bottom: 0;">\n' +
+                    '        <div class="flexBar" style="margin-bottom: 0;">\n' +
+                    '            <img class="head"\n' +
+                    '                 src="'+item[position].head+'">\n' +
+                    '            <div class="rightContent">\n' +
+                    '                <h3 class="pickText">' + pick + '</h3>\n' +
+                    '                <h3 class="messageText">' + content + '</h3>\n' +
+                    '            </div>\n' +
+                    '        </div>\n' +
+                    '        <div class="btFlex" style="margin-left: 40px;margin-top: 0px;">\n' +
+                    '            <h3 class="btText">' + time + '</h3>\n' +
+                    '            <h3 class="btText" style="color:'+((mlike==="1")?  "dodgerblue":"gray")+' " id="message' + id + '" onclick="postMessageLike(\'' + id + '\','+position+')">' + ((like === 0) ? '' : (like + '個')) + '讚</h3>\n' +
+                    '            <h3 class="btText" onclick="replyMessage('+position+')">'+((replyCount===0) ? "回覆":replyCount+"則回覆")+'</h3>\n' +
+                    '        </div>\n' +
+                    '    </div>'
+        return html
+    })
+    //回覆留言中的留言
+    function replyMessage(position) {
+        var articleId=gBundle.id
+        var replyMap={}
+        replyMap.articleId=articleId
+        replyMap.data=item[position]
+        replyMap.height=$(document).height()-20
+        glitter.openBottomSheet('dialog/Dia_ReplyMessage.html','Dia_ReplyMessage',replyMap,replyMap.height)
+    }
+    //留言按讚
+    function postMessageLike(id, position) {
+        glitter.openDiaLog('dialog/Dia_DataLoading.html', 'post', false, false, '{}')
+        messageInterFace.postLike(id, 'Ut' + gBundle.id, function (result) {
+            glitter.closeDiaLog('post')
+            if (result === 'error') {
+                glitter.openDiaLog('dialog/Dia_DisConnect.html', 'DisConnect', false, false, function () {
+                })
+            } else {
+                if (result.result === 'true') {
+                    if (result.data === "-1") {
+                         item[position].like=item[position].like-1
+                        var html=((item[position].like === 0) ? '' : (item[position].like + '個'))+'讚'
+                        $('#message' + id).css("color","gray")
+                        $('#message' + id).html(html)
+                    } else {
+                        item[position].like=item[position].like+1
+                        $('#message' + id).css("color","dodgerblue")
+                        $('#message' + id).html( item[position].like +'個讚')
+                    }
+
+                }
+            }
+        })
+    }
+
+    //取得回覆訊息
+    function startGetReply() {
+        messageInterFace.getMessage('Ut' + gBundle.id, function (result) {
+            if (result === 'error') {
+                startGetReply()
+            } else {
+                if (result.result === 'true') {
+                    item = JSON.parse(result.data)
+                    adapter.notifyDataSetChange()
+                } else {
+                    startGetReply()
+                }
+            }
+        })
+    }
+
+    startGetReply()
+
+    //按讚
+    function postLikeF() {
+        glitter.openDiaLog('dialog/Dia_DataLoading.html', 'post', false, false, '{}')
+        postLike('Ut' + gBundle.id, function (result) {
+            glitter.closeDiaLog('post')
+            if (result === 'error') {
+                glitter.openDiaLog('dialog/Dia_DisConnect.html', 'DisConnect', false, false, function () {
+                })
+            } else {
+                if (result.result === 'true') {
+                    if (result.data === "-1") {
+                        $('#heartBt').css('fill', 'rgba(0, 0, 0, 0.2)')
+                    } else {
+                        $('#heartBt').css('fill', 'deeppink')
+                    }
+                }
+            }
+        })
+    }
+
+    //收藏
+    function postSubF() {
+        glitter.openDiaLog('dialog/Dia_DataLoading.html', 'post', false, false, '{}')
+        postFSub('Ut' + gBundle.id, function (result) {
+            glitter.closeDiaLog('post')
+            if (result === 'error') {
+                glitter.openDiaLog('dialog/Dia_DisConnect.html', 'DisConnect', false, false, function () {
+                })
+            } else {
+                if (result.result === 'true') {
+                    if (result.data === "-1") {
+                        $('#subBt').css('fill', 'rgba(0, 0, 0, 0.2)')
+                    } else {
+                        $('#subBt').css('fill', '#315CA1')
+                    }
+                }
+            }
+        })
+    }
+
+    //判斷有無對此文章按讚
+    function checkLikeF() {
+        checkLike('Ut' + gBundle.id, function (result) {
+            if (result === 'error') {
+                checkLikeF()
+            } else {
+                if (result.result === 'true') {
+                    if (result.data === "-1") {
+                        $('#heartBt').css('fill', 'rgba(0, 0, 0, 0.2)')
+                    } else {
+                        $('#heartBt').css('fill', 'deeppink')
+                    }
+                }
+            }
+        })
+    }
+
+    checkLikeF()
+
+    //判斷有無對此文章收藏
+    function checkSubF() {
+        checkSub('Ut' + gBundle.id, function (result) {
+            if (result === 'error') {
+                checkSub()
+            } else {
+                if (result.result === 'true') {
+                    if (result.data === "-1") {
+                        $('#subBt').css('fill', 'rgba(0, 0, 0, 0.2)')
+                    } else {
+                        $('#subBt').css('fill', '#315CA1')
+                    }
+                }
+            }
+        })
+    }
+
+    checkSubF()
+</script>

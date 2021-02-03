@@ -16,10 +16,10 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.jztaskhandler.JzClock
-import com.jianzhi.glitter.GlitterPage
+import com.jianzhi.glitter.GlitterActivity
 
-class GpsUtil(var activity: GlitterPage) {
-    var mLocationManager: LocationManager = activity.activity!!
+class GpsUtil(var activity: GlitterActivity) {
+    var mLocationManager: LocationManager = activity
         .getSystemService(Context.LOCATION_SERVICE) as LocationManager
     var clock = JzClock()
 
@@ -31,7 +31,7 @@ class GpsUtil(var activity: GlitterPage) {
                 android.Manifest.permission.ACCESS_FINE_LOCATION
             )) {
                 val permissionCheck =
-                    ContextCompat.checkSelfPermission(activity.activity!!, permission)
+                    ContextCompat.checkSelfPermission(activity, permission)
                 if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                     return null
                 }
@@ -75,7 +75,7 @@ class GpsUtil(var activity: GlitterPage) {
     val address: String
         get() {
             try {
-                val geocoder: Geocoder = Geocoder(activity.activity)
+                val geocoder: Geocoder = Geocoder(activity)
                 val addresses = geocoder.getFromLocation(
                     lastKnownLocation!!.latitude,
                     lastKnownLocation!!.longitude,
@@ -109,9 +109,9 @@ class GpsUtil(var activity: GlitterPage) {
             android.Manifest.permission.ACCESS_FINE_LOCATION
         )) {
             val permissionCheck =
-                ContextCompat.checkSelfPermission(activity.activity!!, permission)
+                ContextCompat.checkSelfPermission(activity, permission)
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(activity.activity!!, arrayOf(
+                ActivityCompat.requestPermissions(activity, arrayOf(
                     android.Manifest.permission.ACCESS_COARSE_LOCATION,
                     android.Manifest.permission.ACCESS_FINE_LOCATION
                 ), 1022)

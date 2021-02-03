@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .item{
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding-bottom: 5px;
+    }
+    .itemFlex{
+        height: 50px;
+        display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        align-items: center;
+    }
+    .itemFlex img{
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+    }
+    .itemFlex h3{
+        color: #6a6a6a;
+        font-size: 13px;
+        margin-left: 5px;
+    }
+    .item .title{
+        color: black;
+        font-weight: 400;
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .item .time{
+        color: #6a6a6a;
+        font-weight: 400;
+        font-size: 13px;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+<div class="item">
+<div class="itemFlex">
+    <img src="../img/tsporticon.png">
+    <h3>
+        王建智
+    </h3>
+    <div style="flex: auto;"></div>
+    <div style="width: 20px;height: 20px;fill: #6a6a6a;">
+        <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite">
+            <g transform="translate(148)">
+                <circle cx="2" cy="2" r="2" transform="translate(-138 4)"></circle>
+                <circle cx="2" cy="2" r="2" transform="translate(-138 10)"></circle>
+                <circle cx="2" cy="2" r="2" transform="translate(-138 16)"></circle>
+            </g>
+        </svg>
+    </div>
+</div>
+    <img style="height: 50vw;width:calc(100% - 20px);border-radius:10px;margin-left: 10px;margin-right: 10px;" src="../img/1563807726.jpg">
+    <div style="display: flex;align-items: center;">
+        <div style="display: inline-block;flex: auto">
+            <h3 class="title">鬼滅之刃三之行</h3>
+            <h3 class="time">Jan 12,2018</h3>
+        </div>
+        <div style="width: 20px;height: 20px;margin-right: 10px;fill: #aaaaaa; " onclick="postSubF()">
+            <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="subBt">
+                <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -25,7 +25,7 @@ class ScannerActivity : AppCompatActivity() {
                     arrayOf(BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE,BarcodeFormat.DATA_MATRIX),
                     object : callback {
                         override fun result(text: String) {
-                    GlitterActivity.instance().glitterPage.webRoot.evaluateJavascript("glitter.qrScanBack('$text')",null)
+                    GlitterActivity.instance().webRoot.evaluateJavascript("glitter.qrScanBack('$text')",null)
                             this@ScannerActivity.finish()
                         }
                     })
