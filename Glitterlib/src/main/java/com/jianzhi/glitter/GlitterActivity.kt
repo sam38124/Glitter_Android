@@ -270,7 +270,7 @@ class GlitterActivity() : AppCompatActivity(),
             }
         }
         rootview.webroot.webChromeClient = webChromeClient;
-        fn_video()
+//        fn_video()
         instance = { this }
     }
 

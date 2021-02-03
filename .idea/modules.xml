@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Glitter.iml" filepath="$PROJECT_DIR$/.idea/modules/Glitter.iml" group="Glitter" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Glitterlib/Glitterlib.iml" filepath="$PROJECT_DIR$/.idea/modules/Glitterlib/Glitterlib.iml" group="Glitter/Glitterlib" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Glitter/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Glitter.iml" filepath="$PROJECT_DIR$/.idea/modules/Glitter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Glitterlib/Glitter.Glitterlib.iml" filepath="$PROJECT_DIR$/.idea/modules/Glitterlib/Glitter.Glitterlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Glitter.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Glitter.app.iml" />
     </modules>
   </component>
 </project>
