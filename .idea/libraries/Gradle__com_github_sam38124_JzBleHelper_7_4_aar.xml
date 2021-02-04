@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.sam38124:JzBleHelper:7.4@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/508d310671e63d97e4a630138c6b11b7/jetified-JzBleHelper-7.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/508d310671e63d97e4a630138c6b11b7/jetified-JzBleHelper-7.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/508d310671e63d97e4a630138c6b11b7/jetified-JzBleHelper-7.4/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.sam38124/JzBleHelper/7.4/580a9f73f303c6c76d74a507383585f0dae6ee8b/JzBleHelper-7.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

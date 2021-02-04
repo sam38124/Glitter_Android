@@ -576,8 +576,9 @@ class GlitterActivity() : AppCompatActivity(),
         }
     }
 
-    override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary) {
+    override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary, rssi: Int) {
         try{
+
             val map: MutableMap<String, Any> = mutableMapOf()
             map["name"] = if (device.name == null) "undefine" else device.name
             map["address"] = device.address
@@ -589,11 +590,12 @@ class GlitterActivity() : AppCompatActivity(),
                 webRoot.evaluateJavascript(
                     "glitter.bleUtil.callback.scanBack(" + Gson().toJson(map) + "," + Gson().toJson(
                         rec
-                    ) + ")", null
+                    ) + ",$rssi)", null
                 )
             }
         }catch (e:Exception){ }
     }
+
 
     override fun tx(b: BleBinary) {
         val map: MutableMap<String, Any> = mutableMapOf()
