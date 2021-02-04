@@ -578,7 +578,6 @@ class GlitterActivity() : AppCompatActivity(),
 
     override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary, rssi: Int) {
         try{
-
             val map: MutableMap<String, Any> = mutableMapOf()
             map["name"] = if (device.name == null) "undefine" else device.name
             map["address"] = device.address

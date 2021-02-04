@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="73068d76-1798-46c4-8dcb-f1f30e213ed2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/modules/Glitterlib/Glitter.Glitterlib.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules/app/Glitter.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/4.0.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/4.0.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/4.0.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_activity_activity_1_1_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_activity_activity_1_1_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_appcompat_appcompat_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_appcompat_appcompat_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_core_core_1_5_0_beta01_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_core_core_1_5_0_beta01_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_core_core_ktx_1_5_0_beta01_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_core_core_ktx_1_5_0_beta01_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_fragment_fragment_1_2_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_fragment_fragment_1_2_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_1_0_0_rc02_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_1_0_0_rc02_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_core_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_core_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_ext_junit_1_1_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_ext_junit_1_1_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_monitor_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_monitor_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_runner_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_test_runner_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzBarCodeScanner_1_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzBarCodeScanner_1_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzBleHelper_7_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzBleHelper_7_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzFrameWork_10_4_03_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzFrameWork_10_4_03_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzSqlHelper_6_8_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzSqlHelper_6_8_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzTaskHandler_3_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzTaskHandler_3_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzUtil_4_8_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__com_github_sam38124_JzUtil_4_8_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__me_dm7_barcodescanner_core_1_9_13_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__me_dm7_barcodescanner_core_1_9_13_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Gradle__me_dm7_barcodescanner_zxing_1_9_13_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Gradle__me_dm7_barcodescanner_zxing_1_9_13_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules/Glitterlib/Glitterlib.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/.idea/oglite.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/BleManager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/Glitter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/Glitter_Version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/MainActivity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/demo_workers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/dialog/BleScanner.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/dialog/DataLoading.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/glitterLibrary/BleHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/glitterLibrary/TaskHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/abarth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/acura.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/alfa_romeo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/alpina.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/alpine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_bluetooth_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_bluetooth_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_call_ended.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_call_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_call_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_calling.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_calls_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_calls_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_chats_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_chats_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_cheack_sensor_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_check_sensor_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_contacts_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_contacts_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_expand_data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_id_copy_by_obd_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_id_copy_by_obd_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_id_copy_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_id_copy_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_loudspeaker_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_loudspeaker_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_menu_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_menu_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_menu_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_microphone_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_microphone_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_obd_relearn_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_obd_relearn_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_phot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_photograph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_program_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_program_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_put_away.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_setting_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_setting_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_updata_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_updata_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_usb_pad_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_btn_usb_pad_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_default_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_account.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_call_ended.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_contacts_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_customer_service.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_customer_service_photos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_forgot_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_head_portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_language.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_log_out.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_privacy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_icon_updata.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_img_call.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_img_head_portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_img_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/app_img_video.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/aston_martin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/audi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/bentley.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/bmw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_area_and_language.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_auto_detection_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_auto_detection_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_auto_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_back_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_check_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_check_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_check_sensor_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_check_sensor_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_cloud_informationation_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_cloud_informationation_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_device_information.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_favourite_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_favourite_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_icon_my_favourite_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_by_obd_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_by_obd_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_by_usb_pad_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_by_usb_pad_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_id_copy_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_letf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_log_out.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_my_favourite_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_obdii_relearn_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_obdii_relearn_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_online_shopping_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_online_shopping_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_privacy_policy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_program_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_program_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_read_sensor_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_read_sensor_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_relearnprocedure_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_relearnprocedure_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_reset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_scan_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_scan_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_set_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_setting_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_setting_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_sign_out.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_unit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_updata.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_users_manual_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/btn_users_manual_p.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/bugatti.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/buick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/cadillac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/chevrolet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/chrysler.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/citroen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/dacia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/daewoo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/dodge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/dr_automobiles.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ds_automobiles.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ferrari.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/fiat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ford.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/freightliner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/genesis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/gmc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/honda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/hummer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/hyundai.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_check_sensor_fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_check_sensor_ok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_chosen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_default_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_eu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_forgot_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_full.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_inputbox_write.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_key_in.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_low.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_na.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_o_genius_lite_Link.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_ok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_read_sensor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_replace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_scan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_tire_cancel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_triangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_tw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_usb_pad_link.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/icon_user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/idcopy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_car_five_tire.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_car_four_tire.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_input_box_fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_input_box_locked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_input_box_ok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_input_box_write.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_insert_tool.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_marquee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_not_fillable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_program_trigger_read.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_remove_tool.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_select_tire_position.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_tirel_ok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_wheel_fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/img_wheel_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/infiniti.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/isuzu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/jaguar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/jeep.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/kia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lamborghini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lancia.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/land_rover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lexus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lincoln.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/lotus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mahindra.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/man.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/maserati.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/maybach.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mazda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mclaren.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mercedes_benz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mercury.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/mitsubishi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/my_favorites.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/my_favorites_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/nissan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/obdcopy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/obdrelearm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/opel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/pagani.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/peugeot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/plymouth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/pontiac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/porsche.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/qoros.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/renault.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/rolls_royce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/saab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/saturn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/scion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/seat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/skoda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/smart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/spinner_languages_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/ssang_yong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/subaru.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/suzuki.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/tata.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/tesla.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/toyota.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/vauxhall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/volkswagen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/volvo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/img/vpg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/js/MainActivity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/lib/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/lib/lottie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/lottie/loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/oglite/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/.idea/shipscan.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/1.0.1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/appData.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/Application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/dialog/DataLoading.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/dialog/HintText.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/BundleData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/ControlInstance.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/Glitter.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/Glitter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/MainActivity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/NavaGation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/NaviGation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/TouchDragListener.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/_bottom-sheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/_keyframes.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/_reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/glitterBundle/src/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/bt_long_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/bt_long_unselect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/btn_letf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/btn_rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/btn_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/btn_time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/forget_password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/icon_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/img_data_upload_and_loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/img_email.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/img_read_open_back_cover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/iv_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/tpms_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/icon/wifi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/jsLib/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/jsLib/lottie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/lottie/loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/lottie/loadinglist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/page/OrderDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/page/OrderListPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/appData/page/OrderSignIn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/shipscan/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/tsport.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/Application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/PublicBeans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/css/Frag_News.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/css/Frag_Video.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/css/News_Slider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/dialog/Dia_DataLoading.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/dialog/Dia_DisConnect.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/dialog/Dia_Info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/dialog/Dia_Post_List.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/frag/Frag_Forium.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/frag/Frag_Map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/frag/Frag_News.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/frag/Frag_Video.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/frag/NavaGation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/BundleData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/ControlInstance.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/Glitter.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/Glitter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/MainActivity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/NaviGation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/TouchDragListener.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/_bottom-sheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/_keyframes.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/_reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/glitterBundle/src/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/iframe/youtube.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/actblack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/actgray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/addtr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/admin2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/admininfo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/article.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/articlegray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/backgroung.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bell2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/blackcircle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/blackcorner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/blueart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluecamera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluecircle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/blueexc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluefilter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluemail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluesend.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluetag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bluetarget.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/blueyt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bookmark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bookmark2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/bpencil.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/breport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/btn_back_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/btn_menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/buttonradio.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/chat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/circle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/circlered.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/clock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/corner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerblue.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerbottonblue.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerdarkblue.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerdelete.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornergray.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerred.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornersignin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornertopblue.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/cornerwhite.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/device.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/dropdown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/emojisad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/exclamation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/expand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/eye.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/fan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/field.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/filter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/filterblue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/forium.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/foriumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/grarlocation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/grarpet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/grattag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/headbluetit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/heart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/heart2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/heartb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/hiclipart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/joinicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/joinicond.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/language.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/link.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/loadingvideo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/loginframegray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/mail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/message.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/munuback.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/notes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/paw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/paw2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/photo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/runner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/sendblack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/sharetit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/spi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/sport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/stroke.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/strokewhite.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/strokewhiteredit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/sub.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/sub2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/touch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/trangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/trashcan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/tsporticon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/video.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/wifi_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/youtube.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/youtubegray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/zoom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/img/zoom2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/jslib/lottie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/jslib/widget.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/lottieFile/disconnect.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/lottieFile/info.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/lottieFile/loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/lottieFile/page_data_loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/lottieFile/waitjoin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_Forium.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_Group.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_NaviGation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_News.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/model/Md_Video.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/page/Page_Home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/page/Page_Policy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/page/Page_Post_Article.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/page/Page_Sign_In.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/CONTRIBUTING.markdown" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/README.markdown" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/component.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick.jquery.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/fonts/slick.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/fonts/slick.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/fonts/slick.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/fonts/slick.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick-theme.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick-theme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/slick-1.8.1/slick/slick.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/testhtml/newtest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/testhtml/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/testhtml/testSignin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/appData/testhtml/testslick.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/tsport/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jianzhi/glitter/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jianzhi/glitter/MainActivity.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1npTVcruEaFsTnq9zlD0H4KTcOm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73068d76-1798-46c4-8dcb-f1f30e213ed2" name="Default Changelist" comment="" />
+      <created>1612086057301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612086057301</updated>
+      <workItem from="1612086058809" duration="19000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
