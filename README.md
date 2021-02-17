@@ -35,7 +35,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-implementation 'com.github.sam38124: Glitter:1.0.0'}
+implementation 'com.github.sam38124:Glitter_Android:version'}
 ```
 
   3.Display the glitter page use by fragment
