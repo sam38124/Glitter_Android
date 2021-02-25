@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/sam38124/Glitter.svg)](https://jitpack.io/#sam38124/Glitter_Android)
+[![](https://jitpack.io/v/sam38124/Glitter_Android.svg)](https://jitpack.io/#sam38124/Glitter_Android)
 [![Platform](https://img.shields.io/badge/platform-%20Android%20-brightgreen.svg)](https://github.com/sam38124)
 [![characteristic](https://img.shields.io/badge/特點-%20輕量級%20%7C%20簡單易用%20%20%7C%20穩定%20-brightgreen.svg)](https://github.com/sam38124)
 # Glitter
@@ -35,7 +35,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-implementation 'com.github.sam38124: Glitter:1.0.0'}
+implementation 'com.github.sam38124:Glitter_Android:version'}
 ```
 
   3.Display the glitter page use by fragment
