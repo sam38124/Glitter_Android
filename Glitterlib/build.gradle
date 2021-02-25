@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.github.sam38124:JzTaskHandler:3.2'
     implementation 'com.github.sam38124:JzUtil:4.8'
     implementation 'com.github.sam38124:JzBarCodeScanner:1.2'
-    implementation 'com.github.sam38124:JzBleHelper:7.5'
+    implementation 'com.github.sam38124:JzBleHelper:7.6'
     implementation 'com.github.sam38124:JzSqlHelper:6.8'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.21"
 }

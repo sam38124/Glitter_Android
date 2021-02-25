@@ -21,6 +21,7 @@
 
     <application>
         <activity android:name="com.jianzhi.glitter.ScannerActivity"></activity>
+        <activity android:name="com.jianzhi.glitter.WebViewAct"></activity>
     </application>
 
 </manifest>

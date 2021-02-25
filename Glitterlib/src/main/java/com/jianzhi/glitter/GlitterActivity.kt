@@ -14,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
@@ -123,7 +124,6 @@ class GlitterActivity : AppCompatActivity(){
                 url: String
             ): Boolean {
                 Log.e("OverrideUrlLoading", url)
-
                 return false
             }
             override fun onPageFinished(view: WebView?, url: String?) {
@@ -139,9 +139,9 @@ class GlitterActivity : AppCompatActivity(){
                 request: WebResourceRequest
             ): WebResourceResponse? {
                 Log.e("shouldInterceptRequest", "" + request.url)
+
                 return super.shouldInterceptRequest(view, request)
             }
-
         }
 
         if (updateRout != null) {
@@ -355,7 +355,12 @@ class GlitterActivity : AppCompatActivity(){
     * */
     inner class GlitterInterFace() {
         var gpsUtil: GpsUtil? = null
-
+        @JavascriptInterface
+        fun openNewTab(link:String){
+            var intent=Intent(this@GlitterActivity,WebViewAct::class.java)
+            intent.putExtra("url",link)
+            startActivity(intent)
+        }
         @JavascriptInterface
         fun getPro(tag: String): String? {
             val profilePreferences = this@GlitterActivity.getSharedPreferences("Setting", Context.MODE_PRIVATE)
