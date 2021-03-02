@@ -128,7 +128,7 @@ class GlitterActivity : AppCompatActivity(){
             }
             override fun onPageFinished(view: WebView?, url: String?) {
                 rootview.webroot.evaluateJavascript(
-                    "glitter.baseUrl='${baseRout}/';glitter.type = appearType.Android;onCreate();",
+                    "glitter.baseUrl='${baseRout}/'; glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
                     null
                 )
                 super.onPageFinished(view, url)
@@ -409,10 +409,8 @@ class GlitterActivity : AppCompatActivity(){
             canPlayMedia=false
 
             if(baseRout.contains("file:///android_asset")){
-
                 val assetRout="${baseRout.replace("file:///android_asset/","")}/${rout.replace("file:/android_asset/","")}"
                 Log.e("assetRout",assetRout)
-//                activity!!.assets.list("")
                 val afd = this@GlitterActivity.assets.openFd(assetRout);
                 val mediiaplay = MediaPlayer()
                 mediiaplay.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
