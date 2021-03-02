@@ -127,10 +127,10 @@ class GlitterActivity : AppCompatActivity(){
                 return false
             }
             override fun onPageFinished(view: WebView?, url: String?) {
-                rootview.webroot.evaluateJavascript(
-                    "glitter.baseUrl='${baseRout}/'; glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
-                    null
-                )
+//                rootview.webroot.evaluateJavascript(
+//                    "glitter.baseUrl='${baseRout}/';glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
+//                    null
+//                )
                 super.onPageFinished(view, url)
             }
 

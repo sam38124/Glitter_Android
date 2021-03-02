@@ -37,10 +37,10 @@ class WebViewAct : AppCompatActivity(){
                 return false
             }
             override fun onPageFinished(view: WebView?, url: String?) {
-                rootview.webroot.evaluateJavascript(
-                    "glitter.baseUrl='${GlitterActivity.baseRout}/';glitter.type = appearType.Android;onCreate();",
-                    null
-                )
+//                rootview.webroot.evaluateJavascript(
+//                    "glitter.baseUrl='${GlitterActivity.baseRout}/';glitter.type = appearType.Android;onCreate();",
+//                    null
+//                )
                 super.onPageFinished(view, url)
             }
 
