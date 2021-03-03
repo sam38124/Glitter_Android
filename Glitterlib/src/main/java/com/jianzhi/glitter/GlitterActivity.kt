@@ -104,11 +104,7 @@ class GlitterActivity : AppCompatActivity(){
             baseRout = applicationContext.filesDir.toString()
             rootview.webroot.loadUrl(
                 "${Uri.fromFile(
-                    File(
-                        "$baseRout/glitterBundle",
-                        "Application.html"
-                    )
-                )}"
+                    File("$baseRout/glitterBundle", "Application.html"))}"
             )
         }
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON;
@@ -127,10 +123,10 @@ class GlitterActivity : AppCompatActivity(){
                 return false
             }
             override fun onPageFinished(view: WebView?, url: String?) {
-//                rootview.webroot.evaluateJavascript(
-//                    "glitter.baseUrl='${baseRout}/';glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
-//                    null
-//                )
+                rootview.webroot.evaluateJavascript(
+                    "glitter.baseUrl='${baseRout}/';glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
+                    null
+                )
                 super.onPageFinished(view, url)
             }
 
