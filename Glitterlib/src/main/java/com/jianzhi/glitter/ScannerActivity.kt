@@ -4,12 +4,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 import com.google.zxing.BarcodeFormat
 import com.jianzhi.jzbarcodescnner.BarCodeView
 import com.jianzhi.jzbarcodescnner.callback
@@ -22,6 +24,7 @@ class ScannerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scanner)
         getPermission(arrayOf(android.Manifest.permission.CAMERA),object :permission_C{
             override fun requestSuccess(a: String?) {
+                Log.e("ScannerActivity", "requestSuccess$a")
                 val scanView= BarCodeView(
                     findViewById<FrameLayout>(R.id.frame),
                     arrayOf(BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE,BarcodeFormat.DATA_MATRIX),
@@ -37,7 +40,7 @@ class ScannerActivity : AppCompatActivity() {
             override fun requestFalse(a: String?) {
                 Toast.makeText(this@ScannerActivity,"掃描BarCode需要相機權限",Toast.LENGTH_SHORT).show()
             }
-        },120)
+        })
         findViewById<ImageView>(R.id.imageView).setOnClickListener {
             this@ScannerActivity.finish()
         }
@@ -51,9 +54,8 @@ class ScannerActivity : AppCompatActivity() {
         override fun requestFalse(a: String?) {
         }
     }
-    private fun getPermission(Permissions: Array<String>, caller: permission_C, RequestCode: Int) {
+    private fun getPermission(Permissions: Array<String>, caller: permission_C) {
         permissionCaller = caller
-        permissionRequestCode = RequestCode
         val permissionDeniedList = ArrayList<String>()
         for (permission in Permissions) {
             val permissionCheck = ContextCompat.checkSelfPermission(this, permission)
@@ -81,19 +83,21 @@ class ScannerActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.e("ScannerActivity", "requestCode$requestCode")
+        Log.e("ScannerActivity", "grantResults${Gson().toJson(grantResults)}")
         when (requestCode) {
-            permissionRequestCode ->
+            permissionRequestCode ->{
                 if (grantResults.isNotEmpty()) {
                     for (i in grantResults.indices) {
                         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                            handler.postDelayed({
-                                permissionCaller.requestSuccess(permissions[i])
-                            },1000)
+                            permissionCaller.requestSuccess(permissions[i])
                         } else {
                             permissionCaller.requestFalse(permissions[i])
                         }
                     }
                 }
+            }
+
         }
     }
 }
