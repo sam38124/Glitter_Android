@@ -3,6 +3,7 @@ package com.jianzhi.glitter
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.jianzhi.jzbarcodescnner.callback
 import com.orange.glitter.R
 
 class ScannerActivity : AppCompatActivity() {
+    var handler= Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
@@ -84,16 +86,9 @@ class ScannerActivity : AppCompatActivity() {
                 if (grantResults.isNotEmpty()) {
                     for (i in grantResults.indices) {
                         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                            permissionCaller.requestSuccess(permissions[i])
-                            BarCodeView(
-                                findViewById<FrameLayout>(R.id.frame),
-                                arrayOf(BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE,BarcodeFormat.DATA_MATRIX),
-                                object : callback {
-                                    override fun result(text: String) {
-                                        GlitterActivity.instance().webRoot.evaluateJavascript("glitter.qrScanBack('$text')",null)
-                                        this@ScannerActivity.finish()
-                                    }
-                                }).start()
+                            handler.postDelayed({
+                                permissionCaller.requestSuccess(permissions[i])
+                            },1000)
                         } else {
                             permissionCaller.requestFalse(permissions[i])
                         }
