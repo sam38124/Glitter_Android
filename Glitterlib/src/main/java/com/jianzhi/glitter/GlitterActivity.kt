@@ -124,7 +124,7 @@ class GlitterActivity : AppCompatActivity(){
             }
             override fun onPageFinished(view: WebView?, url: String?) {
                 rootview.webroot.evaluateJavascript(
-                    "glitter.baseUrl='${baseRout}/';glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
+                    "glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
                     null
                 )
                 super.onPageFinished(view, url)
@@ -645,7 +645,14 @@ class GlitterActivity : AppCompatActivity(){
                 dataMap[name]!!.dbinit(file.inputStream())
                 dataMap[name]!!.create()
             }
-
+        }
+        @JavascriptInterface
+        fun init(name:String){
+            if(dataMap[name]==null){
+                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+            }
+            dataMap[name]!!.close()
+            dataMap[name]!!.create()
         }
     }
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {

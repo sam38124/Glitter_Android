@@ -10,3 +10,4 @@ class MyApp :Application(){
         GlitterActivity.setUp("file:///android_asset/appData",appName = "appData")
     }
 }
+

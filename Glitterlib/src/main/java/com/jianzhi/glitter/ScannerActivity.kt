@@ -85,6 +85,15 @@ class ScannerActivity : AppCompatActivity() {
                     for (i in grantResults.indices) {
                         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                             permissionCaller.requestSuccess(permissions[i])
+                            BarCodeView(
+                                findViewById<FrameLayout>(R.id.frame),
+                                arrayOf(BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE,BarcodeFormat.DATA_MATRIX),
+                                object : callback {
+                                    override fun result(text: String) {
+                                        GlitterActivity.instance().webRoot.evaluateJavascript("glitter.qrScanBack('$text')",null)
+                                        this@ScannerActivity.finish()
+                                    }
+                                }).start()
                         } else {
                             permissionCaller.requestFalse(permissions[i])
                         }
