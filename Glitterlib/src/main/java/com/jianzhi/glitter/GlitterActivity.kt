@@ -114,6 +114,7 @@ class GlitterActivity : AppCompatActivity(){
         GlitterExecute.execute = { data: String, valueCallback: ValueCallback<String> ->
             rootview.webroot.evaluateJavascript(data, valueCallback)
         }
+        var haveOnCreate=false
         rootview.webroot.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView,
@@ -123,10 +124,14 @@ class GlitterActivity : AppCompatActivity(){
                 return false
             }
             override fun onPageFinished(view: WebView?, url: String?) {
-                rootview.webroot.evaluateJavascript(
-                    "glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
-                    null
-                )
+                if(!haveOnCreate){
+                    rootview.webroot.evaluateJavascript(
+                        "glitter.deviceType=glitter.deviceTypeEnum.Android;onCreate();",
+                        null
+                    )
+                    haveOnCreate=true
+                }
+
                 super.onPageFinished(view, url)
             }
 
