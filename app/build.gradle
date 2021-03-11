@@ -33,7 +33,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.github.sam38124:JzUtil:4.8'
-    implementation 'com.github.sam38124:JzBleHelper:7.5'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.github.sam38124:JzTaskHandler:3.2'
     implementation 'com.github.sam38124:JzUtil:4.8'
