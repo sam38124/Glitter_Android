@@ -6,6 +6,7 @@ import android.app.Activity
 import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.database.Cursor
 import android.location.LocationManager
@@ -19,15 +20,22 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.*
 import android.webkit.*
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.jztaskhandler.TaskHandler
 import com.example.jztaskhandler.runner
 import com.google.gson.Gson
+import com.google.zxing.BarcodeFormat
 import com.jianzhi.glitter.util.GpsUtil
 import com.jianzhi.glitter.util.ZipUtil
+import com.jianzhi.glitter.util.downloadFile
+import com.jianzhi.jzbarcodescnner.BarCodeView
+import com.jianzhi.jzbarcodescnner.callback
 import com.jianzhi.jzblehelper.BleHelper
 import com.jianzhi.jzblehelper.callback.BleCallBack
 import com.jianzhi.jzblehelper.callback.ConnectResult
@@ -37,8 +45,11 @@ import com.jzsql.lib.mmySql.Sql_Result
 import com.orange.glitter.R
 import com.orango.electronic.jzutil.CalculateTime
 import com.orango.electronic.jzutil.getWebResource
+import com.orango.electronic.jzutil.postRequest
 import kotlinx.android.synthetic.main.glitter_page.view.*
+import java.io.ByteArrayInputStream
 import java.io.File
+import java.io.InputStream
 import java.nio.charset.StandardCharsets
 
 
@@ -54,7 +65,29 @@ class GlitterActivity : AppCompatActivity(){
     private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     private var handler = Handler()
     lateinit var webRoot: WebView
+
     companion object {
+        var webviewClient=object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView,
+                url: String
+            ): Boolean {
+                Log.e("OverrideUrlLoading", url)
+                return false
+            }
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+            }
+
+            override fun shouldInterceptRequest(
+                view: WebView,
+                request: WebResourceRequest
+            ): WebResourceResponse? {
+                Log.e("shouldInterceptRequest", "" + request.url)
+
+                return super.shouldInterceptRequest(view, request)
+            }
+        }
         var baseRout: String = ""
         var updateRout: String? = null
         var appName: String = ""
@@ -107,38 +140,19 @@ class GlitterActivity : AppCompatActivity(){
                     File("$baseRout/glitterBundle", "Application.html"))}"
             )
         }
-        Log.e("asseturl",""+Uri.fromFile(File("$baseRout/glitterBundle", "Application.html")))
+        Log.e("asseturl",""+Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))
        // file:///android_asset/appData/glitterBundle/Application.html#
-        rootview.webroot.settings.pluginState = WebSettings.PluginState.ON;
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON_DEMAND;
         rootview.webroot.settings.javaScriptCanOpenWindowsAutomatically = true
         rootview.webroot.settings.setSupportMultipleWindows(true)
+        rootview.webroot.settings.setAppCacheEnabled(true)
+        val cookieManager = CookieManager.getInstance()
+        cookieManager.setAcceptCookie(true)
+
         GlitterExecute.execute = { data: String, valueCallback: ValueCallback<String> ->
             rootview.webroot.evaluateJavascript(data, valueCallback)
         }
-        rootview.webroot.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(
-                view: WebView,
-                url: String
-            ): Boolean {
-                Log.e("OverrideUrlLoading", url)
-                return false
-            }
-            override fun onPageFinished(view: WebView?, url: String?) {
-
-
-                super.onPageFinished(view, url)
-            }
-
-            override fun shouldInterceptRequest(
-                view: WebView,
-                request: WebResourceRequest
-            ): WebResourceResponse? {
-                Log.e("shouldInterceptRequest", "" + request.url)
-
-                return super.shouldInterceptRequest(view, request)
-            }
-        }
+        rootview.webroot.webViewClient = webviewClient
 
         if (updateRout != null) {
             TaskHandler.newInstance.runTaskTimer(lifecycle, 1000, 5000, runner {
@@ -352,6 +366,23 @@ class GlitterActivity : AppCompatActivity(){
     inner class GlitterInterFace() {
         var gpsUtil: GpsUtil? = null
         @JavascriptInterface
+        fun downloadFile(serverRout:String,fileName:String,callbackID:Int,timeOut:Int){
+         Thread{
+             Log.e("downloadFile","start:${serverRout}")
+             val data=serverRout.downloadFile(timeOut,fileName)
+             handler.post {
+                 rootview.webroot.evaluateJavascript("glitter.callBackList.get(${callbackID})(${data});",null)
+             }
+             Log.e("downloadFile","result-$data")
+         }.start()
+        }
+        @JavascriptInterface
+        fun toAssetRoot(rout:String){
+            handler.post{
+                recreate()
+            }
+        }
+        @JavascriptInterface
         fun openNewTab(link:String){
             var intent=Intent(this@GlitterActivity,WebViewAct::class.java)
             intent.putExtra("url",link)
@@ -383,8 +414,21 @@ class GlitterActivity : AppCompatActivity(){
         }
 
         @JavascriptInterface
-        fun requestPermission(permission: Array<String>) {
-            ActivityCompat.requestPermissions(this@GlitterActivity, permission, 1022)
+        fun requestPermission(permission: Array<String>,callbackID: Int) {
+            handler.post {
+                var requestSuccess=0
+                getPermission(permission,object : permission_C {
+                    override fun requestSuccess(a: String?) {
+                        requestSuccess+=1
+                        if(requestSuccess==permission.size){
+                            instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(true)",null)
+                        }
+                    }
+                    override fun requestFalse(a: String?) {
+                        instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(false)",null)
+                    }
+                })
+            }
         }
 
         @JavascriptInterface
@@ -613,10 +657,16 @@ class GlitterActivity : AppCompatActivity(){
     inner class Database{
         @JavascriptInterface
         fun exSql(name:String,string:String){
+            if(dataMap[name]==null){
+                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+            }
             dataMap[name]!!.exsql(string)
         }
         @JavascriptInterface
         fun query(name:String,string: String):String{
+            if(dataMap[name]==null){
+                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+            }
             val mapArray:ArrayList<MutableMap<String,Any>> = arrayListOf()
             dataMap[name]!!.query(string, Sql_Result {
                 val map:MutableMap<String,Any> = mutableMapOf()
@@ -645,6 +695,16 @@ class GlitterActivity : AppCompatActivity(){
                 dataMap[name]!!.dbinit(file.inputStream())
                 dataMap[name]!!.create()
             }
+        }
+        @JavascriptInterface
+        fun initByLocalFile(name:String,rout:String){
+            if(dataMap[name]==null){
+                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+            }
+            dataMap[name]!!.close()
+            val  file= File(applicationContext.filesDir, rout)
+            dataMap[name]!!.dbinit(file.inputStream())
+            dataMap[name]!!.create()
         }
         @JavascriptInterface
         fun init(name:String){
@@ -730,6 +790,61 @@ class GlitterActivity : AppCompatActivity(){
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+    }
+    var permissionRequestCode=100
+    var permissionCaller=object :permission_C{
+        override fun requestSuccess(a: String?) {
+
+        }
+
+        override fun requestFalse(a: String?) {
+        }
+    }
+    private fun getPermission(Permissions: Array<String>, caller: permission_C) {
+        permissionCaller = caller
+        val permissionDeniedList = ArrayList<String>()
+        for (permission in Permissions) {
+            val permissionCheck = ContextCompat.checkSelfPermission(this, permission)
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                caller.requestSuccess(permission)
+            } else {
+                permissionDeniedList.add(permission)
+            }
+        }
+        if (!permissionDeniedList.isEmpty()) {
+            val deniedPermissions = permissionDeniedList.toTypedArray()
+            ActivityCompat.requestPermissions(this, deniedPermissions, 100)
+        }
+    }
+    interface permission_C {
+        fun requestSuccess(a: String?)
+        fun requestFalse(a: String?)
+    }
+    /**
+     * 請求成功
+     */
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.e("ScannerActivity", "requestCode$requestCode")
+        Log.e("ScannerActivity", "grantResults${Gson().toJson(grantResults)}")
+        when (requestCode) {
+            permissionRequestCode ->{
+                if (grantResults.isNotEmpty()) {
+                    for (i in grantResults.indices) {
+                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            permissionCaller.requestSuccess(permissions[i])
+                        } else {
+                            permissionCaller.requestFalse(permissions[i])
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }
 

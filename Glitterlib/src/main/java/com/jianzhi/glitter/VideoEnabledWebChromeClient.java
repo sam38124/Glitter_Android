@@ -1,11 +1,19 @@
 package com.jianzhi.glitter;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
+import android.os.Build;
+import android.os.Message;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 /**
@@ -31,7 +39,7 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
     {
         public void toggledFullscreen(boolean fullscreen);
     }
-
+    private WebView mWebviewPop;
     private View activityNonVideoView;
     private ViewGroup activityVideoView;
     private View loadingView;
@@ -40,12 +48,12 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
     private boolean isVideoFullscreen; // Indicates if the video is being displayed using a custom view (typically full-screen)
     private FrameLayout videoViewContainer;
     private CustomViewCallback videoViewCallback;
-
+    private AlertDialog builder;
     private ToggledFullscreenCallback toggledFullscreenCallback;
 
     /**
      * Never use this constructor alone.
-     * This constructor allows this class to be defined as an inline inner class in which the user can override methods
+     * This constructor allows this class to be defined as an inline inner class in which the user can Override methods
      */
     @SuppressWarnings("unused")
     public VideoEnabledWebChromeClient()
@@ -278,5 +286,71 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
             return false;
         }
     }
+
+    @Override
+    public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg)
+    {
+        mWebviewPop = new WebView(webView.getContext());
+        mWebviewPop.setVerticalScrollBarEnabled(false);
+        mWebviewPop.setHorizontalScrollBarEnabled(false);
+        mWebviewPop.setWebViewClient(GlitterActivity.Companion.getWebviewClient());
+        mWebviewPop.setWebChromeClient(new VideoEnabledWebChromeClient());
+        mWebviewPop.getSettings().setJavaScriptEnabled(true);
+        mWebviewPop.clearHistory();
+        mWebviewPop.clearFormData();
+        mWebviewPop.clearCache(true);
+// mWebviewPop.getSettings().setSavePassword(true);
+// mWebviewPop.getSettings().setSaveFormData(true);
+        mWebviewPop.getSettings().setUserAgentString("Glitter");
+
+        builder = new AlertDialog.Builder(webView.getContext(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
+
+        builder.setTitle("");
+        builder.setView(mWebviewPop);
+
+        builder.setButton("close", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                mWebviewPop.destroy();
+                dialog.dismiss();
+
+            }
+        });
+
+        builder.show();
+        builder.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.setAcceptThirdPartyCookies(mWebviewPop,true);
+        }
+
+
+        WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
+        transport.setWebView(mWebviewPop);
+        resultMsg.sendToTarget();
+
+        return true;
+    }
+
+
+    @Override
+    public void onCloseWindow(WebView window) {
+
+        try {
+            mWebviewPop.destroy();
+        } catch (Exception e) {
+        }
+
+        try {
+            builder.dismiss();
+
+        } catch (Exception e) {
+        }
+
+    }
+
 
 }
