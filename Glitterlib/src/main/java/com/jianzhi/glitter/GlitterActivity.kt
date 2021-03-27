@@ -46,11 +46,13 @@ import com.orange.glitter.R
 import com.orango.electronic.jzutil.CalculateTime
 import com.orango.electronic.jzutil.getWebResource
 import com.orango.electronic.jzutil.postRequest
+import com.orango.electronic.jzutil.toHex
 import kotlinx.android.synthetic.main.glitter_page.view.*
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
+import androidx.core.database.getStringOrNull as getStringOrNull1
 
 
 data class JsInterFace(var interFace: Any, var tag: String)
@@ -132,7 +134,7 @@ class GlitterActivity : AppCompatActivity(){
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         rootview.webroot.settings.javaScriptEnabled = true
         if (ginterFace.getPro("version") == null || updateRout == null) {
-            rootview.webroot.loadUrl("$baseRout/glitterBundle/Application.html")
+            rootview.webroot.loadUrl("$baseRout/home.html")
         } else {
             baseRout = applicationContext.filesDir.toString()
             rootview.webroot.loadUrl(
@@ -377,10 +379,35 @@ class GlitterActivity : AppCompatActivity(){
          }.start()
         }
         @JavascriptInterface
+        fun getFile(fileName:String,type:String,callbackID:Int){
+            Thread{
+                var script="glitter.callBackList.get(${callbackID})(undefined)"
+                when(type){
+                    "hex"->{
+                        script="glitter.callBackList.get(${callbackID})('${File(instance().applicationContext.filesDir, fileName).readBytes().toHex()}');"
+                    }
+                    "bytes"->{
+                        script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readBytes())});"
+                    }
+                    "text"->{
+                        script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readText())});"
+                    }
+                }
+                handler.post {
+                    rootview.webroot.evaluateJavascript(script,null)
+                }
+                Log.e("getFile","result-$script")
+            }.start()
+        }
+        @JavascriptInterface
         fun toAssetRoot(rout:String){
             handler.post{
                 recreate()
             }
+        }
+        @JavascriptInterface
+        fun reloadPage(){
+            handler.post { recreate()  }
         }
         @JavascriptInterface
         fun openNewTab(link:String){
@@ -668,13 +695,15 @@ class GlitterActivity : AppCompatActivity(){
                 dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
             }
             val mapArray:ArrayList<MutableMap<String,Any>> = arrayListOf()
-            dataMap[name]!!.query(string, Sql_Result {
-                val map:MutableMap<String,Any> = mutableMapOf()
-                for(a in 0 until it.columnCount){
-                    map[it.getColumnName(a)]=it.getString(a)
+            dataMap[name]!!.query(string) {
+                val map: MutableMap<String, Any> = mutableMapOf()
+                for (a in 0 until it.columnCount) {
+                    if (it.getString(a) != null) {
+                        map[it.getColumnName(a)]=it.getString(a)
+                    }
                 }
                 mapArray.add(map)
-            })
+            }
             Log.e("DataBase",Gson().toJson(mapArray))
             return Gson().toJson(mapArray)
         }
@@ -703,6 +732,14 @@ class GlitterActivity : AppCompatActivity(){
             }
             dataMap[name]!!.close()
             val  file= File(applicationContext.filesDir, rout)
+            if(!file.exists()){
+                if(rout.contains("/")){
+                    if(!file.parentFile.exists()){
+                        file.parentFile.mkdirs();
+                    }
+                }
+                file.createNewFile()
+            }
             dataMap[name]!!.dbinit(file.inputStream())
             dataMap[name]!!.create()
         }

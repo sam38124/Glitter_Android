@@ -23,6 +23,11 @@ fun String.downloadFile(timeOut:Int,fileName:String):Boolean{
         var downLoad = 0L
         val file= File(GlitterActivity.instance().applicationContext.filesDir, fileName)
         if(!file.exists()){
+            if(fileName.contains("/")){
+                if(!file.parentFile.exists()){
+                    file.parentFile.mkdirs();
+                }
+            }
             file.createNewFile()
         }
         reader.use {

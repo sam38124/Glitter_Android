@@ -7,7 +7,8 @@ import com.jianzhi.glitter.JsInterFace
 class MyApp :Application(){
     override fun onCreate() {
         super.onCreate()
-        GlitterActivity.setUp("file:///android_asset/Petagram/appData",appName = "appData")
+        GlitterActivity.setUp("file:///android_asset/petagram/appData",appName = "appData")
+
     }
 }
 
