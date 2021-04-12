@@ -375,7 +375,10 @@ class GlitterActivity : AppCompatActivity(){
              handler.post {
                  rootview.webroot.evaluateJavascript("glitter.callBackList.get(${callbackID})(${data});",null)
              }
-             Log.e("downloadFile","result-$data")
+             if(!data){
+                 Log.e("downloadFile","False-${fileName}")
+             }
+
          }.start()
         }
         @JavascriptInterface
