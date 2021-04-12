@@ -1,0 +1,38 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4  ~ Copyright (c) 2019, Semiconductor Components Industries, LLC
+5  ~ (d/b/a ON Semiconductor). All rights reserved.
+6  ~
+7  ~ This code is the property of ON Semiconductor and may not be redistributed
+8  ~ in any form without prior written permission from ON Semiconductor.
+9  ~ The terms of use and warranty for this code are covered by contractual
+10  ~ agreements between ON Semiconductor and the licensee.
+11  ~
+12  ~ This is Reusable Code.
+13  ~
+14  ~ Class Name: AndroidManifest.xml
+15  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.onsemi.blelibrary"
+19    android:versionCode="1"
+20    android:versionName="1.0" >
+21
+22    <uses-sdk
+23        android:minSdkVersion="21"
+23-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml
+24        android:targetSdkVersion="28" />
+24-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml
+25
+26    <uses-permission android:name="android.permission.BLUETOOTH" />
+26-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:17:5-68
+26-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:17:22-65
+27    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+27-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:18:5-74
+27-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:18:22-71
+28    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+28-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:19:5-81
+28-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/blelibrary/src/main/AndroidManifest.xml:19:22-78
+29
+30</manifest>

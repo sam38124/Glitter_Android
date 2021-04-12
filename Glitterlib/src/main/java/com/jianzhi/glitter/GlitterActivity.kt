@@ -382,17 +382,32 @@ class GlitterActivity : AppCompatActivity(){
         fun getFile(fileName:String,type:String,callbackID:Int){
             Thread{
                 var script="glitter.callBackList.get(${callbackID})(undefined)"
-                when(type){
-                    "hex"->{
-                        script="glitter.callBackList.get(${callbackID})('${File(instance().applicationContext.filesDir, fileName).readBytes().toHex()}');"
+                try{
+                    when(type){
+                        "hex"->{
+                            script="glitter.callBackList.get(${callbackID})('${File(instance().applicationContext.filesDir, fileName).readBytes().toHex()}');"
+                        }
+                        "bytes"->{
+                            script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readBytes())});"
+                        }
+                        "text"->{
+                            script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readText())});"
+                        }
                     }
-                    "bytes"->{
-                        script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readBytes())});"
-                    }
-                    "text"->{
-                        script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readText())});"
-                    }
+                }catch (e:Exception){
+
                 }
+
+                handler.post {
+                    rootview.webroot.evaluateJavascript(script,null)
+                }
+                Log.e("getFile","result-$script")
+            }.start()
+        }
+        @JavascriptInterface
+        fun checkFileExists(fileName:String,callbackID:Int){
+            Thread{
+                val script="glitter.callBackList.get(${callbackID})(${File(instance().applicationContext.filesDir, fileName).exists()})"
                 handler.post {
                     rootview.webroot.evaluateJavascript(script,null)
                 }
@@ -629,16 +644,20 @@ class GlitterActivity : AppCompatActivity(){
         }
 
         override fun rx(a: BleBinary) {
-            val map: MutableMap<String, Any> = mutableMapOf()
-            map["readHEX"] = a.readHEX()
-            map["readBytes"] = a.readBytes()
-            map["readUTF"] = a.readUTF()
-            handler.post {
-                webRoot.evaluateJavascript(
-                    "glitter.bleUtil.callback.rx(" + Gson().toJson(map) + ")",
-                    null
-                )
-            }
+            Thread{
+                val map: MutableMap<String, Any> = mutableMapOf()
+                map["readHEX"] = a.readHEX()
+                map["readBytes"] = a.readBytes()
+                map["readUTF"] = a.readUTF()
+               // Log.e("JzBleMessage","RX:"+a.readHEX())
+                handler.post {
+                    webRoot.evaluateJavascript(
+                        "glitter.bleUtil.callback.rx(" + Gson().toJson(map) + ")",
+                        null
+                    )
+                }
+            }.start()
+
         }
 
         override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary, rssi: Int) {
@@ -666,6 +685,7 @@ class GlitterActivity : AppCompatActivity(){
             map["readHEX"] = b.readHEX()
             map["readBytes"] = b.readBytes()
             map["readUTF"] = b.readUTF()
+            Log.e("JzBleMessage","TX:"+b.readHEX())
             handler.post {
                 webRoot.evaluateJavascript(
                     "glitter.bleUtil.callback.tx(" + Gson().toJson(map) + ")",
@@ -691,6 +711,7 @@ class GlitterActivity : AppCompatActivity(){
         }
         @JavascriptInterface
         fun query(name:String,string: String):String{
+            Log.e("sql",string)
             if(dataMap[name]==null){
                 dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
             }

@@ -1,0 +1,28 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4  ~ Copyright (c) 2019, Semiconductor Components Industries, LLC
+5  ~ (d/b/a ON Semiconductor). All rights reserved.
+6  ~
+7  ~ This code is the property of ON Semiconductor and may not be redistributed
+8  ~ in any form without prior written permission from ON Semiconductor.
+9  ~ The terms of use and warranty for this code are covered by contractual
+10  ~ agreements between ON Semiconductor and the licensee.
+11  ~
+12  ~ This is Reusable Code.
+13  ~
+14  ~ Class Name: AndroidManifest.xml
+15  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.onsemi.protocol"
+19    android:versionCode="3"
+20    android:versionName="1.1.1" >
+21
+22    <uses-sdk
+23        android:minSdkVersion="21"
+23-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/fotalibrary/src/main/AndroidManifest.xml
+24        android:targetSdkVersion="28" />
+24-->/Users/jianzhi.wang/Desktop/Android_framework/Glitter/fotalibrary/src/main/AndroidManifest.xml
+25
+26</manifest>

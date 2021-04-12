@@ -1,3 +1,5 @@
-include ':Glitterlib'
-include ':app'
+include ':app',':Glitterlib'
+
+rootProject.name='OG_Lite'
+
 rootProject.name = "Glitter"
