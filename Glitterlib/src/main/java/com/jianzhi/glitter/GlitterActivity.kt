@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment
 import com.example.jztaskhandler.TaskHandler
 import com.example.jztaskhandler.runner
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.google.zxing.BarcodeFormat
 import com.jianzhi.glitter.util.GpsUtil
 import com.jianzhi.glitter.util.ZipUtil
@@ -61,7 +62,7 @@ object GlitterExecute {
         { data: String, valueCallback: ValueCallback<String> -> }
 }
 
-class GlitterActivity : AppCompatActivity(){
+class GlitterActivity : AppCompatActivity() {
     private val FILE_CHOOSER_RESULT_CODE = 10000
     private var uploadMessage: ValueCallback<Uri>? = null
     private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
@@ -69,7 +70,7 @@ class GlitterActivity : AppCompatActivity(){
     lateinit var webRoot: WebView
 
     companion object {
-        var webviewClient=object : WebViewClient() {
+        var webviewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView,
                 url: String
@@ -77,6 +78,7 @@ class GlitterActivity : AppCompatActivity(){
                 Log.e("OverrideUrlLoading", url)
                 return false
             }
+
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
             }
@@ -96,16 +98,18 @@ class GlitterActivity : AppCompatActivity(){
         lateinit var instance: () -> GlitterActivity
         fun setUp(
             baseRout: String,
-            updateRout: String?=null,
+            updateRout: String? = null,
             appName: String
         ) {
             this.appName = appName
             this.baseRout = baseRout
             this.updateRout = updateRout
         }
-        var interFace: Array<JsInterFace> = arrayOf()
-        fun addJsInterFace(objects: Array<JsInterFace>) {
-            interFace = objects
+
+        //自定義函式
+        var javaScriptInterFace: ArrayList<JavaScriptInterFace> = arrayListOf()
+        fun addJavacScriptInterFace(myInterface: JavaScriptInterFace) {
+            javaScriptInterFace.add(myInterface)
         }
     }
 
@@ -113,7 +117,8 @@ class GlitterActivity : AppCompatActivity(){
     var ginterFace = GlitterInterFace()
     private var webChromeClient: VideoEnabledWebChromeClient? = null
     var onUpdate = false
-    lateinit var rootview:View
+    lateinit var rootview: View
+
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,11 +128,8 @@ class GlitterActivity : AppCompatActivity(){
         rootview = findViewById<View>(android.R.id.content).rootView
         window
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        dataMap["Glitter"]=JzSqlHelper(this!!, "Glitter.db")
-        webRoot=rootview.webroot
-        for (i in interFace) {
-            rootview.webroot.addJavascriptInterface(i.interFace, i.tag)
-        }
+        dataMap["Glitter"] = JzSqlHelper(this!!, "Glitter.db")
+        webRoot = rootview.webroot
         rootview.webroot.addJavascriptInterface(BleInterFace(), "GL_ble")
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.addJavascriptInterface(Database(), "DataBase")
@@ -138,12 +140,15 @@ class GlitterActivity : AppCompatActivity(){
         } else {
             baseRout = applicationContext.filesDir.toString()
             rootview.webroot.loadUrl(
-                "${Uri.fromFile(
-                    File("$baseRout/glitterBundle", "Application.html"))}"
+                "${
+                    Uri.fromFile(
+                        File("$baseRout/glitterBundle", "Application.html")
+                    )
+                }"
             )
         }
-        Log.e("asseturl",""+Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))
-       // file:///android_asset/appData/glitterBundle/Application.html#
+        Log.e("asseturl", "" + Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))
+        // file:///android_asset/appData/glitterBundle/Application.html#
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON_DEMAND;
         rootview.webroot.settings.javaScriptCanOpenWindowsAutomatically = true
         rootview.webroot.settings.setSupportMultipleWindows(true)
@@ -285,9 +290,11 @@ class GlitterActivity : AppCompatActivity(){
 
     fun keyEventListener(event: KeyEvent): Boolean {
         rootview.webroot.evaluateJavascript(
-            "glitter.keyEventListener(JSON.parse('${Gson().toJson(
-                event
-            )}'));", null
+            "glitter.keyEventListener(JSON.parse('${
+                Gson().toJson(
+                    event
+                )
+            }'));", null
         )
         return false
     }
@@ -365,74 +372,104 @@ class GlitterActivity : AppCompatActivity(){
     /*
     * Glitter 開發套件
     * */
-    inner class GlitterInterFace() {
+    inner class GlitterInterFace {
         var gpsUtil: GpsUtil? = null
-        @JavascriptInterface
-        fun downloadFile(serverRout:String,fileName:String,callbackID:Int,timeOut:Int){
-         Thread{
-             Log.e("downloadFile","start:${serverRout}")
-             val data=serverRout.downloadFile(timeOut,fileName)
-             handler.post {
-                 rootview.webroot.evaluateJavascript("glitter.callBackList.get(${callbackID})(${data});",null)
-             }
-             if(!data){
-                 Log.e("downloadFile","False-${fileName}")
-             }
 
-         }.start()
-        }
         @JavascriptInterface
-        fun getFile(fileName:String,type:String,callbackID:Int){
-            Thread{
-                var script="glitter.callBackList.get(${callbackID})(undefined)"
-                try{
-                    when(type){
-                        "hex"->{
-                            script="glitter.callBackList.get(${callbackID})('${File(instance().applicationContext.filesDir, fileName).readBytes().toHex()}');"
+        fun downloadFile(serverRout: String, fileName: String, callbackID: Int, timeOut: Int) {
+            Thread {
+                Log.e("downloadFile", "start:${serverRout}")
+                val data = serverRout.downloadFile(timeOut, fileName)
+                handler.post {
+                    rootview.webroot.evaluateJavascript("glitter.callBackList.get(${callbackID})(${data});", null)
+                }
+                if (!data) {
+                    Log.e("downloadFile", "False-${fileName}")
+                }
+            }.start()
+        }
+
+        @JavascriptInterface
+        fun getFile(fileName: String, type: String, callbackID: Int) {
+            Thread {
+                var script = "glitter.callBackList.get(${callbackID})(undefined)"
+                try {
+                    when (type) {
+                        "hex" -> {
+                            script = "glitter.callBackList.get(${callbackID})('${
+                                File(
+                                    instance().applicationContext.filesDir,
+                                    fileName
+                                ).readBytes().toHex()
+                            }');"
                         }
-                        "bytes"->{
-                            script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readBytes())});"
+                        "bytes" -> {
+                            script = "glitter.callBackList.get(${callbackID})(${
+                                Gson().toJson(
+                                    File(
+                                        instance().applicationContext.filesDir,
+                                        fileName
+                                    ).readBytes()
+                                )
+                            });"
                         }
-                        "text"->{
-                            script="glitter.callBackList.get(${callbackID})(${Gson().toJson(File(instance().applicationContext.filesDir, fileName).readText())});"
+                        "text" -> {
+                            script = "glitter.callBackList.get(${callbackID})('${
+                                Gson().toJson(
+                                    File(
+                                        instance().applicationContext.filesDir,
+                                        fileName
+                                    ).readText()
+                                )
+                            }');"
                         }
                     }
-                }catch (e:Exception){
+                } catch (e: Exception) {
 
                 }
 
                 handler.post {
-                    rootview.webroot.evaluateJavascript(script,null)
+                    rootview.webroot.evaluateJavascript(script, null)
                 }
-                Log.e("getFile","result-$script")
+                Log.e("getFile", "result-$script")
             }.start()
         }
+
         @JavascriptInterface
-        fun checkFileExists(fileName:String,callbackID:Int){
-            Thread{
-                val script="glitter.callBackList.get(${callbackID})(${File(instance().applicationContext.filesDir, fileName).exists()})"
+        fun checkFileExists(fileName: String, callbackID: Int) {
+            Thread {
+                val script = "glitter.callBackList.get(${callbackID})(${
+                    File(
+                        instance().applicationContext.filesDir,
+                        fileName
+                    ).exists()
+                })"
                 handler.post {
-                    rootview.webroot.evaluateJavascript(script,null)
+                    rootview.webroot.evaluateJavascript(script, null)
                 }
-                Log.e("getFile","result-$script")
+                Log.e("getFile", "result-$script")
             }.start()
         }
+
         @JavascriptInterface
-        fun toAssetRoot(rout:String){
-            handler.post{
+        fun toAssetRoot(rout: String) {
+            handler.post {
                 recreate()
             }
         }
+
         @JavascriptInterface
-        fun reloadPage(){
-            handler.post { recreate()  }
+        fun reloadPage() {
+            handler.post { recreate() }
         }
+
         @JavascriptInterface
-        fun openNewTab(link:String){
-            var intent=Intent(this@GlitterActivity,WebViewAct::class.java)
-            intent.putExtra("url",link)
+        fun openNewTab(link: String) {
+            var intent = Intent(this@GlitterActivity, WebViewAct::class.java)
+            intent.putExtra("url", link)
             startActivity(intent)
         }
+
         @JavascriptInterface
         fun getPro(tag: String): String? {
             val profilePreferences = this@GlitterActivity.getSharedPreferences("Setting", Context.MODE_PRIVATE)
@@ -451,7 +488,6 @@ class GlitterActivity : AppCompatActivity(){
         }
 
 
-
         @JavascriptInterface
         fun openQrScanner() {
             val intent = Intent(this@GlitterActivity, ScannerActivity::class.java)
@@ -459,18 +495,19 @@ class GlitterActivity : AppCompatActivity(){
         }
 
         @JavascriptInterface
-        fun requestPermission(permission: Array<String>,callbackID: Int) {
+        fun requestPermission(permission: Array<String>, callbackID: Int) {
             handler.post {
-                var requestSuccess=0
-                getPermission(permission,object : permission_C {
+                var requestSuccess = 0
+                getPermission(permission, object : permission_C {
                     override fun requestSuccess(a: String?) {
-                        requestSuccess+=1
-                        if(requestSuccess==permission.size){
-                            instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(true)",null)
+                        requestSuccess += 1
+                        if (requestSuccess == permission.size) {
+                            instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(true)", null)
                         }
                     }
+
                     override fun requestFalse(a: String?) {
-                        instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(false)",null)
+                        instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(false)", null)
                     }
                 })
             }
@@ -487,95 +524,140 @@ class GlitterActivity : AppCompatActivity(){
             map["address"] = gpsUtil!!.address
             return Gson().toJson(map)
         }
-        var canPlayMedia=true
-        @JavascriptInterface
-        fun playSound(rout:String){
-            if(!canPlayMedia){return}
-            canPlayMedia=false
 
-            if(baseRout.contains("file:///android_asset")){
-                val assetRout="${baseRout.replace("file:///android_asset/","")}/${rout.replace("file:/android_asset/","")}"
-                Log.e("assetRout",assetRout)
+        var canPlayMedia = true
+
+        @JavascriptInterface
+        fun playSound(rout: String) {
+            if (!canPlayMedia) {
+                return
+            }
+            canPlayMedia = false
+
+            if (baseRout.contains("file:///android_asset")) {
+                val assetRout =
+                    "${baseRout.replace("file:///android_asset/", "")}/${rout.replace("file:/android_asset/", "")}"
+                Log.e("assetRout", assetRout)
                 val afd = this@GlitterActivity.assets.openFd(assetRout);
                 val mediiaplay = MediaPlayer()
-                mediiaplay.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+                mediiaplay.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 mediiaplay.prepare()
                 mediiaplay.setOnCompletionListener {
                     mediiaplay.release()
-                    canPlayMedia=true
+                    canPlayMedia = true
                 }
                 mediiaplay.start()
-            }else{
-                val  file= File("$baseRout/$rout")
-                val mediiaplay = MediaPlayer.create(this@GlitterActivity,Uri.fromFile(file))
+            } else {
+                val file = File("$baseRout/$rout")
+                val mediiaplay = MediaPlayer.create(this@GlitterActivity, Uri.fromFile(file))
                 mediiaplay.setOnCompletionListener {
                     mediiaplay.release()
-                    canPlayMedia=true
+                    canPlayMedia = true
                 }
                 mediiaplay.start()
             }
 
 
         }
+
         @JavascriptInterface
-        fun requestGPSPermission(){
-            if(gpsUtil==null){gpsUtil= GpsUtil(this@GlitterActivity)
+        fun requestGPSPermission() {
+            if (gpsUtil == null) {
+                gpsUtil = GpsUtil(this@GlitterActivity)
             }
 
+        }
+        @JavascriptInterface
+        fun runJsInterFace(data: String) {
+            Thread{
+                val mapData =
+                    Gson().fromJson<MutableMap<String, Any>>(data, object : TypeToken<MutableMap<String, Any>>() {}.type)
+                val functionName = mapData["functionName"] as String
+                val callbackID = (mapData["callBackId"] as Double).toInt()
+                val receiveValue: MutableMap<String, Any> =
+                    if (mapData["data"] == null) mutableMapOf() else (mapData["data"] as MutableMap<String, Any>)
+                val cFunction = javaScriptInterFace.filter { it.functionName==functionName }
+                val requestFunction = RequestFunction(receiveValue)
+                if(cFunction.isNotEmpty()){
+                    cFunction[0].function(requestFunction)
+                }
+                handler.post {
+                instance().webRoot.evaluateJavascript("""
+                glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
+                glitter.callBackList.delete(${callbackID});
+                """.trimIndent(), null)
+                }
+            }.start()
         }
     }
 
     /*
     * Ble開發套件
     * */
-    var bleHelper: BleHelper? =null
+    var bleHelper: BleHelper? = null
 
-    inner class BleInterFace:BleCallBack {
+    inner class BleInterFace : BleCallBack {
         @JavascriptInterface
         fun startScan(): Boolean {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             return bleHelper!!.startScan()
         }
 
         @JavascriptInterface
         fun stopScan() {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             bleHelper!!.stopScan()
         }
 
         @JavascriptInterface
         fun writeHex(data: String, rx: String, tx: String) {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             bleHelper!!.writeHex(data, rx, tx)
         }
 
         @JavascriptInterface
         fun writeUtf(data: String, rx: String, tx: String) {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             bleHelper!!.writeUtf(data, rx, tx)
         }
 
         @JavascriptInterface
         fun writeBytes(data: ByteArray, rx: String, tx: String) {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             bleHelper!!.writeBytes(data, rx, tx)
         }
 
         @JavascriptInterface
         fun start() {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
 
         }
 
         @JavascriptInterface
-        fun connect(device: String, sec: Int,id:Int) {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+        fun connect(device: String, sec: Int, id: Int) {
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             bleHelper!!.connect(device, sec, ConnectResult {
-                Thread{
+                Thread {
                     Thread.sleep(1000)
                     handler.post {
-                        webRoot.evaluateJavascript("  glitter.callBackList.get($id)($it);" +
-                                "glitter.callBackList.delete($id);",null)
+                        webRoot.evaluateJavascript(
+                            "  glitter.callBackList.get($id)($it);" +
+                                    "glitter.callBackList.delete($id);", null
+                        )
                     }
                 }.start()
 
@@ -584,7 +666,9 @@ class GlitterActivity : AppCompatActivity(){
 
         @JavascriptInterface
         fun isOpen(): Boolean {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             return bleHelper!!.bleadapter.isEnabled
         }
 
@@ -596,21 +680,31 @@ class GlitterActivity : AppCompatActivity(){
             val network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
             return gps || network
         }
+
         @JavascriptInterface
         fun isDiscovering(): Boolean {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             return bleHelper!!.bleadapter.isDiscovering
         }
+
         @JavascriptInterface
         fun disConnect() {
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             return bleHelper!!.disconnect()
         }
+
         @JavascriptInterface
-        fun isConnect():Boolean{
-            if(bleHelper==null){ bleHelper = BleHelper(this@GlitterActivity, this)}
+        fun isConnect(): Boolean {
+            if (bleHelper == null) {
+                bleHelper = BleHelper(this@GlitterActivity, this)
+            }
             return bleHelper!!.isConnect()
         }
+
         override fun needGPS() {
             handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.needGPS()", null) }
         }
@@ -639,20 +733,22 @@ class GlitterActivity : AppCompatActivity(){
 
             handler.post {
                 webRoot.evaluateJavascript(
-                    "glitter.bleUtil.callback.requestPermission(${Gson().toJson(
-                        permission
-                    )})", null
+                    "glitter.bleUtil.callback.requestPermission(${
+                        Gson().toJson(
+                            permission
+                        )
+                    })", null
                 )
             }
         }
 
         override fun rx(a: BleBinary) {
-            Thread{
+            Thread {
                 val map: MutableMap<String, Any> = mutableMapOf()
                 map["readHEX"] = a.readHEX()
                 map["readBytes"] = a.readBytes()
                 map["readUTF"] = a.readUTF()
-               // Log.e("JzBleMessage","RX:"+a.readHEX())
+                // Log.e("JzBleMessage","RX:"+a.readHEX())
                 handler.post {
                     webRoot.evaluateJavascript(
                         "glitter.bleUtil.callback.rx(" + Gson().toJson(map) + ")",
@@ -664,7 +760,7 @@ class GlitterActivity : AppCompatActivity(){
         }
 
         override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary, rssi: Int) {
-            try{
+            try {
                 val map: MutableMap<String, Any> = mutableMapOf()
                 map["name"] = if (device.name == null) "undefine" else device.name
                 map["address"] = device.address
@@ -679,7 +775,8 @@ class GlitterActivity : AppCompatActivity(){
                         ) + ",$rssi)", null
                     )
                 }
-            }catch (e:Exception){ }
+            } catch (e: Exception) {
+            }
         }
 
 
@@ -688,7 +785,7 @@ class GlitterActivity : AppCompatActivity(){
             map["readHEX"] = b.readHEX()
             map["readBytes"] = b.readBytes()
             map["readUTF"] = b.readUTF()
-            Log.e("JzBleMessage","TX:"+b.readHEX())
+            Log.e("JzBleMessage", "TX:" + b.readHEX())
             handler.post {
                 webRoot.evaluateJavascript(
                     "glitter.bleUtil.callback.tx(" + Gson().toJson(map) + ")",
@@ -699,66 +796,70 @@ class GlitterActivity : AppCompatActivity(){
     }
 
 
-
     /*
     * DataBase開發套件
     * */
-    var dataMap:MutableMap<String,JzSqlHelper> = mutableMapOf()
-    inner class Database{
+    var dataMap: MutableMap<String, JzSqlHelper> = mutableMapOf()
+
+    inner class Database {
         @JavascriptInterface
-        fun exSql(name:String,string:String){
-            if(dataMap[name]==null){
-                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+        fun exSql(name: String, string: String) {
+            if (dataMap[name] == null) {
+                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
             }
             dataMap[name]!!.exsql(string)
         }
+
         @JavascriptInterface
-        fun query(name:String,string: String):String{
-            Log.e("sql",string)
-            if(dataMap[name]==null){
-                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+        fun query(name: String, string: String): String {
+            Log.e("sql", string)
+            if (dataMap[name] == null) {
+                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
             }
-            val mapArray:ArrayList<MutableMap<String,Any>> = arrayListOf()
+            val mapArray: ArrayList<MutableMap<String, Any>> = arrayListOf()
             dataMap[name]!!.query(string) {
                 val map: MutableMap<String, Any> = mutableMapOf()
                 for (a in 0 until it.columnCount) {
                     if (it.getString(a) != null) {
-                        map[it.getColumnName(a)]=it.getString(a)
+                        map[it.getColumnName(a)] = it.getString(a)
                     }
                 }
                 mapArray.add(map)
             }
-            Log.e("DataBase",Gson().toJson(mapArray))
+            Log.e("DataBase", Gson().toJson(mapArray))
             return Gson().toJson(mapArray)
         }
+
         @JavascriptInterface
-        fun initByFile(name:String,rout:String){
-            if(dataMap[name]==null){
-                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+        fun initByFile(name: String, rout: String) {
+            if (dataMap[name] == null) {
+                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
             }
             dataMap[name]!!.close()
-            if(baseRout.contains("file:///android_asset")){
-                val assetRout="${baseRout.replace("file:///android_asset/","")}/${rout.replace("file:/android_asset/","")}"
-                Log.e("assetRout",assetRout)
+            if (baseRout.contains("file:///android_asset")) {
+                val assetRout =
+                    "${baseRout.replace("file:///android_asset/", "")}/${rout.replace("file:/android_asset/", "")}"
+                Log.e("assetRout", assetRout)
 //                this@GlitterActivity.assets.list("")
                 dataMap[name]!!.dbinit(this@GlitterActivity.assets.open(assetRout))
                 dataMap[name]!!.create()
-            }else{
-                val  file= File("$baseRout/$rout")
+            } else {
+                val file = File("$baseRout/$rout")
                 dataMap[name]!!.dbinit(file.inputStream())
                 dataMap[name]!!.create()
             }
         }
+
         @JavascriptInterface
-        fun initByLocalFile(name:String,rout:String){
-            if(dataMap[name]==null){
-                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+        fun initByLocalFile(name: String, rout: String) {
+            if (dataMap[name] == null) {
+                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
             }
             dataMap[name]!!.close()
-            val  file= File(applicationContext.filesDir, rout)
-            if(!file.exists()){
-                if(rout.contains("/")){
-                    if(!file.parentFile.exists()){
+            val file = File(applicationContext.filesDir, rout)
+            if (!file.exists()) {
+                if (rout.contains("/")) {
+                    if (!file.parentFile.exists()) {
                         file.parentFile.mkdirs();
                     }
                 }
@@ -767,15 +868,17 @@ class GlitterActivity : AppCompatActivity(){
             dataMap[name]!!.dbinit(file.inputStream())
             dataMap[name]!!.create()
         }
+
         @JavascriptInterface
-        fun init(name:String){
-            if(dataMap[name]==null){
-                dataMap[name]=JzSqlHelper(this@GlitterActivity,name)
+        fun init(name: String) {
+            if (dataMap[name] == null) {
+                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
             }
             dataMap[name]!!.close()
             dataMap[name]!!.create()
         }
     }
+
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         if (event.action == 1 && event.keyCode == 4) {
             goBack()
@@ -784,6 +887,7 @@ class GlitterActivity : AppCompatActivity(){
             return keyEventListener(event)
         }
     }
+
     //
     fun fn_video() {
         val int_position = 0
@@ -821,19 +925,20 @@ class GlitterActivity : AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        GlitterExecute.execute("lifeCycle.onResume()", ValueCallback{ a:String->})
+        GlitterExecute.execute("lifeCycle.onResume()", ValueCallback { a: String -> })
     }
+
     override fun onPause() {
         super.onPause()
-        GlitterExecute.execute("lifeCycle.onPause()", ValueCallback{ a:String->})
+        GlitterExecute.execute("lifeCycle.onPause()", ValueCallback { a: String -> })
     }
 
     override fun onDestroy() {
-        val mWebView=webRoot
-        if( webRoot!=null) {
+        val mWebView = webRoot
+        if (webRoot != null) {
             // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;这一行代码，需要先onDetachedFromWindow()，再
             // destory()
-            val parent = mWebView.getParent() ;
+            val parent = mWebView.getParent();
             if (parent != null) {
                 (parent as ViewGroup).removeView(mWebView);
             }
@@ -852,8 +957,9 @@ class GlitterActivity : AppCompatActivity(){
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
     }
-    var permissionRequestCode=100
-    var permissionCaller=object :permission_C{
+
+    var permissionRequestCode = 100
+    var permissionCaller = object : permission_C {
         override fun requestSuccess(a: String?) {
 
         }
@@ -861,6 +967,7 @@ class GlitterActivity : AppCompatActivity(){
         override fun requestFalse(a: String?) {
         }
     }
+
     private fun getPermission(Permissions: Array<String>, caller: permission_C) {
         permissionCaller = caller
         val permissionDeniedList = ArrayList<String>()
@@ -877,10 +984,12 @@ class GlitterActivity : AppCompatActivity(){
             ActivityCompat.requestPermissions(this, deniedPermissions, 100)
         }
     }
+
     interface permission_C {
         fun requestSuccess(a: String?)
         fun requestFalse(a: String?)
     }
+
     /**
      * 請求成功
      */
@@ -893,7 +1002,7 @@ class GlitterActivity : AppCompatActivity(){
         Log.e("ScannerActivity", "requestCode$requestCode")
         Log.e("ScannerActivity", "grantResults${Gson().toJson(grantResults)}")
         when (requestCode) {
-            permissionRequestCode ->{
+            permissionRequestCode -> {
                 if (grantResults.isNotEmpty()) {
                     for (i in grantResults.indices) {
                         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {

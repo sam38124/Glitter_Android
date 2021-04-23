@@ -17,10 +17,8 @@ fun String.downloadFile(timeOut:Int,fileName:String):Boolean{
         conn.readTimeout = timeOut
         conn.requestMethod = "GET"
         conn.doInput = true;
-        val buffer = ByteArray(1024)
+        val buffer = ByteArray(8192)
         val reader = DataInputStream(conn.inputStream)
-        val strBuf=ByteArrayOutputStream()
-        var downLoad = 0L
         val file= File(GlitterActivity.instance().applicationContext.filesDir, fileName)
         if(!file.exists()){
             if(fileName.contains("/")){
@@ -30,14 +28,14 @@ fun String.downloadFile(timeOut:Int,fileName:String):Boolean{
             }
             file.createNewFile()
         }
+        val fileStream=file.outputStream()
         reader.use {
             var read: Int
             while (reader.read(buffer).also { read = it } != -1) {
-                downLoad += read
-                strBuf.write(buffer.copyOfRange(0, read))
+                fileStream.write(buffer.copyOfRange(0, read))
             }
         }
-        file.writeBytes(strBuf.toByteArray())
+        fileStream.close()
         reader.close()
         return true
     }catch (e:Exception){

@@ -24,7 +24,6 @@ object ZipUtil {
                 // if the entry is a file, extracts it
                 extractFile(zipIn, filePath)
             } else {
-                // if the entry is a directory, make the directory
                 val dir = File(filePath)
                 dir.mkdirs()
             }
