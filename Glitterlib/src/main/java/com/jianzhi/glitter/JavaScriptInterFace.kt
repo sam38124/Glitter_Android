@@ -6,4 +6,4 @@ class JavaScriptInterFace(val functionName:String,val function:(request:RequestF
     }
 }
 
-data class RequestFunction(val receiveValue:MutableMap<String,Any>, var responseValue:MutableMap<String,Any> = mutableMapOf())
+data class RequestFunction(val receiveValue:MutableMap<String,Any>, var responseValue:MutableMap<String,Any> = mutableMapOf(),var finish:() -> Unit = {})

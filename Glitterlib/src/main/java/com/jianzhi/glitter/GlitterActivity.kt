@@ -130,7 +130,6 @@ class GlitterActivity : AppCompatActivity() {
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         dataMap["Glitter"] = JzSqlHelper(this!!, "Glitter.db")
         webRoot = rootview.webroot
-        rootview.webroot.addJavascriptInterface(BleInterFace(), "GL_ble")
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.addJavascriptInterface(Database(), "DataBase")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
@@ -578,223 +577,23 @@ class GlitterActivity : AppCompatActivity() {
                     if (mapData["data"] == null) mutableMapOf() else (mapData["data"] as MutableMap<String, Any>)
                 val cFunction = javaScriptInterFace.filter { it.functionName==functionName }
                 val requestFunction = RequestFunction(receiveValue)
-                if(cFunction.isNotEmpty()){
-                    cFunction[0].function(requestFunction)
-                }
-                handler.post {
-                instance().webRoot.evaluateJavascript("""
+                requestFunction.finish={
+                    handler.post {
+                        instance().webRoot.evaluateJavascript("""
                 glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
                 glitter.callBackList.delete(${callbackID});
                 """.trimIndent(), null)
-                }
-            }.start()
-        }
-    }
-
-    /*
-    * Ble開發套件
-    * */
-    var bleHelper: BleHelper? = null
-
-    inner class BleInterFace : BleCallBack {
-        @JavascriptInterface
-        fun startScan(): Boolean {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            return bleHelper!!.startScan()
-        }
-
-        @JavascriptInterface
-        fun stopScan() {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            bleHelper!!.stopScan()
-        }
-
-        @JavascriptInterface
-        fun writeHex(data: String, rx: String, tx: String) {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            bleHelper!!.writeHex(data, rx, tx)
-        }
-
-        @JavascriptInterface
-        fun writeUtf(data: String, rx: String, tx: String) {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            bleHelper!!.writeUtf(data, rx, tx)
-        }
-
-        @JavascriptInterface
-        fun writeBytes(data: ByteArray, rx: String, tx: String) {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            bleHelper!!.writeBytes(data, rx, tx)
-        }
-
-        @JavascriptInterface
-        fun start() {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-
-        }
-
-        @JavascriptInterface
-        fun connect(device: String, sec: Int, id: Int) {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            bleHelper!!.connect(device, sec, ConnectResult {
-                Thread {
-                    Thread.sleep(1000)
-                    handler.post {
-                        webRoot.evaluateJavascript(
-                            "  glitter.callBackList.get($id)($it);" +
-                                    "glitter.callBackList.delete($id);", null
-                        )
                     }
-                }.start()
-
-            })
-        }
-
-        @JavascriptInterface
-        fun isOpen(): Boolean {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            return bleHelper!!.bleadapter.isEnabled
-        }
-
-        @JavascriptInterface
-        fun gpsEnable(): Boolean {
-            val locationManager =
-                this@GlitterActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-            val network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-            return gps || network
-        }
-
-        @JavascriptInterface
-        fun isDiscovering(): Boolean {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            return bleHelper!!.bleadapter.isDiscovering
-        }
-
-        @JavascriptInterface
-        fun disConnect() {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            return bleHelper!!.disconnect()
-        }
-
-        @JavascriptInterface
-        fun isConnect(): Boolean {
-            if (bleHelper == null) {
-                bleHelper = BleHelper(this@GlitterActivity, this)
-            }
-            return bleHelper!!.isConnect()
-        }
-
-        override fun needGPS() {
-            handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.needGPS()", null) }
-        }
-
-        override fun onConnectFalse() {
-            handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.onConnectFalse()", null) }
-        }
-
-        override fun onConnectSuccess() {
-            handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.onConnectSuccess()", null) }
-        }
-
-        override fun onConnecting() {
-            handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.onConnecting()", null) }
-        }
-
-        override fun onDisconnect() {
-            handler.post { webRoot.evaluateJavascript("glitter.bleUtil.callback.onDisconnect()", null) }
-        }
-
-        override fun requestPermission(permission: ArrayList<String>) {
-            //當藍牙權限不足時觸發
-            for (i in permission) {
-                Log.e("JzBleMessage", "權限不足請先請求權限${i}")
-            }
-
-            handler.post {
-                webRoot.evaluateJavascript(
-                    "glitter.bleUtil.callback.requestPermission(${
-                        Gson().toJson(
-                            permission
-                        )
-                    })", null
-                )
-            }
-        }
-
-        override fun rx(a: BleBinary) {
-            Thread {
-                val map: MutableMap<String, Any> = mutableMapOf()
-                map["readHEX"] = a.readHEX()
-                map["readBytes"] = a.readBytes()
-                map["readUTF"] = a.readUTF()
-                // Log.e("JzBleMessage","RX:"+a.readHEX())
-                handler.post {
-                    webRoot.evaluateJavascript(
-                        "glitter.bleUtil.callback.rx(" + Gson().toJson(map) + ")",
-                        null
-                    )
                 }
+                if(cFunction.isNotEmpty()){
+                    cFunction[0].function(requestFunction)
+                }else{
+                    requestFunction.finish()
+                }
+
             }.start()
-
-        }
-
-        override fun scanBack(device: BluetoothDevice, scanRecord: BleBinary, rssi: Int) {
-            try {
-                val map: MutableMap<String, Any> = mutableMapOf()
-                map["name"] = if (device.name == null) "undefine" else device.name
-                map["address"] = device.address
-                val rec: MutableMap<String, Any> = mutableMapOf()
-                rec["readHEX"] = scanRecord.readHEX()
-                rec["readBytes"] = scanRecord.readBytes()
-                rec["readUTF"] = String(rec["readBytes"] as ByteArray, StandardCharsets.UTF_8);
-                handler.post {
-                    webRoot.evaluateJavascript(
-                        "glitter.bleUtil.callback.scanBack(" + Gson().toJson(map) + "," + Gson().toJson(
-                            rec
-                        ) + ",$rssi)", null
-                    )
-                }
-            } catch (e: Exception) {
-            }
-        }
-
-
-        override fun tx(b: BleBinary) {
-            val map: MutableMap<String, Any> = mutableMapOf()
-            map["readHEX"] = b.readHEX()
-            map["readBytes"] = b.readBytes()
-            map["readUTF"] = b.readUTF()
-            Log.e("JzBleMessage", "TX:" + b.readHEX())
-            handler.post {
-                webRoot.evaluateJavascript(
-                    "glitter.bleUtil.callback.tx(" + Gson().toJson(map) + ")",
-                    null
-                )
-            }
         }
     }
-
 
     /*
     * DataBase開發套件
