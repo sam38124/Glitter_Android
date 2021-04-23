@@ -35,12 +35,6 @@ import com.google.zxing.BarcodeFormat
 import com.jianzhi.glitter.util.GpsUtil
 import com.jianzhi.glitter.util.ZipUtil
 import com.jianzhi.glitter.util.downloadFile
-import com.jianzhi.jzbarcodescnner.BarCodeView
-import com.jianzhi.jzbarcodescnner.callback
-import com.jianzhi.jzblehelper.BleHelper
-import com.jianzhi.jzblehelper.callback.BleCallBack
-import com.jianzhi.jzblehelper.callback.ConnectResult
-import com.jianzhi.jzblehelper.models.BleBinary
 import com.jzsql.lib.mmySql.JzSqlHelper
 import com.jzsql.lib.mmySql.Sql_Result
 import com.orange.glitter.R
