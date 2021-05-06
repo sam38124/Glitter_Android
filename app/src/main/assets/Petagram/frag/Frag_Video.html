@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../model/Md_Video.js"></script>
+<link rel="stylesheet" href="../css/Frag_Video.css">
+<script src="../jslib/widget.js"></script>
+<script src="../jslib/index.umd.min.js"></script>
+<body>
+
+<div id="reView">
+    <div id="adAthlete" style="width: 100%;height: 100px;background-color: white;display: flex;overflow-x: scroll;"></div>
+    <div id="AD" style="width: 100%;height: 100px;display: flex;overflow-x: scroll;overflow-y: hidden;"></div>
+    <div id="content"></div>
+</div>
+</body>
+</html>
+<script>
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight >= (scrollHeight-100)) {
+            //console.log('scrollbt')
+            glitter.publicBeans.ytVideoModel.requestOld()
+        }
+
+    });
+
+    var vdModel=glitter.publicBeans.ytVideoModel
+    var loadingViewCallback=undefined
+    lifeCycle.onCreate=function (){
+        glitter.publicBeans.ytVideoModel.requestNew()
+        /* global PullToRefresh */
+        PullToRefresh.init({
+            mainElement: '#reView',
+            onRefresh: function(cb) {
+                loadingViewCallback=cb
+                vdModel.requestNew()
+            }
+        });
+        glitter.addObserver(vdModel,"onLoadIng",function (result){
+            if(!result){
+                if(loadingViewCallback!==undefined){loadingViewCallback()}
+                $('#loadingView').remove()
+            }else {
+                $('#reView').append(glitter.publicBeans.getLoadingView)
+            }
+        });
+        glitter.addObserver(vdModel,"data",function (result){
+            var hei=parseInt(glitter.getBoundingClientRect.width * 0.6,10)
+            var json=result
+            for (let i = 0; i < json.length; i++) {
+                let data =(vdModel.prePend) ? json[json.length-i-1]:json[i]
+                var link = data.link
+                var name = data.pick
+                var circle = data.circle
+                var title = data.title
+                var head=data.head
+                var id=data.id
+                var html = `<div class="Frag_Video_item" id="v${id}" onclick="glitter.openNewTab('https://www.youtube.com/watch?v=${link}');">
+<div id="videoPlace" style="height: ${hei}px;" >
+<img id="image${id}" class="Frag_Video_item_img" style="height: ${hei}px;" src="https://img.youtube.com/vi/${link}/sddefault.jpg" >
+<div id="video${id}" class="Frag_Video_item_img" style="display: none;height: ${hei}px;" ></div>
+    </div>
+          <div class="Frag_Video_item_Btn_Div" >
+            <div class="Frag_Video_item_TopBar">
+                <img class='Frag_Video_item_TopBarImg' src="${head}">
+                <h3 class="Frag_Video_item_TopBarName">${name}</h3>
+                <img src="../img/spi.png" class="Frag_Video_item_SPI">
+                <h3 class="CircleText">${circle}</h3>
+            </div>
+            <h3 class="Frag_Video_itemTitleText">${title}</h3>
+        </div>
+
+         </div>`
+                if(document.getElementById(data.id)){
+                    $('#'+data.id).html(html)
+                }else{
+                    players=players.concat({
+                        id:id,
+                        link:link
+                    })
+                    if(vdModel.prePend){
+                        $('#content').prepend(`<div class="videoItem" id="${data.id}" style="margin-bottom: 10px;">${html}</div>`)
+                    }else{
+                        $('#content').append(`<div class="videoItem" id="${data.id}" style="margin-bottom: 10px;">${html}</div>`)
+                    }
+                }
+            }
+            $('#adAthlete').html(getAdAthleteView(vdModel.adAthlete))
+            $('#AD').html(getAdVideo(vdModel.AD))
+            playVideos()
+        })
+    }
+
+    //取得推薦運動員的ListView
+    function getAdAthleteView(adAthlete) {
+        var html =  ''
+        for (let i = 0; i < adAthlete.length; i++) {
+            let head = JSON.parse(adAthlete[i]).head
+            let pick = JSON.parse(adAthlete[i]).pick
+            let admin=JSON.parse(adAthlete[i]).admin
+            html = `${html} <div style="display: inline-block" onclick="if('${admin}'.indexOf('UC')===-1){glitter.openNewTab('https://www.youtube.com/user/${admin}');}else{glitter.openNewTab('https://www.youtube.com/channel/${admin}');}">            <img src="${head}" style="width: 60px;height: 60px;border-radius: 60px;margin: 10px;">            <h3 style="font-size: 11px;color: black;margin-top: -10px;width: 60px;margin-left:10px;text-align: center;font-family: PMingLiU;overflow-x:hidden;white-space: nowrap;text-overflow: ellipsis;">${pick}</h3>        </div>`
+        }
+        return html
+    }
+    //取得推薦影片的ListView
+    function getAdVideo(adVideo) {
+        var html =  ''
+        for (let i = 0; i < adVideo.length; i++) {
+            var link = JSON.parse(adVideo[i]).link
+            var title = JSON.parse(adVideo[i]).title
+            html = `${html}<div style="display: inline-block" onclick="glitter.openNewTab('https://www.youtube.com/watch?v=${link}');">        <img src="https://img.youtube.com/vi/${link}/sddefault.jpg" class="Frag_Video_itemImg">        <h3 class="Frag_Video_itemH3">${title}</h3>    </div>`
+        }
+        return html
+    }
+
+</script>

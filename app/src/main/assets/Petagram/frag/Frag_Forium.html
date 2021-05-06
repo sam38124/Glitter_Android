@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/lottie.js"></script>
+<script src="../model/Md_Forium.js"></script>
+<script src="../jslib/widget.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/News_Slider.css"/>
+<link rel="stylesheet" href="../css/Frag_News.css">
+<script src="../jslib/index.umd.min.js"></script>
+<body>
+
+</body>
+</html>
+<script>
+    var articleModel=glitter.publicBeans.userArticleModel
+    var loadingViewCallback=undefined
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight === scrollHeight) {
+            articleModel.requestOld()
+        }
+        //console.log('scroll--scrollTop'+scrollTop+'--scrollHeight'+scrollHeight+'--windowHeight'+windowHeight)
+    });
+    lifeCycle.onCreate=function (){
+        // if(){
+        //     overflow: hidden;
+        // }
+        articleModel.requestNew()
+        /* global PullToRefresh */
+        PullToRefresh.init({
+            mainElement: '#reView',
+            onRefresh: function(cb) {
+                loadingViewCallback=cb
+                articleModel.requestNew()
+            }
+        });
+        glitter.addObserver(articleModel,"onLoadIng",function (result){
+            if(result){
+                $('#reView').append(glitter.publicBeans.getLoadingView)
+                if(((articleModel.data.length===0))){
+                    $('#content').html(``)
+                }
+            }else {
+                $('#loadingView').remove()
+                if(loadingViewCallback!==undefined){loadingViewCallback()}
+            }
+        })
+        glitter.addObserver(articleModel,"data",function (result){
+            if(articleModel.data.length===0&&!articleModel.onLoadIng){
+                $('#content').html(`<img src="../img/emptyFile.gif" style="width: 100%;margin: 0;min-height: 50px;">
+<h3 style="color: grey;margin-top: -100px;width: 100%;display: flex;align-items: center;justify-content: center;font-size: 14px;">尚無內容...</h3>`)
+            }
+            var json=result
+            for (let i = 0; i < json.length; i++) {
+                let data = (articleModel.prePend) ? json[json.length-i-1]:json[i]
+                var html=''
+                if (data.image === undefined||data.image==='NA'||data.image==='') {
+                    html =
+                        `
+            <div class="itembar">
+                <img src="${data.head}" class="headImg">
+                <t1 class="name">${glitter.unicodeToString(data.pick)}</t1>
+                <img src="../img/spi.png" style="width: 15px;height: 15px;margin-top: 5px;">
+                <t1 class="circle">${data.circle}</t1>
+            </div>
+            <div style="width: 100%;display: flex;margin-top: -10px;">
+                <div style="width: calc(100% - 10px);">
+                    <h1 class="title" >${glitter.unicodeToString(data.title)}</h1>
+                    <h1 class="content" style="width: calc(100% - 20px);height: 20px; text-overflow: ellipsis;"  >${glitter.unicodeToString(data.content)}</h1>
+                </div>
+            </div>
+            <div style="bottom: 0;width: 100%;height: 1px;background-color: gray;position: relative;"></div>
+`
+                } else {
+                    html = `
+            <div class="itembar">
+                <img src="${data.head}" class="headImg">
+                <t1 class="name">${glitter.unicodeToString(data.pick)}</t1>
+                <img src="../img/spi.png" style="width: 15px;height: 15px;margin-top: 5px;">
+                <t1 class="circle">${data.circle}</t1>
+            </div>
+            <div style="width: 100%;display: flex;margin-top: -10px;">
+                <div style="width: calc(100% - 80px);white-space: nowrap; ">
+                    <h1 class="title" >${glitter.unicodeToString(data.title)}</h1>
+                    <h1 class="content" style="width: calc(100% - 20px);height: 20px; text-overflow: ellipsis;" >${glitter.removeTag(glitter.unicodeToString(data.content))}</h1>
+                </div>
+                <img src="${data.image}" class="hint">
+            </div>
+            <div style="width: 100%;height: 1px;background-color: gray;position: relative;"></div>
+`
+                }
+                if(document.getElementById(data.id)){
+                    $('#'+data.id).html(html)
+                }else{
+                    if(articleModel.prePend){
+                        $('#content').prepend(`       <div class="ListItem" id="${data.id}">${html}</div>`)
+                    }else{
+                        $('#content').append(`     <div class="ListItem" id="${data.id}">${html}</div>`)
+                    }
+                    $( "#"+data.id ).click(function() {
+                        goDetail(data)
+                    });
+                }
+            }
+        })
+    }
+    lifeCycle.onCreateView=function (){
+        return `<div onclick="" style="width:100%;border-bottom:hsla(0, 0%, 6.7%, .6) 1px solid;display: flex;right: 0;float: right;margin-right: 0;height: 40px;align-items: center;">
+    <img onclick="glitter.publicBeans.search(2)"  src="../img/zoom2.png" style="margin-left:10px;width: 15px;height: 15px;" >
+    <h3 onclick="glitter.publicBeans.search(2)"  style="color: #868e96;font-size: 14px;margin-right: 10px;">．搜尋文章</h3>
+   <div style="flex: auto;"></div>
+    <img onclick="filterItem()" src="../img/filter.png" style="width: 15px;height: 15px;" >
+<h3 onclick="filterItem()" id="filterText" style="color: #868e96;font-size: 14px;margin-right: 10px;">．過濾內容</h3>
+</div>
+<div id="reView" >
+    <section class="lazy slider" id="sliderSection">
+    </section>
+    <div id="content"></div>
+</div>`
+    }
+    //跳轉至Detail
+    function goDetail(model) {
+        glitter.publicBeans.goArticle(model.id)
+    }
+
+    //過濾查詢內容
+    function filterItem(){
+        glitter.openDiaLog('dialog/Dia_Circle_Select.html','Dia_Circle_Select',false,false,function(id,title) {
+            $('#content').html('')
+            $('#filterText').html("．"+title)
+            $('#filterText').css('color','dodgerblue')
+            articleModel.circle=`${parseInt(id,10)}`
+            articleModel.data=[]
+            articleModel.isBt=false
+            articleModel.onLoadIng=false
+            articleModel.requestNew()
+        })
+    }
+</script>

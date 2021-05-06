@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .reView {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .item {
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        width: calc(100% - 20px);
+        flex-direction: column;
+        margin-top: 10px;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 10px;
+    }
+
+    .itemBlock {
+        display: flex;
+        width: calc(100% - 20px);
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .itemBlock img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+    }
+
+    .itemBlock .leftBlock {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        max-width: calc(100% - 100px);
+    }
+
+    .leftBlock .h1 {
+        color: black;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 0;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        overflow-y: hidden;
+    }
+
+    .leftBlock .h2 {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .leftBlock .h3 {
+        color: hsla(0, 0%, 6.7%, .6);
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .btFlex {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        width: 90%;
+        height: 20px;
+    }
+
+    .btFlex img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btFlex h3 {
+        font-size: 13px;
+        color: gray;
+        margin-left: 10px;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/index.umd.min.js"></script>
+<body>
+
+</body>
+</html>
+<script>
+    var groupModel=groupModel=glitter.publicBeans.userGroup
+    var loadingViewCallback=undefined
+    lifeCycle.onCreate = function () {
+        glitter.publicBeans.userGroup.requestNew()
+        /* global PullToRefresh */
+        PullToRefresh.init({
+            mainElement: '#reView',
+            onRefresh: function(cb) {
+                loadingViewCallback=cb
+                groupModel.requestNew()
+            }
+        });
+        glitter.addObserver(groupModel,"onLoadIng",function (result){
+            if(!result){
+                if(loadingViewCallback!==undefined){loadingViewCallback()}
+                $('#loadingView').remove()
+                if(((groupModel.data.length===0))){
+                    $('#reView').html(`<img src="../img/emptyFile.gif" style="width: 100%;margin: 0;min-height: 50px;">
+<h3 style="color: grey;margin-top: -100px;width: 100%;display: flex;align-items: center;justify-content: center;font-size: 14px;">尚無內容...</h3>`)
+                }
+            }else {
+                if(((groupModel.data.length===0))){
+                    $('#reView').html(``)
+                }
+                $('#reView').append(glitter.publicBeans.getLoadingView)
+            }
+        })
+        glitter.addObserver(groupModel,"data",function (result){
+            var json=result
+            for (let i = 0; i < json.length; i++) {
+                try {
+                    let data = (groupModel.prePend) ? json[json.length-i-1]:json[i]
+                    let html=getItemView(data)
+                    if(document.getElementById("item"+data.id)){
+                        $('#item'+data.id).html(html)
+                    }else{
+                        if(groupModel.prePend){
+                            $('#reView').prepend(`  <div id="item${data.id}" class="item" style="width: calc(100% -20px);"
+                         onClick="goDetail('${data.id}')">${html}</div>`)
+                        }else{
+                            $('#reView').append(`  <div id="item${data.id}" class="item" style="width: calc(100% -20px);"
+                         onClick="goDetail('${data.id}')">${html}</div>`)
+                        }
+                            glitter.addObserver(data,"isSub", function (result) {
+                                $(`#item${data.id}`).html(getItemView(data))
+                                $(`#sub${data.id}`).click(function (e) {
+                                    addSub(data.id)
+                                    return false
+                                })
+                            })
+                    }
+                    $(`#sub${data.id}`).click(function (e) {
+                        addSub(data.id)
+                        return false
+                    })
+
+                }catch (e){
+                    alert(e)
+                }
+            }
+        })
+    }
+
+function getItemView(data){
+        return `<div class="itemBlock">
+        ${(data.promoteImage !== '') ? '<img src="' + data.promoteImage + '" >' : ''}
+        <div class="leftBlock" >
+        <h3 class="h2">${data.startTime.substring(0, 16)}</h3>
+        <h3 class="h1">${glitter.unicodeToString(data.title)}</h3>
+        <h3 class="h3">活動．${data.joinCount}人已參加</h3>
+</div>
+<div style="flex: auto;"></div>
+<div class="sub" id="sub${data.id}" style="width: 25px;height: 25px;fill:${(data.isSub === 'true') ? 'dodgerblue' : 'gray'};">
+  <svg viewBox="0 0 24 24" focusable="false" role="img" aria-hidden="true" class="ite" id="subBt">
+            <path d="M17.65 21.39L12 17.5l-5.65 3.88A1.5 1.5 0 014 20.15V5a2.5 2.5 0 012.5-2.5h11A2.5 2.5 0 0120 5v15.15a1.5 1.5 0 01-2.35 1.24z"></path>
+        </svg>
+</div>
+</div>
+<div class="btFlex" >
+<img src="../img/location.png">
+<h3 >${glitter.unicodeToString(data.address)}</h3>
+</div>`
+}
+
+    lifeCycle.onCreateView = function () {
+        return `
+<div onclick="" style="width:100%;border-bottom:hsla(0, 0%, 6.7%, .6) 1px solid;display: flex;right: 0;float: right;margin-right: 0;height: 40px;align-items: center;">
+  <img onclick="glitter.publicBeans.search(3)"  src="../img/zoom2.png" style="margin-left:10px;width: 15px;height: 15px;" >
+    <h3 onclick="glitter.publicBeans.search(3)"  style="color: #868e96;font-size: 14px;margin-right: 10px;">．搜尋</h3>
+    <div style="flex: auto;"></div>
+    <img onclick="filterItem()" src="../img/filter.png" style="width: 15px;height: 15px;" >
+    <h3 onclick="filterItem()" id="filterText" style="color: #868e96;font-size: 14px;margin-right: 10px;">．過濾內容</h3>
+</div>
+<div id="reView" class="reView"></div>`
+    }
+
+    //跳轉至Detail
+    function goDetail(id) {
+        glitter.publicBeans.goActivity(id)
+    }
+
+    /**收藏*/
+    function addSub(position) {
+        glitter.publicBeans.postWithDialog({
+            request: 'postGroupSub',
+            account: glitter.md_user.account,
+            id: position
+        }, function () {
+            var aitem=groupModel.data.filter(function (it){return it.id===position})[0]
+            aitem.isSub = (aitem.isSub === 'true') ? 'false' : 'true'
+            groupModel.data=groupModel.data
+        }, function () {
+        })
+    }
+    //過濾查詢內容
+    function filterItem(){
+        glitter.openDiaLog('dialog/Dia_Circle_Select.html','Dia_Circle_Select',false,false,function(id,title) {
+            $('#reView').html('')
+            $('#filterText').html("．"+title)
+            $('#filterText').css('color','dodgerblue')
+            groupModel.circle=`${parseInt(id,10)}`
+            groupModel.data=[]
+            groupModel.isBt=false
+            groupModel.onLoadIng=false
+            groupModel.requestNew()
+        })
+    }
+</script>

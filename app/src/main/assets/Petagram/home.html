@@ -1,0 +1,94 @@
+<!--//Read only-->
+<!--//Please dont change-->
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width,height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no,initial-scale=1.0001,maximum-scale=1.0001,viewport-fit=cover">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Petagram</title>
+</head>
+<style>
+    #toast {
+        position: absolute;
+        z-index: 2147483646;
+        background-color: black;
+        opacity: .8;
+        color: white;
+        bottom: 100px;
+        width: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 10px;
+        display: none;
+    }
+
+    body{
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+        width: 100%;
+        height: 100vh;
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+    iframe{
+        width: 100%;
+        height: 100%;
+        border-width: 0;
+        padding: 0;
+        margin: 0;
+        white-space: nowrap;
+        position: fixed;
+    }
+    html{
+        width: 100%;
+        height: 100vh;
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+    h3{
+        color: red;
+    }
+</style>
+<link href="glitterBundle/Glitter.css" rel="stylesheet">
+<link href="glitterBundle/src/_bottom-sheet.css" rel="stylesheet">
+<link href="glitterBundle/src/_keyframes.css" rel="stylesheet">
+<link href="glitterBundle/src/_reboot.css" rel="stylesheet">
+<link href="glitterBundle/src/style.css" rel="stylesheet">
+<script src="glitterBundle/GpsManager.js"></script>
+<script src="glitterBundle/GlBle.js"></script>
+<script src="glitterBundle/jquery.js"></script>
+<script src="glitterBundle/DataBase.js"></script>
+<script src="glitterBundle/Serialization.js"></script>
+<script src="glitterBundle/extension.js"></script>
+<script src="glitterBundle/Glitter.js"></script>
+<script src="glitterBundle/GlAdapter.js"></script>
+<script src="glitterBundle/GlBle.js"></script>
+<script src="glitterBundle/src/TouchDragListener.js"></script>
+<script src="glitterBundle/src/main.js"></script>
+<script src="Entry.js"></script>
+<body>
+<div id="titleBar" style="height: 60px;display: none;"></div>
+<div id="framePlace"></div>
+<div id="diaPlace" style="top:0;display:none;position: absolute;z-index: 2;height: 100vh;width: 100vw;"></div>
+<div id="loadingView" style="display:none;position: absolute;z-index: 2;height: 100vh;width: 100vw;"></div>
+<aside id="drawerEl">
+    <div id='Navigation' style="width: 100%;height: 100%;"></div>
+</aside>
+<div id="toast"></div>
+</body>
+</html>
+<script>
+    $("#Navigation").hide()
+</script>
+<!--//Read only-->
+<!--//Please dont change-->

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url('../img/background.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    body {
+
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: hidden;
+    }
+    .topBar {
+        width: 100%;
+        height: 50px;
+        min-height: 50px;
+        background-color: dodgerblue;
+        display: flex;
+        align-items: center;
+    }
+    .contentList{
+        flex: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: calc(100% - 100px) ;
+        min-height:calc(100% - 100px);
+    }
+    .bottomBar{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        background-color: white;
+    }
+    .bottomBar img{
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+    }
+    .bottomBar textarea{
+        width: calc(100% - 100px);
+        margin-left: 5px;
+        background-color: whitesmoke;
+        border-radius: 20px;
+        display: flex;
+        -webkit-box-orient: vertical;
+        vertical-align: middle;
+        align-items: center;
+        justify-content: center;
+        border-style: none;
+        height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+    .chatHint{
+        display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+    .chatHint .head{
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+    }
+    .chatContent{
+        max-width: calc(100% - 50px);
+        margin-left: 10px;
+        word-break: break-all;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
+</style>
+<script src="../jslib/FileChooser.js"></script>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<body>
+
+</body>
+</html>
+<script>
+    var toAccount=gBundle.account
+    var messageModel= {
+            data: [],
+            onLoadIngNew: false,
+            onLoadIngOld:false,
+            prePend:false,
+            isBt:false,
+            request: function (id, prefix) {
+                if (this.onLoadIngNew && prefix) {
+                    return
+                }
+                if(this.onLoadIngOld && !prefix){
+                    return;
+                }
+                if(prefix){
+                    this.onLoadIngNew=true
+                }else{
+                    this.onLoadIngOld=true
+                }
+                glitter.publicBeans.postRequest({request: 'getMail', toAccount:toAccount, id: id, prefix: prefix}, function (result) {
+                    var json = JSON.parse(result)
+                    var originSize=messageModel.data.length
+                    var item=JSON.parse(json["data"]).reverse()
+                    if (json["data"] !== undefined && item.length!==0) {
+                        if (prefix) {
+                            messageModel.data = messageModel.data.concat(item)
+                        } else {
+                            messageModel.data = item.concat(messageModel.data)
+                        }
+                    }
+                    item.map(function (it){
+                        it.itemType='userVideoModel'
+                    })
+                    messageModel.isBt=(messageModel.data.length===originSize)
+                    if(prefix){
+                        messageModel.onLoadIngNew=false
+                    }else{
+                        messageModel.onLoadIngOld=false
+                    }
+                }, function error(data) {
+                    messageModel.onLoadIngNew=false
+                    messageModel.onLoadIngOld=false
+                    messageModel.request(id, prefix)
+                })
+            },
+            requestOld: function () {
+                if(this.isBt){return}
+                this.prePend=false
+                var id = (this.data.length === 0) ? "-1" : this.data[0].id
+                this.request(id, false)
+            },
+            requestNew: function () {
+                this.isBt=false
+                this.prePend=true
+                var id = (this.data.length === 0) ? "-1" : this.data[this.data.length - 1].id
+                this.request(id, true)
+            }
+        }
+    lifeCycle.onCreate=function (){
+        glitter.addObserver(messageModel,"data",function (result){
+            var scrollBt=glitter.isScrollBtn($("#contentList"))
+            for(var a=0;a<result.length;a++){
+                var data=result[a]
+                console.log(data.id)
+                var html=(data.type==='me') ? `
+                <div class="chatHint">
+            <div style="flex: auto;"></div>
+<div class="chatContent">${glitter.unicodeToString(data.content)}</div>
+</div>
+<div style="margin-right: 10px;float:right;color: white;font-size: 13px;margin-top: 5px;">${data.time}</div>
+                `:`
+<div style="display: flex;flex-direction: column;">
+<div class="chatHint">
+<img class="head" src="${data.head}">
+<div class="chatContent">${glitter.unicodeToString(data.content)}</div>
+
+</div>
+<div style="margin-left: 60px;color: white;font-size: 13px;margin-top: 5px;">${data.time}</div>
+</div>
+`
+                if(document.getElementById(data.id)){
+                    $('#'+data.id).html(html)
+                }else{
+                    if(messageModel.prePend){
+                        $('#contentList').append(`<div id="${data.id}">${html}</div>`)
+                    }else{
+                        $('#contentList').prepend(`<div id="${data.id}">${html}</div>`)
+                    }
+                }
+            }
+            // $("#contentList").scrollToBtn($("#contentList"))
+            if(scollBtToggle||scrollBt){
+                glitter.scrollToBtn($("#contentList"))
+                scollBtToggle=false
+            }
+        })
+        messageModel.requestNew()
+        glitter.addScrollListener($("#contentList"),{
+            scrollBtn:function (){},
+            scrollTp:function (){
+                messageModel.requestOld()
+            }
+        })
+        setInterval(function (){
+            messageModel.requestNew()
+        },1000)
+    }
+
+    lifeCycle.onCreateView=function (){
+        return `
+        <div class="topBar" >
+    <img src="../img/btn_back_normal.png" style="width: 50px;height: 50px;" onclick="glitter.goBack()">
+    <h3 style="max-width:calc(100% - 100px);color: white;font-size: 16px;margin-left: 5px;">${glitter.unicodeToString(gBundle.pick)}</h3>
+    <div style="flex: auto;"></div>
+    <svg onclick="glitter.publicBeans.goUserInfo('${gBundle.account}')" version="1.1" id="id_svgCanvas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 24 24" style="fill: white;" xml:space="preserve">
+<path d="M22,12c0,5.514-4.486,10-10,10c-4.295,0-7.956-2.728-9.369-6.537C2.754,15.476,2.874,15.5,3,15.5
+\tc0.587,0,1.133-0.159,1.62-0.416c0.518,1.236,1.351,2.3,2.38,3.13v-2.575C7,13.764,10.125,13,12,13s5,0.764,5,2.639v2.596l0,0
+\tc1.826-1.467,3-3.715,3-6.235c0-4.411-3.589-8-8-8C8.681,4,5.83,6.032,4.62,8.916C4.133,8.659,3.587,8.5,3,8.5
+\tc-0.126,0-0.246,0.024-0.369,0.037C4.044,4.727,7.704,2,12,2C17.514,2,22,6.486,22,12z M4.722,13H8l1-1l-1-1H4.722
+\tC4.375,10.405,3.737,10,3,10c-1.103,0-2,0.897-2,2c0,1.103,0.897,2,2,2C3.737,14,4.375,13.595,4.722,13z M15,9c0-1.654-1.346-3-3-3
+\tS9,7.346,9,9s1.346,3,3,3S15,10.654,15,9z" style="fill: white;"></path>
+</svg>
+</div>
+<div class="contentList" id="contentList">
+
+</div>
+<div class="bottomBar">
+<img src="../img/addtr.png" onclick="selectUpload()">
+<textarea placeholder="請輸入內容..." id="textArea"></textarea>
+<img src="../img/send.png" onclick="send()">
+</div>
+        `
+    }
+
+    var scollBtToggle=true
+    function send(){
+        if($('#textArea').val()===''){
+            glitter.openDiaLog('dialog/Dia_Info.html', 'Dia_Info', false, true, "請輸入訊息!!",function (){})
+            return
+        }
+        postMessage($('#textArea').val())
+    }
+    //傳送圖片
+    function selectImageView() {
+        fileChooser.selectImage(function (a) {
+            postMessage(`<img src="${a}" style="max-width: 100%;max-height: 56vw;">`)
+        })
+    }
+    //傳送影片
+    function selectVideo(){
+        fileChooser.selectVideo(function (a) {
+            postMessage(`<div style="width: 100%;display: flex;align-items: center;justify-content: center;"><video id="hls-video" style="width:  100%; height:58vw;background-color: black;margin: 0;border-radius: 10px;"  class="video-js vjs-big-play-centered"
+       playsinline webkit-playsinline
+       autoplay controls preload="true"
+       x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-typ="h5" width="auto" height="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"poster="${a}/thumb.jpg">
+    <source src="${a}/root.m3u8" type="application/x-mpegURL" id="source">
+</video></div><br>`)
+        })
+    }
+    //傳送訊息
+    function postMessage(data){
+        var mapData={
+            account:toAccount,
+            content:data
+        }
+        glitter.publicBeans.postWithDialog({
+            request:'sendMail',
+            data:JSON.stringify(mapData)
+        },function (result){
+            glitter.closeDiaLog()
+            var res=JSON.parse(result)
+            if(res.result!=='true'){
+                glitter.openDiaLog('dialog/Dia_Info.html', 'Dia_Info', false, true, "傳送訊息失敗!!",function (){})
+            }else{
+                $('#textArea').val('')
+                scollBtToggle=true
+                messageModel.requestNew()
+            }
+        },function (){})
+    }
+    //選擇上傳類型
+    function selectUpload(){
+        glitter.openDiaLog('dialog/Dia_Item_Selection.html','Dia_Item_Selection',false,true,[
+            {title:"圖片",callback:function (){
+                    selectImageView()
+                }},
+            {title:'影片',callback:function (){
+                    selectVideo()
+                }}
+        ]);
+    }
+</script>

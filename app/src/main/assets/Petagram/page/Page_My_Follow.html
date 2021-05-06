@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: hidden;
+    }
+
+    .topBar {
+        width: 100%;
+        height: 50px;
+        background-color: dodgerblue;
+        display: flex;
+        align-items: center;
+    }
+
+    .serch {
+        margin-top: 10px;
+        width: calc(100% - 90px);
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border-width: 1px;
+        font-size: 16px;
+        padding-right: 10px;
+        background-image: url("../img/zoomgray.png");
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-position: top 10px left 10px;
+        border-style: none;
+        padding-left: 40px;
+        background-color: whitesmoke;
+    }
+
+    .scrollContent {
+        overflow-y: scroll;
+        height: calc(100% - 100px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .headItem {
+        margin-top: 15px;
+        margin-left: 10px;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .headItem img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border-style: none;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .rightItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        width: calc(100% - 80px);
+    }
+    .rightItem h3{
+        font-size: 13px;
+        font-weight: 600;
+        height: 20px;
+        margin: 0;
+        color: #aaaaaa;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre;
+        display: -webkit-box;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        max-width: calc(100% - 70px);
+        margin-top: 5px;
+    }
+    .rightItem h2{
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .time{
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0;
+        color: #aaaaaa;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<body>
+
+</body>
+</html>
+<script>
+    lifeCycle.onCreateView=function (){
+        return ` <div class="topBar"  style="padding-right: 10px;">
+    <img src="../img/btn_back_normal.png" style="width: 50px;height: 50px;" onclick="glitter.goBack()">
+    <h3 style="color: white;font-size: 16px;margin-left: 5px;">我的訂閱對象</h3>
+    <div style="flex: auto;"></div>
+</div>
+ <input id="serch" class="serch" placeholder="輸入用戶名稱關鍵字">
+   ${glitter.publicBeans.getLoadingView}
+<div id="scrollContent" class="scrollContent">
+
+</div>
+`
+    }
+    var subModel = {
+        data: [],
+        onLoadIng: false,
+        prePend:false,
+        isBt:false,
+        request: function (id, prefix) {
+            if (this.onLoadIng ) {
+                return
+            }
+            this.onLoadIng=true
+            glitter.publicBeans.postRequest({request: 'getSubscriber', id: id, prefix: prefix}, function (result) {
+                var json = JSON.parse(result)
+                var originSize=subModel.data.length
+                var item=json["data"]
+                if (json["data"] !== undefined ) {
+                    subModel.data = subModel.data.concat(item)
+                }
+                subModel.isBt=(subModel.data.length===originSize)
+                subModel.onLoadIng = false
+            }, function error(data) {
+                subModel.onLoadIng = false
+                subModel.request(id, prefix)
+            })
+        },
+        requestOld: function () {
+            if(this.isBt){return}
+            this.prePend=false
+            var id = (this.data.length === 0) ? "-1" : this.data[0].id
+            this.request(id, false)
+        },
+        requestNew: function () {
+            this.isBt=false
+            this.prePend=true
+            var id = (this.data.length === 0) ? "-1" : this.data[this.data.length - 1].id
+            this.request(id, true)
+        }
+    }
+    lifeCycle.onCreate=function (){
+        glitter.addObserver(subModel,"data",function (result){
+            if(result.length!==0){$('#scrollContent').html(``)}
+            for(var a=0;a<result.length;a++){
+                let data=result[a]
+                if( glitter.unicodeToString(data.pick).toLowerCase().indexOf($("#serch").val().toLowerCase())!==-1){
+                    $('#scrollContent').append(` <div  id="item${a}" class="headItem">
+  <img src="${data.head}">
+<div class="rightItem">
+<h2>${glitter.unicodeToString(data.pick)}</h2>
+</div>
+<div style="flex: auto;"></div>
+</div>`)
+                    $(`#item${a}`).click(function (){
+                        glitter.changePage('page/Page_User_Info.html','Page_User_Info',true,data)
+                    })
+                }
+            }
+        })
+        glitter.addObserver(subModel,"onLoadIng",function (result){
+            if(result){
+                $('#loadingView').show()
+            }else{
+                $('#loadingView').hide()
+                if(subModel.data.length===0){
+                    $('#scrollContent').html(`<img src="../img/emptyFile.gif" style="width: 100%;margin: 0;min-height: 50px;">
+<h3 style="color: grey;margin-top: -100px;width: 100%;display: flex;align-items: center;justify-content: center;font-size: 14px;">沒有可傳送訊息的對象...</h3>`)
+                }
+            }
+        })
+        subModel.requestNew()
+        glitter.addTextChangeListener( $("#serch"),function (){
+            $('#scrollContent').html('')
+            subModel.data=subModel.data
+        })
+    }
+
+</script>

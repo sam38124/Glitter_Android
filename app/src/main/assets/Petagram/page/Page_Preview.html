@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        background-color: dodgerblue;
+        margin-top: 0;
+        padding: 0;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+    .topBar2 {
+        padding: 0;
+        width: 100%;
+        display: flex;
+        height: 50px;
+        background-color: dodgerblue;
+        margin: 0;
+    }
+    .previewContent{
+        margin-top: 0px;
+        width: calc(100vw - 30px);
+        line-height: 30px;
+        margin-left: 10px;
+        font-size: 16px;
+        padding-left: 10px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        white-space:normal;
+        height: calc(100vh - 50px);
+        word-wrap:break-word;
+        word-break:break-all;
+    }
+    .selectDic .head {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%;
+    }
+    .selectDic {
+        height: 50px;
+        margin: 0px;
+        display: flex;
+    }
+    .flexText {
+        margin-top: 0;
+        color: black;
+        height: 50px;
+        line-height: 50px;
+        font-size: 17px;
+        margin-left: 10px;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/moment.js"></script>
+<link href="../css/Video_CSS.css" rel="stylesheet">
+<script src="../jslib/hls.js"></script>
+<script src="../jslib/video.js"></script>
+<body>
+<div class="topBar2">
+    <img src="../img/btn_back_normal.png" style="height: 50px;width: 50px;margin: 0" onclick="glitter.goBack()">
+    <h3 style="margin-top:0;color: white;height: 50px;line-height: 50px;width: calc(100% - 110px);font-size: 18px;">
+        文章預覽</h3>
+</div>
+
+<div class="previewContent"  id="previewContent">
+    <div class="selectDic">
+        <div>
+            <img class="head" src="../img/tsporticon.png" id="headImg">
+        </div>
+        <h3 class="flexText" style="font-size: 16px;font-weight: bold;" id="pickText">王建智</h3>
+    </div>
+    <script>
+        $('#headImg').attr('src', glitter.md_user.head)
+        $('#pickText').html(JSON.parse('{"unicode":"'+ glitter.md_user.pick+'"}').unicode)
+    </script>
+    <h3 style="color:black;margin:0;" id="tit"></h3>
+    <div style="margin:0;display: flex;height: 30px;padding: 0;">
+        <h3 style="margin:0;padding:0;color: dodgerblue;font-size: 14px;height: 30px;line-height: 30px;" id="circle">跑酷</h3>
+        <h3 id="time" style="margin-top:0;margin-bottom: 0;padding:0;color: gray;font-size: 11px;margin-left: 10px;height: 30px;line-height: 30px;" >今天16:40</h3>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    var time = moment().format("YYYY-MM-DD HH:mm");
+    $('#tit').html(gBundle.title)
+    $('#circle').html(gBundle.circle)
+    $('#time').html(time)
+    $('#previewContent').append('<div>'+gBundle.content+'</div>')
+</script>

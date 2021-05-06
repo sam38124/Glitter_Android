@@ -3,51 +3,53 @@ package com.jianzhi.glitter
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
-import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.database.Cursor
-import android.location.LocationManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.os.Message
 import android.provider.MediaStore
 import android.util.Log
-import android.view.*
+import android.view.KeyEvent
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.webkit.*
-import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.camera2.Camera2Config
+import androidx.camera.core.CameraXConfig
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.example.jztaskhandler.TaskHandler
 import com.example.jztaskhandler.runner
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.google.zxing.BarcodeFormat
+import com.jianzhi.glitter.pictureSelector.GlideCacheEngine
+import com.jianzhi.glitter.pictureSelector.GlideEngine
+import com.jianzhi.glitter.pictureSelector.InsGallery
+import com.jianzhi.glitter.pictureSelector.PictureSelectorEngineImp
 import com.jianzhi.glitter.util.GpsUtil
 import com.jianzhi.glitter.util.ZipUtil
 import com.jianzhi.glitter.util.downloadFile
 import com.jzsql.lib.mmySql.JzSqlHelper
-import com.jzsql.lib.mmySql.Sql_Result
+import com.luck.picture.lib.PictureSelector
+import com.luck.picture.lib.app.IApp
+import com.luck.picture.lib.app.PictureAppMaster
+import com.luck.picture.lib.config.PictureConfig
+import com.luck.picture.lib.config.PictureMimeType
+import com.luck.picture.lib.crash.PictureSelectorCrashUtils
+import com.luck.picture.lib.engine.PictureSelectorEngine
+import com.luck.picture.lib.entity.LocalMedia
 import com.orange.glitter.R
-import com.orango.electronic.jzutil.CalculateTime
 import com.orango.electronic.jzutil.getWebResource
-import com.orango.electronic.jzutil.postRequest
 import com.orango.electronic.jzutil.toHex
 import kotlinx.android.synthetic.main.glitter_page.view.*
-import java.io.ByteArrayInputStream
 import java.io.File
-import java.io.InputStream
-import java.nio.charset.StandardCharsets
-import androidx.core.database.getStringOrNull as getStringOrNull1
 
 
 data class JsInterFace(var interFace: Any, var tag: String)
@@ -56,7 +58,7 @@ object GlitterExecute {
         { data: String, valueCallback: ValueCallback<String> -> }
 }
 
-class GlitterActivity : AppCompatActivity() {
+class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
     private val FILE_CHOOSER_RESULT_CODE = 10000
     private var uploadMessage: ValueCallback<Uri>? = null
     private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
@@ -116,6 +118,13 @@ class GlitterActivity : AppCompatActivity() {
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        InsGallery.currentTheme = InsGallery.THEME_STYLE_DARK_BLUE
+        /** PictureSelector日志管理配制开始  */
+        // PictureSelector 绑定监听用户获取全局上下文或其他...
+        PictureAppMaster.getInstance().app = this
+        // PictureSelector Crash日志监听
+        PictureSelectorCrashUtils.init { t: Thread?, e: Throwable? -> }
+        /** PictureSelector日志管理配制结束  */
         setContentView(R.layout.glitter_page)
         window
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -303,19 +312,36 @@ class GlitterActivity : AppCompatActivity() {
         if (fileChooserParams != null) {
             if (fileChooserParams.acceptTypes.isNotEmpty()) {
                 i.type = fileChooserParams.acceptTypes[0]
-            } else {
-                i.type = "image/*";//圖片上傳
             }
-        } else {
-            i.type = "image/*";//圖片上傳
         }
-
-        startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
+         Log.e("mimeType",i.type)
+        if(i.type==null){
+            startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
+        }else if(i.type!!.contains("video")){
+            InsGallery.openGallery(
+                this,
+                GlideEngine.createGlideEngine(),
+                GlideCacheEngine.createCacheEngine(),
+                ArrayList<LocalMedia>(),
+                PictureMimeType.ofVideo()
+            )
+        }else if(i.type!!.contains("image")){
+            InsGallery.openGallery(
+                this,
+                GlideEngine.createGlideEngine(),
+                GlideCacheEngine.createCacheEngine(),
+                ArrayList<LocalMedia>(),
+                PictureMimeType.ofImage()
+            )
+        }
+        //第一种方式可通过自定义监听器的方式拿到选择的图片，第二种方式可通过官方的 onActivityResult 的方式拿到选择的图片
+      //  startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
     }
 
     // 3.選擇圖片後處理
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.e("requestBack","requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             if (null == uploadMessage && null == uploadMessageAboveL) return
             val result = if (data == null || resultCode != Activity.RESULT_OK) null else data.data
@@ -326,7 +352,37 @@ class GlitterActivity : AppCompatActivity() {
                 uploadMessage!!.onReceiveValue(result)
                 uploadMessage = null
             }
-        } else {
+        } else if(arrayOf(PictureConfig.CHOOSE_REQUEST).indexOf(requestCode) != -1){
+            // 图片选择结果回调
+            if (resultCode == RESULT_OK) {
+                if (null == uploadMessage && null == uploadMessageAboveL) return
+                val selectList = PictureSelector.obtainMultipleResult(data)
+                val results: ArrayList<Uri> = ArrayList()
+                selectList.map {
+                    if(it.isCut){
+                        results.add(Uri.fromFile( File(it.cutPath)))
+                    }else if(it.isCompressed){
+                        results.add(Uri.fromFile( File(it.compressPath)))
+                    }else if(it.isOriginal){
+                        results.add(Uri.fromFile( File(it.originalPath)))
+                    }else{
+                        if(it.mimeType.contains("video")){
+                            results.add(Uri.fromFile( File(it.path)))
+                        }else{
+                            results.add(Uri.parse(it.path))
+                        }
+                    }
+                }
+                Log.e("videoValue",results.toString())
+                uploadMessageAboveL!!.onReceiveValue(results.toTypedArray())
+                uploadMessageAboveL = null
+            }else{
+                val results: Array<Uri?>? = null
+                uploadMessageAboveL!!.onReceiveValue(results)
+                uploadMessageAboveL = null
+            }
+
+        }else{
             //這裏uploadMessage跟uploadMessageAboveL在不同系統版本下分別持有了
             //WebView對象，在用戶取消文件選擇器的情況下，需給onReceiveValue傳null返回值
             //否則WebView在未收到返回值的情況下，無法進行任何操作，文件選擇器會失效
@@ -809,5 +865,19 @@ class GlitterActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun getCameraXConfig(): CameraXConfig {
+        return Camera2Config.defaultConfig()
+    }
+    override fun getAppContext(): Context {
+        return applicationContext
+    }
+
+    override fun getPictureSelectorEngine(): PictureSelectorEngine {
+        return PictureSelectorEngineImp()
+    }
+
+
+
 }
 

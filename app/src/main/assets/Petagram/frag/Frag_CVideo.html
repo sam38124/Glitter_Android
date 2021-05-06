@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        margin: 0;
+        padding: 0;
+    }
+    audio::-webkit-media-controls-timeline
+    {
+        display: none;
+    }
+    audio::-webkit-media-controls
+    {
+        display: none;
+    }
+
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/lottie.js"></script>
+<script src="../model/Md_CVideo.js"></script>
+<script src="../jslib/widget.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/News_Slider.css"/>
+    <link rel="stylesheet" href="../css/CVideo_Cell.css">
+<script src="../jslib/video.js"></script>
+<script src="../jslib/index.umd.min.js"></script>
+<body>
+
+</body>
+
+</html>
+<script>
+    lifeCycle.onCreateView=function (){
+        return `
+<div onclick="" style="background-color: white;width:100%;border-bottom:hsla(0, 0%, 6.7%, .6) 1px solid;display: flex;right: 0;float: right;margin-right: 0;height: 40px;align-items: center;">
+  <img onclick="glitter.publicBeans.search(1)"  src="../img/zoom2.png" style="margin-left:10px;width: 15px;height: 15px;" >
+    <h3 onclick="glitter.publicBeans.search(1)"  style="color: #868e96;font-size: 14px;margin-right: 10px;">．搜尋影像</h3>
+    <div style="flex: auto;"></div>
+    <img onclick="filterItem()" src="../img/filter.png" style="width: 15px;height: 15px;" >
+    <h3 onclick="filterItem()" id="filterText" style="color: #868e96;font-size: 14px;margin-right: 10px;">．過濾內容</h3>
+</div>
+        <div id="reView">
+    <section class="lazy slider" id="sliderSection"></section>
+    <div id="content"></div></div>
+        `
+    }
+    /**
+     * VideoItem為所有影像的資料陣列
+     * */
+    var vdModel=glitter.publicBeans.userVideoModel
+    var loadingViewCallback=undefined
+    lifeCycle.onCreate=function (){
+        glitter.publicBeans.pauseFragC=function (){
+            for (var i = 0; i < players.length; i++)
+            {
+                var videoPlayerElem = $('#' + players[i]+' video').get(0);
+                videoPlayerElem.muted=true
+                videoPlayerElem.pause();
+            }
+        }
+        glitter.addObserver(vdModel,"onLoadIng",function (result){
+            if(!result){
+                if(loadingViewCallback!==undefined){loadingViewCallback()}
+                $('#loadingView').remove()
+                if(((vdModel.data.length===0))){
+                    $('#content').html(`<img src="../img/emptyFile.gif" style="width: 100%;margin: 0;min-height: 50px;">
+<h3 style="color: grey;margin-top: -100px;width: 100%;display: flex;align-items: center;justify-content: center;font-size: 14px;">尚無內容...</h3>`)
+                }
+            }else {
+                if(((vdModel.data.length===0))){
+                    $('#content').html(``)
+                }
+                $('#reView').append(glitter.publicBeans.getLoadingView)
+            }
+        })
+        /* global PullToRefresh */
+        PullToRefresh.init({
+            mainElement: '#content',
+            onRefresh: function(cb) {
+                loadingViewCallback=cb
+                vdModel.requestNew()
+            }
+        });
+        glitter.addObserver(vdModel,"data",function (result){
+       try {
+           var json=result
+           for (let i = 0; i < json.length; i++) {
+               let data = (vdModel.prePend) ? json[json.length-i-1]:json[i]
+               let html= `
+                    ${publicBeans.getVideoView(data, 'pointer-events:none;width:  100%; height:57vw;background-color: black;margin: 0;border-radius: 0;',false)}
+<div style="background-color: white;display: flex;align-items: center;height: 62px;margin: 0;">
+<img src="${data.head}" style="width: 30px;height: 30px;margin-left: 10px;border-radius: 15px;">
+<div style="white-space:nowrap;max-width:calc(100% - 90px);display: flex;flex-direction: column;margin-left: 10px;justify-content: center;">
+<h3 style="overflow:hidden;text-overflow:ellipsis;font-weight: 500;font-size: 16px;margin: 0;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;white-space: normal;">
+${glitter.unicodeToString(data.title)}</h3>
+<div style="display: flex;margin: 0;align-items: center;">
+<h3 style="opacity: .6;font-size: 11px;margin: 0;">${glitter.unicodeToString(data.pick)}</h3>
+<span style="opacity: .6;font-size: 10px;margin-left: 5px;margin-right: 5px;"> • </span>
+<span style="opacity: .6;font-size: 10px;">${data.reader}次觀看</span>
+<span style="opacity: .6;font-size: 10px;margin-left: 5px;margin-right: 5px;"> • </span>
+<span style="opacity: .6;font-size: 10px;">${data.time}</span>
+</div>
+</div>
+<div style="flex: auto;"></div>
+<div id="more${data.id}" style="width: 20px;height: 20px;margin-right: 10px;">
+<svg viewBox="0 0 24 24" fill=""><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+</div>
+</div>
+`
+               if(document.getElementById(data.id)){
+                   $('#'+data.id).html(html)
+               }else{
+                   players = players.concat(data.id)
+                   if(vdModel.prePend){
+                       $('#content').prepend(`  <div class="videoItem" id="${data.id}" style="margin-bottom: 10px;">${html}</div>`)
+                   }else{
+                       $('#content').append(`<div class="videoItem" id="${data.id}" style="margin-bottom: 10px;">${html}</div>`)
+                   }
+                   var videoPlayer = $('#' + data.id + ' video').get(0);
+                   videoPlayer.autoplay = false
+                   videoPlayer.controls = false
+                   $('#'+data.id).click(function (){
+                       glitter.publicBeans.goVideo(data.id)
+                   })
+               }
+               $('#more'+data.id).click(function (){
+                   glitter.openDiaLog('dialog/Dia_Video_Info.html','Dia_Video_Info',false,true,data)
+                   return false
+               })
+
+           }
+           playVideos()
+       }catch (e){
+           alert(e)
+       }
+        })
+
+        vdModel.requestNew()
+    }
+
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $('#content').height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight >= scrollHeight) {
+            vdModel.requestOld()
+        }
+    });
+    lifeCycle.onResume = function () {
+        playVideos()
+    }
+    //取得推薦運動員的ListView
+    function getAdAthleteView(adAthlete) {
+        var html =  ''
+        for (let i = 0; i < adAthlete.length; i++) {
+            let head = (adAthlete[i]).head
+            let pick = glitter.unicodeToString(adAthlete[i].pick)
+            let admin= (adAthlete[i]).account
+            html = `${html} <div style="display: inline-block" onclick="toUserInfo(${i})">
+            <img src="${head}" style="width: 60px;height: 60px;border-radius: 60px;margin: 10px;">            <h3 style="font-size: 11px;color: black;margin-top: -10px;width: 60px;margin-left:10px;text-align: center;font-family: PMingLiU;overflow-x:hidden;white-space: nowrap;text-overflow: ellipsis;">${pick}</h3>        </div>`
+        }
+        return html
+    }
+    //
+    function toUserInfo(a){
+        glitter.publicBeans.pauseFragC()
+        glitter.publicBeans.goUserInfo(glitter.publicBeans.adUser.data[a].account)
+    }
+    //過濾查詢內容
+    function filterItem(){
+        glitter.openDiaLog('dialog/Dia_Circle_Select.html','Dia_Circle_Select',false,false,function(id,title) {
+            $('#content').html('')
+            $('#filterText').html("．"+title)
+            $('#filterText').css('color','dodgerblue')
+            vdModel.circle=`${parseInt(id,10)}`
+            vdModel.data=[]
+            vdModel.isBt=false
+            vdModel.onLoadIng=false
+            vdModel.requestNew()
+        })
+    }
+</script>

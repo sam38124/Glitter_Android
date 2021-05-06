@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+    html{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+    .content{
+        width: 150px;
+        height: 150px;
+        background-color: white;
+        margin: auto;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        position: absolute;
+        display: inline-block;
+    }
+</style>
+<script src="../jslib/lottie.js"></script>
+<script src="../glitterBundle/ControlInstance.js"></script>
+
+<body>
+     <div class="content">
+         <lottie-player src="../lottieFile/info.json"  background="transparent"  speed="1"  style="margin-top:10px;position:relative;width: 90px; height: 90px;transform: translateX(-50%);left: 50%;"  loop  autoplay></lottie-player>
+         <h3 id="info" style="color: #323643;font-size: 13px;margin-top: 0px;width: 100%;text-align: center">title</h3>
+     </div>
+</body>
+</html>
+<script>
+
+    //console.log('tag='+getTag())
+    //console.log('json='+getObject())
+    $('#info').html(getObject())
+</script>

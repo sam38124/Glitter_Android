@@ -1,4 +1,4 @@
-include ':app',':Glitterlib'
+include ':app',':Glitterlib',':picture_library',':ucrop'
 
 rootProject.name='OG_Lite'
 

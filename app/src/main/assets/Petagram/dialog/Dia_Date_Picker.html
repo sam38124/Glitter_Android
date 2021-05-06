@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--有無引用bootstrap 4 樣式差異一點點，不影響功能-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   >-->
+    <style type="text/css">
+        .dtp-buttons > button.btn {
+            border: none;
+            border-radius: 2px;
+            position: relative;
+            box-shadow: none;
+            color: rgba(0,0,0, 0.87);
+            padding: 5px 16px;
+            font-size: 12px;
+            margin: 10px 1px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            will-change: box-shadow, transform;
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            background: transparent;
+        }
+
+        .dtp-buttons > button.btn:hover,
+        .dtp-buttons > button.btn:focus {
+            background-color: rgba(153, 153, 153, 0.2);
+        }
+
+        /*我自己多寫這個*/
+        .dtp-picker-calendar > table {
+            width: 100%;
+        }
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v77/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    <!--影響 Close < > 的切換icon-->
+    <link rel="stylesheet" href="../css/bootstrap-material-datetimepicker.css" />
+
+</head>
+<!--此plugin會影響語系-->
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script type="text/javascript" src="../jslib/moment.js"></script>
+<script src="../jslib/bootstrap-material-datetimepicker.js"></script>
+
+<body>
+<!--文字框，type不可填date，自訂一個class加上去-->
+
+<script type="text/javascript">
+    //當做全域參數使用
+    let bootstrapMaterialDatePickerOption = { time: true, nowButton: true, clearButton: true, format: 'YYYY/MM/DD hh:mm:ss', minDate : gBundle.min_Date };
+    lifeCycle.onCreateView=function (){
+        return `<input type="text" placeholder="請選擇日期" id="myDatePicker" class="myDatePicker" style="width: 0;height: 0;position: absolute;margin-top: -50px;"/>`
+    }
+    lifeCycle.onCreate=function (){
+        $('#myDatePicker').bootstrapMaterialDatePicker(bootstrapMaterialDatePickerOption).on('change', function(e, date){
+            gBundle.callback($('#myDatePicker').val())
+            glitter.closeDiaLogWithTag('Dia_Date_Picker')
+        });
+        document.getElementById("myDatePicker").focus();
+
+// $('#'+$('#myDatePicker').attr('data-dtp')).show()
+    }
+</script>
+</body>
+</html>

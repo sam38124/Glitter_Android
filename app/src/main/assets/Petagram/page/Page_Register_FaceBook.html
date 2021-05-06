@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: hidden;
+    }
+    .topBar{
+        width: 100%;
+        height: 50px;
+        background-color: dodgerblue;
+        display: flex;
+        align-items: center;
+    }
+    .content{
+        width: 100%;
+        height: calc(100% - 50px);
+        display: flex;
+        align-items: center;
+        overflow-y: scroll;
+        flex-direction: column;
+    }
+    .head{
+        min-height: 100px;
+        min-width: 100px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background-color: black;
+        margin-top: 23px;
+    }
+    .smallTitle{
+        width: calc(100% - 30px);
+        color: black;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+    input{
+        min-height:30px;
+        height: 30px;
+        color: black;
+        font-weight: 400;
+        font-size: 15px;
+        width: calc(100% - 35px);
+        border-color: #aaaaaa;
+        border-width: 1px;
+        border-style: solid;
+        padding-left: 5px;
+        border-radius: 2px;
+        margin-top: 10px;
+    }
+    .hint{
+        color: #8e8e8e;
+        font-size: 13px;
+        font-weight: 400;
+        width: calc(100% - 30px);
+        margin-top: 5px;
+    }
+    textarea{
+        width: calc(100% - 40px);
+        height: 60px;
+        min-height: 60px;
+        margin-top: 5px;
+        padding: 5px;
+        font-size: 14px;
+        border-color: #aaaaaa;
+        border-width: 1px;
+        border-style: solid;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/FileChooser.js"></script>
+<body>
+
+</body>
+</html>
+<script>
+    var myJsonInfo={}
+    lifeCycle.onCreate=function (){
+    }
+    lifeCycle.onCreateView=function (){
+        return `
+    <div class="topBar" >
+    <img  src="../img/btn_back_normal.png" style="width: 50px;height: 50px;" onclick="glitter.goBack()">
+    <h3 style="color: white;font-size: 16px;margin-left: 5px;">註冊帳號</h3>
+</div>
+<div class="content">
+<img class="head" id="head" onclick="addImageView()" src="https://graph.facebook.com/v3.3/${gBundle.account}/picture?height=300&width=300&migration_overrides=%7Boctober_2012%3Atrue%7D">
+<h3 style="color:dodgerblue;font-weight: 600;font-size: 16px;" onclick="addImageView()">更改頭像</h3>
+<h3 class="smallTitle">暱稱</h3>
+<input id="pick" value="${gBundle.pick}" placeholder="請輸入你的暱稱">
+<h3 class="hint">使用你為大眾所熟知的姓名／名稱，例如全名、暱稱或商家名稱，幫助其他用戶探索你的帳號。</h3>
+<h3 class="smallTitle">網站</h3>
+<input id="web" value="https://www.facebook.com/${gBundle.account}/" placeholder="網站">
+<h3 class="hint">輸入您的社群相關網站，讓其他用戶能更好地探索您．</h3>
+<h3 class="smallTitle">個人簡介</h3>
+<textarea id="introduce" placeholder="請介紹你自己"></textarea>
+<div style="flex: auto;"></div>
+<div onclick="postInfo()" style="margin-top:10px;margin-bottom:10px;color:white;border-radius: 10px;width: calc(100% - 30px);height: 40px;min-height:40px;background-color: dodgerblue;display: flex;align-items: center;justify-content: center;">
+提交內容
+</div>
+</div>
+    `
+    }
+    function postInfo(){
+        var model={}
+        model.account=gBundle.account
+        model.password="facebookLogin"
+        model.head=$('#head').attr('src')
+        model.pick=$('#pick').val()
+        myJsonInfo.web=$('#web').val()
+        myJsonInfo.introduce=$('#introduce').val()
+        model.json=JSON.stringify(myJsonInfo)
+        if((model.pick==='')){
+            glitter.openDiaLog('dialog/Dia_Info.html', 'Dia_Info', false, true, "請輸入你的暱稱",function (){})
+            return
+        }
+        glitter.publicBeans.postWithDialog({
+            request:'register',
+            data:JSON.stringify(model)
+        },function (result){
+            var mapData = JSON.parse(result)
+            if (mapData.result === "true") {
+                glitter.publicBeans.token=mapData.token
+                var dat=JSON.parse(mapData.data)
+                var map={}
+                map.account=dat.account
+                map.password=dat.password
+                glitter.md_user=dat
+                glitter.serialUtil.storeObject(dat,"md_user","Md_User",function (){
+                    switch (glitter.deviceType){
+                        case glitter.deviceTypeEnum.Android:
+                            glitter.reloadPage()
+                            break
+                        case glitter.deviceTypeEnum.Web:
+                            glitter.location.href=gBundle.returnUrl
+                            break
+                        case glitter.deviceTypeEnum.Ios:
+                            glitter.reloadPage()
+                            break
+                    }
+                },function (){
+                    glitter.openDiaLog('dialog/Dia_DisConnect.html', 'DisConnect', false, true, '{}')
+                })
+            } else {
+                glitter.openDiaLog('dialog/Dia_Info.html', 'Dia_Info', false, true, "註冊失敗，請稍後再試!!",function (){
+                })
+            }
+        },function (data){})
+    }
+
+    function addImageView() {
+        fileChooser.selectImage(function (a) {
+            $('#head').attr(`src`,a)
+        })
+    }
+</script>

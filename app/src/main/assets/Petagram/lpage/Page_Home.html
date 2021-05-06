@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        width:100%;
+        height: 100%;
+    }
+    .topDV{
+        width: 100%;
+        height: 50px;
+        background-color: dodgerblue;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+    .topBar{
+        position: relative;
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-content: center;
+        background-color: dodgerblue;
+        max-width: 1280px;
+    }
+    .topBar h3{
+        letter-spacing:6px;
+        color:white;
+        font-size:25px;
+        margin-top:5px;
+    }
+     .serchDiv{
+        margin-left: 20px;
+        position: relative;
+        flex:auto;
+        border-color: white;
+        border-width: 1px;
+        height: 30px;
+        transform: translateY(-50%);
+        top:50%;
+        background-color: white;
+        border-style: solid;
+        border-radius: 5px;
+        max-width: 600px;
+        display: flex;
+        font-size: 16px;
+        padding-left: 5px;
+        color: gray;
+        justify-content: center;
+    }
+     .serchDiv input{
+         flex: auto;
+         border-style: none;
+         font-size: 16px;
+     }
+    .searchBt{
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        transform: translateY(-50%);
+        top:50%;
+        padding: 5px;
+        cursor: pointer;
+    }
+    .topIcon{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color: white;
+        transform: translateY(-50%);
+        top:50%;
+        position: relative;
+    }
+</style>
+<script src="../glitterBundle/ControlInstance.js"></script>
+<script src="../jslib/icons.css"></script>
+<script src="../glitterBundle/babel.min.js"></script>
+<script src="../glitterBundle/react.production.min.js" crossorigin></script>
+<script src="../glitterBundle/react-dom.production.min.js" crossorigin></script>
+<script src="../glitterBundle/create-react-class.min.js" crossorigin></script>
+<script src="../prop-types/prop-types.js"></script>
+<script src="../dist/react-infinite.js"></script>
+<script src="Page_Home.js" type="text/babel"></script>
+<body>
+
+<div id="infinite-example-two" class="wrapper" style="width: 100%;height: 100%;"></div>
+</body>
+</html>
