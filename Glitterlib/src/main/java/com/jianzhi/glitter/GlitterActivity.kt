@@ -64,7 +64,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
     private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     private var handler = Handler()
     lateinit var webRoot: WebView
-
     companion object {
         var webviewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
@@ -133,6 +132,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         dataMap["Glitter"] = JzSqlHelper(this!!, "Glitter.db")
         webRoot = rootview.webroot
+        rootview.webroot.settings.domStorageEnabled=true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.addJavascriptInterface(Database(), "DataBase")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true

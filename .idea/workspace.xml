@@ -6,7 +6,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="chr" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -15,349 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f90d3b6-cf70-436d-9115-989bc00baf84" name="Default Changelist" comment="2.2.0">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/GlideCacheEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/GlideEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/ImageCacheUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/InsGallery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/PictureSelectorEngineImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_list_sina_text_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_list_text_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_preview_sina_text_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_preview_text_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/checkbox_num_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_add_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_back_arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_check.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_delete_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_let_go_delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_minus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_orange_arrow_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_orange_arrow_up.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/ic_plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/num_oval_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/num_oval_blue_def.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/num_oval_orange.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/drawable/picture_new_item_select_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/1.0.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/Entry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/Glitter" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/Md_User" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/PublicBeans.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/cell/MessageCell.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/CVideo_Cell.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/Frag_News.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/Frag_Video.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/News_Slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/Reply.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/Video_CSS.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/css/bootstrap-material-datetimepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Circle_Select.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_DataLoading.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Date_Picker.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_DisConnect.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Item_Selection.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Need_Sign_In.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Post_List.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_ReplyMessage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Select_Category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dialog/Dia_Video_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dist/react-infinite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/dist/react-infinite.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Adopt.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Adopt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Article_List.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_CVideo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Engine.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Forium.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Group.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Group_List.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Map.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_MySubscribe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_My_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_News.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Pair.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Shopping.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Video.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/Frag_Video_List.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/frag/NavaGation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/BundleData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/ControlInstance.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/DataBase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/GlAdapter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/Glitter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/Glitter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/GpsManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/GridAdapter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/NavaGation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/NaviGation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/Serialization.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/ViewPager.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/ViewPager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/babel.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/create-react-class.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/extension.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/react-dom.production.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/react.production.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/TouchDragListener.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/_bottom-sheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/_keyframes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/_reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/glitterBundle/src/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/iframe/youtube.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/actblack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/actgray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/addtr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/admin2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/admininfo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/article.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/articlegray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/backgroung.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bell.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bell2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/blackcircle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/blackcorner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/blueart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluecamera.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluecircle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/blueexc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluefilter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluemail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluesend.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluetag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bluetarget.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/blueyt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bookmark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bookmark2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/bpencil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/breport.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/btn_back_normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/btn_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/buttonradio.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/camera.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/chat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/check_mark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/check_mark_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/check_mark_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/circle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/circlered.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/clock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/comment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/corner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerbottonblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerdarkblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerdelete.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornergray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerred.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornersignin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornertopblue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/cornerwhite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/device.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/download.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/download_black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/dropdown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/emojisad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/emptyFile.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/engine.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/exclamation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/expand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/eye.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/fan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/field.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/filter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/filterblue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/forium.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/foriumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/grarlocation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/grarpet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/grattag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/headbluetit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/heart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/heart2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/heartb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/hiclipart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/joinicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/joinicond.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/language.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/link.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/loadingvideo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/location.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/loginframegray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/mail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/message.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/more.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/munuback.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/need_sign_in.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/notes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/opacity.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/paw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/paw2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/petagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/photo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/runner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/send.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/sendblack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/share.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/sharetit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/spi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/sport.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/square.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/star.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/star_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/stroke.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/strokewhite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/strokewhiteredit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/sub.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/sub2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/touch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/trangle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/trashcan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/tsporticon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/video.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/whiteplay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/wifi_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/youtube.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/youtubegray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/zoom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/zoom2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/img/zoomgray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/EventLinstener.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/FileChooser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/ViewPager.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/ViewPager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/bootstrap-material-datetimepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/hls.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/icons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/index.umd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/lottie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/moment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/pull-to-reload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/pull-to-reload.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/video.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/jslib/widget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/disconnect.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/info.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/loading.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/need_sign_in.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/nodata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/page_data_loading.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lottieFile/waitjoin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lpage/Page_Home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/lpage/Page_Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_CVideo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_Circle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_Forium.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_Group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_NaviGation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_News.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_Reply_Message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/model/Md_Video.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Add_Chat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Chat_To.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Edit_My_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_FaceBook_Sign_In.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Hone2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Logo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_MySubScrible.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_My_Follow.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_My_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_My_Mail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Pair.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Play_Video.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Policy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Policy_Grant.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Policy_View.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Post_Article.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Post_Commodity.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Post_Group.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Post_Message.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Post_Video.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Preview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Register_FaceBook.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Register_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Select_Address.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Serch.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Show_Article.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Show_Group.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Show_Shopping.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Show_Video.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_Sign_In.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/page/Page_User_Info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/checkPropTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/factory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/factoryWithThrowingShims.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/factoryWithTypeCheckers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/lib/ReactPropTypesSecret.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/prop-types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/prop-types/prop-types.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/CONTRIBUTING.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/ISSUE_TEMPLATE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/README.markdown" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/bower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/component.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick.jquery.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/ajax-loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/config.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/fonts/slick.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/fonts/slick.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/fonts/slick.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/fonts/slick.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick-theme.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick-theme.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/slick-1.8.1/slick/slick.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/jscroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/listVideo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/newtest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/testSignin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/testslick.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/testhtml/youtubeTest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/assets/Petagram/util/FilePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -369,22 +25,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jianzhi/glitter/MyApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jianzhi/glitter/MyApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[66758ce9]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -431,6 +80,11 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Glitterlib/build.gradle" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KotlinMultiplatform">
     <allAvailableExecutables />
@@ -565,19 +219,6 @@
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Glitter [clean]" type="GradleRunConfiguration" factoryName="Gradle">
@@ -764,7 +405,9 @@
       <workItem from="1618261539931" duration="3426000" />
       <workItem from="1618320177733" duration="202000" />
       <workItem from="1618806563681" duration="2421000" />
-      <workItem from="1620303886252" duration="11811000" />
+      <workItem from="1620303886252" duration="13750000" />
+      <workItem from="1620485073349" duration="1171000" />
+      <workItem from="1620752136726" duration="156000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1611207838833</created>
