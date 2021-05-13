@@ -113,7 +113,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         }
     }
     interface ResultCallBack{
-        fun resultBack(requestCode: Int, resultCode: Int, data: Intent?){}
+       abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent?)
     }
 
     var ginterFace = GlitterInterFace()
