@@ -106,8 +106,15 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         fun addJavacScriptInterFace(myInterface: JavaScriptInterFace) {
             javaScriptInterFace.add(myInterface)
         }
+        //添加自定義Activity回調
+        var activityResultList:ArrayList<ResultCallBack> = ArrayList()
+        fun addActivityResult(callback:ResultCallBack){
+            activityResultList.add(callback)
+        }
     }
-
+    interface ResultCallBack{
+        fun resultBack(requestCode: Int, resultCode: Int, data: Intent?){}
+    }
 
     var ginterFace = GlitterInterFace()
     private var webChromeClient: VideoEnabledWebChromeClient? = null
@@ -341,6 +348,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
     // 3.選擇圖片後處理
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        activityResultList.map { it.resultBack(requestCode,resultCode,data) }
         Log.e("requestBack","requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             if (null == uploadMessage && null == uploadMessageAboveL) return

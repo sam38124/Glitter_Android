@@ -14,287 +14,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f90d3b6-cf70-436d-9115-989bc00baf84" name="Default Changelist" comment="2.2.0">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/RSL10_Fota_Android_Source_Code-blelibrary.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/.transforms/2c9791f652553a4919c9e27ec8c03851.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/.transforms/2c9791f652553a4919c9e27ec8c03851/classes/classes.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/generated/source/buildConfig/debug/com/onsemi/blelibrary/BuildConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/compile_library_classes_jar/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/compile_symbol_list/debug/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/BleConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/BleException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/BleResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/BluetoothGattCharacteristicClone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/BufferAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Characteristic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicChangedListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicImpl$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicImpl$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicImpl$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicPermissions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CharacteristicProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/CreatePeripheralFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Disposable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/ExceptionHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/ExceptionHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/NotConnectableException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/NotConnectedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/NotSupportedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Peripheral.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralChangedListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralManagerImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralManagerImpl$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralManagerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/PeripheralState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Service.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/ServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/StringHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskBase$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicChangeIndication$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicChangeIndication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicChangeNotification$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicChangeNotification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicRead$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicRead.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicWrite$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCharacteristicWrite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskCompletedCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskConnect$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskConnect$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskConnect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskControllerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskDisconnect$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskDisconnect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskDiscoverServices$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskDiscoverServices.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskPeripheral.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskReadRemoteRssi$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskReadRemoteRssi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskRequestMtu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskRequestMtu$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskRequestMtu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskSet2MbPhy$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskSet2MbPhy$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskSet2MbPhy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskStartScan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TaskStopScan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/TimeoutException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/UpdateController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/UpdateControllerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/UpdateOptions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/UuidHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/ble/Version.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/javac/debug/classes/com/onsemi/blelibrary/BuildConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/local_only_symbol_list/debug/R-def.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/merged_manifests/debug/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/navigation_json/debug/navigation.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/packaged_res/debug/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/runtime_library_classes_jar/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/androidTest/java/com/onsemi/blelibrary/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/BleConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/BleException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/BleResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/BluetoothGattCharacteristicClone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/BufferAccess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Characteristic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CharacteristicChangedListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CharacteristicImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CharacteristicListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CharacteristicPermissions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CharacteristicProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/CreatePeripheralFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Disposable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/ExceptionHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/NotConnectableException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/NotConnectedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/NotSupportedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Peripheral.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralChangedListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralManagerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/PeripheralState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/ServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/StringHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCharacteristic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCharacteristicChangeIndication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCharacteristicChangeNotification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCharacteristicRead.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCharacteristicWrite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskCompletedCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskConnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskControllerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskDisconnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskDiscoverServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskPeripheral.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskReadRemoteRssi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskRequestMtu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskSet2MbPhy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskStartScan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TaskStopScan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/TimeoutException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/UpdateController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/UpdateControllerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/UpdateOptions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/UuidHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/java/com/onsemi/ble/Version.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blelibrary/src/test/java/com/onsemi/blelibrary/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/.transforms/a25133cb59254aba20a46b3d2b383037.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/.transforms/a25133cb59254aba20a46b3d2b383037/classes/classes.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/generated/source/buildConfig/debug/com/onsemi/protocol/BuildConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/compile_library_classes_jar/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/compile_symbol_list/debug/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/BuildConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/BinaryString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/BufferAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/Cobs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/CobsFraming$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/CobsFraming$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/CobsFraming.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/CommunicationException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/Crc16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/cobs/Version.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcDataPacket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcManager$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcManager$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/hdlc/HdlcManagerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FirmwareImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaFirmwareFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaFirmwareVersion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaFrameHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaFrameHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaFrameHandlerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaOptions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/FotaUpdateStep.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/update/RebootToBootloaderFunc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/Array.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/DataExchange.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/DataExchangeListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/Disposable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/ProtocolException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/javac/debug/classes/com/onsemi/protocol/utility/StringHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/local_only_symbol_list/debug/R-def.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/merged_manifests/debug/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/navigation_json/debug/navigation.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/runtime_library_classes_jar/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/BinaryString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/BufferAccess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/Cobs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/CobsFraming.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/CommunicationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/Crc16.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/cobs/Version.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/hdlc/HdlcDataPacket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/hdlc/HdlcManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/hdlc/HdlcManagerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FirmwareImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaFirmwareFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaFirmwareVersion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaFrameHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaFrameHandlerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaOptions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/FotaUpdateStep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/update/RebootToBootloaderFunc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/Array.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/DataExchange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/DataExchangeListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/Disposable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/ProtocolException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fotalibrary/src/main/java/com/onsemi/protocol/utility/StringHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_One_API_22" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -629,7 +367,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
