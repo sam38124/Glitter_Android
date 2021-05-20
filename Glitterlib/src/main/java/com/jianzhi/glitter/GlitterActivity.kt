@@ -124,6 +124,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        GlitterFunction.create()
         InsGallery.currentTheme = InsGallery.THEME_STYLE_DARK_BLUE
         /** PictureSelector日志管理配制开始  */
         // PictureSelector 绑定监听用户获取全局上下文或其他...
@@ -137,25 +138,14 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         rootview = findViewById<View>(android.R.id.content).rootView
         window
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        dataMap["Glitter"] = JzSqlHelper(this!!, "Glitter.db")
+        dataMap["Glitter"] = JzSqlHelper(this, "Glitter.db")
         webRoot = rootview.webroot
         rootview.webroot.settings.domStorageEnabled=true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.addJavascriptInterface(Database(), "DataBase")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         rootview.webroot.settings.javaScriptEnabled = true
-        if (ginterFace.getPro("version") == null || updateRout == null) {
-            rootview.webroot.loadUrl("$baseRout/home.html")
-        } else {
-            baseRout = applicationContext.filesDir.toString()
-            rootview.webroot.loadUrl(
-                "${
-                    Uri.fromFile(
-                        File("$baseRout/glitterBundle", "Application.html")
-                    )
-                }"
-            )
-        }
+        rootview.webroot.loadUrl("$baseRout/home.html")
         Log.e("asseturl", "" + Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))
         // file:///android_asset/appData/glitterBundle/Application.html#
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON_DEMAND;
@@ -169,49 +159,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
             rootview.webroot.evaluateJavascript(data, valueCallback)
         }
         rootview.webroot.webViewClient = webviewClient
-
-        if (updateRout != null) {
-            TaskHandler.newInstance.runTaskTimer(lifecycle, 1000, 5000, runner {
-                if (onUpdate) {
-                    return@runner
-                }
-                Thread {
-                    onUpdate = true
-                    val version = "$updateRout/GlitterVersion?AppName=$appName".getWebResource(10000)
-                    if (version == ginterFace.getPro("version") || version == null) {
-                        onUpdate = false
-                        return@Thread
-                    }
-                    val applicationContext = applicationContext
-                    val logFile = File(applicationContext.filesDir, "web.zip")
-                    if (ZipUtil.getRequest(
-                            "$updateRout/GetGlitter?AppName=$appName&version=$version",
-                            1000 * 120,
-                            file = logFile
-                        )
-                    ) {
-                        Log.e("logFile", logFile.readText())
-                        ZipUtil.unzip(
-                            File(applicationContext.filesDir, "web.zip"),
-                            applicationContext.filesDir.path
-                        )
-                        for (i in (applicationContext.filesDir).listFiles()) {
-                            Log.e("webRoot", i.path)
-                        }
-                        handler.post {
-                            rootview.webroot.clearCache(true)
-                            ginterFace.setPro("version", "$version");
-//                          webView.loadUrl("${Uri.fromFile(File("${applicationContext.filesDir}/glitterBundle", "Application.html"))}")
-                            recreate()
-                            onUpdate = false
-                        }
-                    } else {
-                        onUpdate = false
-                    }
-                }.start()
-            })
-        }
-
         // Initialize the VideoEnabledWebChromeClient and set event handlers
         val nonVideoLayout: View = rootview.nonVideoLayout // Your own view, read class comments
 
@@ -527,17 +474,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
             startActivity(intent)
         }
 
-        @JavascriptInterface
-        fun getPro(tag: String): String? {
-            val profilePreferences = this@GlitterActivity.getSharedPreferences("Setting", Context.MODE_PRIVATE)
-            return profilePreferences.getString(tag, null)
-        }
-
-        @JavascriptInterface
-        fun setPro(key: String, value: String) {
-            val profilePreferences = this@GlitterActivity.getSharedPreferences("Setting", Context.MODE_PRIVATE)
-            profilePreferences.edit().putString(key, value).commit()
-        }
 
         @JavascriptInterface
         fun closeApp() {

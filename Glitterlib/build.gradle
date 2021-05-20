@@ -26,7 +26,7 @@ android {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '6.1.1'
+    gradleVersion = '6.6'
 }
 
 dependencies {
