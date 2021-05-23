@@ -287,6 +287,14 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
                 ArrayList<LocalMedia>(),
                 PictureMimeType.ofImage()
             )
+        }else if(i.type!!.contains("allMedia")){
+            InsGallery.openGallery(
+                this,
+                GlideEngine.createGlideEngine(),
+                GlideCacheEngine.createCacheEngine(),
+                ArrayList<LocalMedia>(),
+                PictureMimeType.ofAll()
+            )
         }
         //第一种方式可通过自定义监听器的方式拿到选择的图片，第二种方式可通过官方的 onActivityResult 的方式拿到选择的图片
       //  startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
