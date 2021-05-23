@@ -287,7 +287,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
                 ArrayList<LocalMedia>(),
                 PictureMimeType.ofImage()
             )
-        }else if(i.type!!.contains("allMedia")){
+        }else if(i.type!!.contains("allmedia")){
             InsGallery.openGallery(
                 this,
                 GlideEngine.createGlideEngine(),
