@@ -133,17 +133,16 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         PictureSelectorCrashUtils.init { t: Thread?, e: Throwable? -> }
         /** PictureSelector日志管理配制结束  */
         setContentView(R.layout.glitter_page)
-        window
-            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         rootview = findViewById<View>(android.R.id.content).rootView
         window
-            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         dataMap["Glitter"] = JzSqlHelper(this, "Glitter.db")
         webRoot = rootview.webroot
         rootview.webroot.settings.domStorageEnabled=true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.addJavascriptInterface(Database(), "DataBase")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
+        HeightVisibleChangeListener(rootview.webroot);
         rootview.webroot.settings.javaScriptEnabled = true
         rootview.webroot.loadUrl("$baseRout/home.html")
         Log.e("asseturl", "" + Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))

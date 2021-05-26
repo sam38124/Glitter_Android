@@ -8,9 +8,7 @@ class MyApp :Application(){
     override fun onCreate() {
         super.onCreate()
 
-        GlitterActivity.setUp("file:///android_asset/IamStarTv",appName = "IamStarTv")
-        GlitterActivity.addActivityResult(object : ResultCallBack {
-            override fun resultBack(requestCode: Int, resultCode: Int, data: Intent?) {} })
+        GlitterActivity.setUp("file:///android_asset/TireStorage", appName = "TireStorage")
     }
 
 }
