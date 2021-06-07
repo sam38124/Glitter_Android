@@ -141,7 +141,7 @@ public final class InsGallery {
                 //.videoMinSecond(10)
                 .videoMaxSecond(600)
                 .videoMinSecond(3)
-                .recordVideoSecond(60)//录制视频秒数 默认60s
+                .recordVideoSecond(600)//录制视频秒数 默认60s
                 .recordVideoMinSecond(3)//最低录制秒数
                 .cutOutQuality(90)// 裁剪输出质量 默认100
                 .minimumCompressSize(100)// 小于100kb的图片不压缩
