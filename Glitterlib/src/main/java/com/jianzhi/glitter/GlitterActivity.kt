@@ -769,7 +769,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         }
     }
 
-    private fun getPermission(Permissions: Array<String>, caller: permission_C) {
+     fun getPermission(Permissions: Array<String>, caller: permission_C) {
         permissionCaller = caller
         val permissionDeniedList = ArrayList<String>()
         for (permission in Permissions) {
