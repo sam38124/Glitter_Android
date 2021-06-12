@@ -61,9 +61,9 @@ object GlitterExecute {
 
 class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
    
-    private var uploadMessage: ValueCallback<Uri>? = null
-    private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
-    private var handler = Handler()
+    public var uploadMessage: ValueCallback<Uri>? = null
+    public var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
+    public var handler = Handler()
     lateinit var webRoot: WebView
     companion object {
         private val FILE_CHOOSER_RESULT_CODE = 10000
@@ -243,7 +243,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
                 attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
                 attrs.flags =
                     attrs.flags and WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON.inv()
-                this.getWindow().setAttributes(attrs)
+                this.window.attributes = attrs
                 if (Build.VERSION.SDK_INT >= 14) {
                     this.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
                 }
