@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.camera2.Camera2Config
 import androidx.camera.core.CameraXConfig
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import com.example.jztaskhandler.TaskHandler
 import com.example.jztaskhandler.runner
@@ -59,12 +60,13 @@ object GlitterExecute {
 }
 
 class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
-    private val FILE_CHOOSER_RESULT_CODE = 10000
+   
     private var uploadMessage: ValueCallback<Uri>? = null
     private var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     private var handler = Handler()
     lateinit var webRoot: WebView
     companion object {
+        private val FILE_CHOOSER_RESULT_CODE = 10000
         var webviewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView,
@@ -113,6 +115,12 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         }
         //添加創建回條
         var onCreateCallBack:() -> Unit = { }
+        //自定義圖片選擇回條
+        var setImageCallBack:(fileChooserParams: WebChromeClient.FileChooserParams?)->Unit  = {
+            val i = Intent(Intent.ACTION_GET_CONTENT)
+            i.addCategory(Intent.CATEGORY_OPENABLE)
+            instance().startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
+        }
     }
     //Activity回調
     interface ResultCallBack{
@@ -185,14 +193,14 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
 
             fun openFileChooser(valueCallback: ValueCallback<Uri>) {
                 uploadMessage = valueCallback
-                openImageChooserActivity()
+                setImageCallBack(null)
             }
 
             // For Android  >= 3.0
             fun openFileChooser(valueCallback: ValueCallback<Uri>, acceptType: String?) {
                 uploadMessage = valueCallback
                 Log.e("acceptType", "acceptType--" + acceptType)
-                openImageChooserActivity()
+                setImageCallBack(null)
             }
 
             //For Android  >= 4.1
@@ -203,7 +211,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
             ) {
                 uploadMessage = valueCallback
                 Log.e("acceptType", "acceptType--" + acceptType)
-                openImageChooserActivity()
+                setImageCallBack(null)
             }
 
             // For Android >= 5.0
@@ -217,7 +225,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
                     "onShowFileChooser${Gson().toJson(fileChooserParams.acceptTypes)}"
                 )
                 uploadMessageAboveL = filePathCallback
-                openImageChooserActivity(fileChooserParams)
+                setImageCallBack(fileChooserParams)
                 return true
             }
         }
@@ -261,48 +269,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         rootview.webroot.evaluateJavascript("glitter.onBackPressed();", null)
     }
 
-    // 2.回調方法觸發本地選擇文件
-    private fun openImageChooserActivity(fileChooserParams: WebChromeClient.FileChooserParams? = null) {
-        val i = Intent(Intent.ACTION_GET_CONTENT)
-        i.addCategory(Intent.CATEGORY_OPENABLE)
-        if (fileChooserParams != null) {
-            if (fileChooserParams.acceptTypes.isNotEmpty()) {
-                i.type = fileChooserParams.acceptTypes[0]
-            }
-        }
-         Log.e("mimeType",i.type)
-        if(i.type==null){
-            startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
-        }else if(i.type!!.contains("video")){
-            InsGallery.openGallery(
-                this,
-                GlideEngine.createGlideEngine(),
-                GlideCacheEngine.createCacheEngine(),
-                ArrayList<LocalMedia>(),
-                PictureMimeType.ofVideo()
-            )
-        }else if(i.type!!.contains("image")){
-            InsGallery.openGallery(
-                this,
-                GlideEngine.createGlideEngine(),
-                GlideCacheEngine.createCacheEngine(),
-                ArrayList<LocalMedia>(),
-                PictureMimeType.ofImage()
-            )
-        }else if(i.type!!.contains("allmedia")){
-            InsGallery.openGallery(
-                this,
-                GlideEngine.createGlideEngine(),
-                GlideCacheEngine.createCacheEngine(),
-                ArrayList<LocalMedia>(),
-                PictureMimeType.ofAll()
-            )
-        }
-        //第一种方式可通过自定义监听器的方式拿到选择的图片，第二种方式可通过官方的 onActivityResult 的方式拿到选择的图片
-      //  startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
-    }
 
-    // 3.選擇圖片後處理
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         activityResultList.map { it.resultBack(requestCode,resultCode,data) }
@@ -347,17 +314,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
                 uploadMessageAboveL = null
             }
 
-        }else{
-            //這裏uploadMessage跟uploadMessageAboveL在不同系統版本下分別持有了
-            //WebView對象，在用戶取消文件選擇器的情況下，需給onReceiveValue傳null返回值
-            //否則WebView在未收到返回值的情況下，無法進行任何操作，文件選擇器會失效
-            if (uploadMessage != null) {
-                uploadMessage!!.onReceiveValue(null)
-                uploadMessage = null
-            } else if (uploadMessageAboveL != null) {
-                uploadMessageAboveL!!.onReceiveValue(null)
-                uploadMessageAboveL = null
-            }
         }
     }
 
