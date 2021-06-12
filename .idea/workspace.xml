@@ -15,7 +15,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2f90d3b6-cf70-436d-9115-989bc00baf84" name="Default Changelist" comment="2.2.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,7 +413,7 @@
       <workItem from="1621859925062" duration="300000" />
       <workItem from="1622443843906" duration="26000" />
       <workItem from="1623067936804" duration="3763000" />
-      <workItem from="1623501607087" duration="1515000" />
+      <workItem from="1623501607087" duration="2141000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1611207838833</created>

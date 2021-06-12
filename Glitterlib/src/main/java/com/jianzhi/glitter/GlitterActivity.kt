@@ -318,7 +318,7 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun onActivityResultAboveL(requestCode: Int, resultCode: Int, intent: Intent?) {
+    public fun onActivityResultAboveL(requestCode: Int, resultCode: Int, intent: Intent?) {
         if (requestCode != FILE_CHOOSER_RESULT_CODE || uploadMessageAboveL == null) return
         var results: Array<Uri?>? = null
         if (resultCode == Activity.RESULT_OK) {
