@@ -30,22 +30,10 @@ import com.example.jztaskhandler.TaskHandler
 import com.example.jztaskhandler.runner
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jianzhi.glitter.pictureSelector.GlideCacheEngine
-import com.jianzhi.glitter.pictureSelector.GlideEngine
-import com.jianzhi.glitter.pictureSelector.InsGallery
-import com.jianzhi.glitter.pictureSelector.PictureSelectorEngineImp
 import com.jianzhi.glitter.util.GpsUtil
 import com.jianzhi.glitter.util.ZipUtil
 import com.jianzhi.glitter.util.downloadFile
 import com.jzsql.lib.mmySql.JzSqlHelper
-import com.luck.picture.lib.PictureSelector
-import com.luck.picture.lib.app.IApp
-import com.luck.picture.lib.app.PictureAppMaster
-import com.luck.picture.lib.config.PictureConfig
-import com.luck.picture.lib.config.PictureMimeType
-import com.luck.picture.lib.crash.PictureSelectorCrashUtils
-import com.luck.picture.lib.engine.PictureSelectorEngine
-import com.luck.picture.lib.entity.LocalMedia
 import com.orange.glitter.R
 import com.orango.electronic.jzutil.getWebResource
 import com.orango.electronic.jzutil.toHex
@@ -59,7 +47,7 @@ object GlitterExecute {
         { data: String, valueCallback: ValueCallback<String> -> }
 }
 
-class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
+class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
    
     public var uploadMessage: ValueCallback<Uri>? = null
     public var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
@@ -137,12 +125,8 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         super.onCreate(savedInstanceState)
         onCreateCallBack()
         GlitterFunction.create()
-        InsGallery.currentTheme = InsGallery.THEME_STYLE_DARK_BLUE
+
         /** PictureSelector日志管理配制开始  */
-        // PictureSelector 绑定监听用户获取全局上下文或其他...
-        PictureAppMaster.getInstance().app = this
-        // PictureSelector Crash日志监听
-        PictureSelectorCrashUtils.init { t: Thread?, e: Throwable? -> }
         /** PictureSelector日志管理配制结束  */
         setContentView(R.layout.glitter_page)
         rootview = findViewById<View>(android.R.id.content).rootView
@@ -274,47 +258,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
         super.onActivityResult(requestCode, resultCode, data)
         activityResultList.map { it.resultBack(requestCode,resultCode,data) }
         Log.e("requestBack","requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
-        if (requestCode == FILE_CHOOSER_RESULT_CODE) {
-            if (null == uploadMessage && null == uploadMessageAboveL) return
-            val result = if (data == null || resultCode != Activity.RESULT_OK) null else data.data
-            // Uri result = (((data == null) || (resultCode != RESULT_OK)) ? null : data.getData());
-            if (uploadMessageAboveL != null) {
-                onActivityResultAboveL(requestCode, resultCode, data)
-            } else if (uploadMessage != null) {
-                uploadMessage!!.onReceiveValue(result)
-                uploadMessage = null
-            }
-        } else if(arrayOf(PictureConfig.CHOOSE_REQUEST).indexOf(requestCode) != -1){
-            // 图片选择结果回调
-            if (resultCode == RESULT_OK) {
-                if (null == uploadMessage && null == uploadMessageAboveL) return
-                val selectList = PictureSelector.obtainMultipleResult(data)
-                val results: ArrayList<Uri> = ArrayList()
-                selectList.map {
-                    if(it.isCut){
-                        results.add(Uri.fromFile( File(it.cutPath)))
-                    }else if(it.isCompressed){
-                        results.add(Uri.fromFile( File(it.compressPath)))
-                    }else if(it.isOriginal){
-                        results.add(Uri.fromFile( File(it.originalPath)))
-                    }else{
-                        if(it.mimeType.contains("video")){
-                            results.add(Uri.fromFile( File(it.path)))
-                        }else{
-                            results.add(Uri.parse(it.path))
-                        }
-                    }
-                }
-                Log.e("videoValue",results.toString())
-                uploadMessageAboveL!!.onReceiveValue(results.toTypedArray())
-                uploadMessageAboveL = null
-            }else{
-                val results: Array<Uri?>? = null
-                uploadMessageAboveL!!.onReceiveValue(results)
-                uploadMessageAboveL = null
-            }
-
-        }
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -776,13 +719,6 @@ class GlitterActivity : AppCompatActivity(), IApp, CameraXConfig.Provider {
 
     override fun getCameraXConfig(): CameraXConfig {
         return Camera2Config.defaultConfig()
-    }
-    override fun getAppContext(): Context {
-        return applicationContext
-    }
-
-    override fun getPictureSelectorEngine(): PictureSelectorEngine {
-        return PictureSelectorEngineImp()
     }
 
 
