@@ -14,37 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f90d3b6-cf70-436d-9115-989bc00baf84" name="Default Changelist" comment="2.2.0">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/picture_library/Glitter.picture_library.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/ucrop/Glitter.ucrop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/GlitterActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/GlideCacheEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/GlideEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/ImageCacheUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/InsGallery.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/pictureSelector/PictureSelectorEngineImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_list_sina_text_color.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_list_text_color.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_preview_sina_text_color.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/res/color/picture_preview_text_color.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,19 +211,6 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Glitter [clean]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -448,7 +405,7 @@
       <workItem from="1622443843906" duration="26000" />
       <workItem from="1623067936804" duration="3763000" />
       <workItem from="1623501607087" duration="2702000" />
-      <workItem from="1624089662272" duration="2252000" />
+      <workItem from="1624089662272" duration="3866000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1611207838833</created>

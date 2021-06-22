@@ -124,8 +124,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onCreateCallBack()
-        GlitterFunction.create()
-
         /** PictureSelector日志管理配制开始  */
         /** PictureSelector日志管理配制结束  */
         setContentView(R.layout.glitter_page)
@@ -236,6 +234,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         rootview.webroot.webChromeClient = webChromeClient;
 //        fn_video()
         instance = { this }
+        GlitterFunction.create()
     }
 
     fun keyEventListener(event: KeyEvent): Boolean {
