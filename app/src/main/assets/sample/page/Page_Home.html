@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../glitterBundle/ControlInstance.js"></script>
+</head>
+<style>
+  html{
+    width: 100%;
+    height: 100%;
+  }
+  body{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottom{
+    width: 200px;
+    background-color: dodgerblue;
+    color: whitesmoke;
+    border-radius: 10px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+</style>
+<body>
+<script>
+  lifeCycle.onCreate=function (){
+
+  }
+
+  lifeCycle.onCreateView=function (){
+    return `
+    <div class="bottom" onclick="
+    glitter.changePage('page/DataBase.html','DataBase',true,{})
+    ">資料庫範例/DataBase Sample</div>
+    `
+  }
+</script>
+</body>
+</html>

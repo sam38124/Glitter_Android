@@ -21,7 +21,7 @@ class WebViewAct : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.webview_page)
         val rootview = findViewById<View>(android.R.id.content).rootView
-        findViewById<WebView>(R.id.webroot).loadUrl(intent.getStringExtra("url"))
+        findViewById<WebView>(R.id.webroot).loadUrl(intent.getStringExtra("url")!!)
         findViewById<TextView>(R.id.link).setText(intent.getStringExtra("url"))
         findViewById<ImageView>(R.id.backimg).setOnClickListener {
             finish()

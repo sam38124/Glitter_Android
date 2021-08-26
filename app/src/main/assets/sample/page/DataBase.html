@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <script src="../glitterBundle/ControlInstance.js"></script>
+</head>
+<style>
+    .bottom{
+        width: 200px;
+        background-color: dodgerblue;
+        color: whitesmoke;
+        border-radius: 10px;
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+<body>
+<script>
+  lifeCycle.onCreate=function (){
+
+  }
+  lifeCycle.onCreateView=function (){
+    return `
+    <div class="bottom" onclick="exSql()">
+    存入資料
+</div>
+ <div class="bottom" onclick="query()">
+    取出資料
+</div>
+    `
+  }
+  /**
+   * 執行資料庫操作
+   * request:[name:DataBase名稱 , sql:sql字串 , rout?:資料庫路徑]
+   * response:[result:執行結果]
+   * */
+  function exSql(){
+      glitter.runJsInterFace('DataBase_exSql',{
+          name:'testDB',
+          sql:[`CREATE TABLE   IF NOT EXISTS \`testDB\` (
+                       id   INTEGER PRIMARY KEY AUTOINCREMENT,
+                       name VARCHAR UNIQUE,
+                        data      VARCHAR
+                    );`,`insert into testDB(name) values ('hello world')`]
+      },function (response){
+          alert(JSON.stringify(response))
+      })
+  }
+  /**
+   * 查詢資料庫
+   * request:[name:DataBase名稱 , isAsset:是否存於Glitter資料夾中 , rout?:資料庫路徑 , sql:sql字串]
+   * response:[result:執行結果,data:陣列物件]
+   * */
+  function query(){
+      glitter.runJsInterFace('DataBase_query',{
+          name:'testDB',
+          sql:"select * from testDB"
+      },function (response){
+          alert(JSON.stringify(response))
+      })
+  }
+</script>
+</body>
+</html>

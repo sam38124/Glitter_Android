@@ -39,6 +39,7 @@ import com.orango.electronic.jzutil.getWebResource
 import com.orango.electronic.jzutil.toHex
 import kotlinx.android.synthetic.main.glitter_page.view.*
 import java.io.File
+import java.sql.ParameterMetaData
 
 
 data class JsInterFace(var interFace: Any, var tag: String)
@@ -48,7 +49,6 @@ object GlitterExecute {
 }
 
 class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
-   
     public var uploadMessage: ValueCallback<Uri>? = null
     public var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     public var handler = Handler()
@@ -80,20 +80,26 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         var baseRout: String = ""
         var updateRout: String? = null
         var appName: String = ""
+        var parameter:String? = null
         lateinit var instance: () -> GlitterActivity
         fun setUp(
             baseRout: String,
             updateRout: String? = null,
-            appName: String
+            appName: String,
+            parameter: String? = null
         ) {
             this.appName = appName
             this.baseRout = baseRout
             this.updateRout = updateRout
+            this.parameter = parameter
         }
 
-        //自定義函式
+        //自定義ＪＳ函式
         var javaScriptInterFace: ArrayList<JavaScriptInterFace> = arrayListOf()
         fun addJavacScriptInterFace(myInterface: JavaScriptInterFace) {
+            javaScriptInterFace=ArrayList(javaScriptInterFace.filter {
+                it.functionName!=myInterface.functionName
+            }.toList())
             javaScriptInterFace.add(myInterface)
         }
         //添加自定義Activity回調
@@ -123,24 +129,18 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        onCreateCallBack()
         /** PictureSelector日志管理配制开始  */
         /** PictureSelector日志管理配制结束  */
         setContentView(R.layout.glitter_page)
         rootview = findViewById<View>(android.R.id.content).rootView
-        window
-            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        dataMap["Glitter"] = JzSqlHelper(this, "Glitter.db")
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         webRoot = rootview.webroot
         rootview.webroot.settings.domStorageEnabled=true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
-        rootview.webroot.addJavascriptInterface(Database(), "DataBase")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         HeightVisibleChangeListener(rootview.webroot);
         rootview.webroot.settings.javaScriptEnabled = true
         rootview.webroot.loadUrl("$baseRout/home.html")
-        Log.e("asseturl", "" + Uri.fromFile(File("file:///android_asset/appData/glitterBundle/Application.html")))
-        // file:///android_asset/appData/glitterBundle/Application.html#
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON_DEMAND;
         rootview.webroot.settings.javaScriptCanOpenWindowsAutomatically = true
         rootview.webroot.settings.setSupportMultipleWindows(true)
@@ -232,9 +232,8 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
             }
         }
         rootview.webroot.webChromeClient = webChromeClient;
-//        fn_video()
         instance = { this }
-        GlitterFunction.create()
+        onCreateCallBack()
     }
 
     fun keyEventListener(event: KeyEvent): Boolean {
@@ -281,302 +280,9 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         uploadMessageAboveL = null
     }
 
-    /*
-    * Glitter 開發套件
-    * */
-    inner class GlitterInterFace {
-        var gpsUtil: GpsUtil? = null
-
-        @JavascriptInterface
-        fun downloadFile(serverRout: String, fileName: String, callbackID: Int, timeOut: Int) {
-            Thread {
-                Log.e("downloadFile", "start:${serverRout}")
-                val data = serverRout.downloadFile(timeOut, fileName)
-                handler.post {
-                    rootview.webroot.evaluateJavascript("glitter.callBackList.get(${callbackID})(${data});", null)
-                }
-                if (!data) { Log.e("downloadFile", "False-${fileName}") }
-            }.start()
-        }
-
-        @JavascriptInterface
-        fun getFile(fileName: String, type: String, callbackID: Int) {
-            Thread {
-                var script = "glitter.callBackList.get(${callbackID})(undefined)"
-                try {
-                    when (type) {
-                        "hex" -> {
-                            script = "glitter.callBackList.get(${callbackID})('${
-                                File(
-                                    instance().applicationContext.filesDir,
-                                    fileName
-                                ).readBytes().toHex()
-                            }');"
-                        }
-                        "bytes" -> {
-                            script = "glitter.callBackList.get(${callbackID})(${
-                                Gson().toJson(
-                                    File(
-                                        instance().applicationContext.filesDir,
-                                        fileName
-                                    ).readBytes()
-                                )
-                            });"
-                        }
-                        "text" -> {
-                            script = "glitter.callBackList.get(${callbackID})('${
-                                Gson().toJson(
-                                    File(
-                                        instance().applicationContext.filesDir,
-                                        fileName
-                                    ).readText()
-                                )
-                            }');"
-                        }
-                    }
-                } catch (e: Exception) {
-
-                }
-
-                handler.post {
-                    rootview.webroot.evaluateJavascript(script, null)
-                }
-                Log.e("getFile", "result-$script")
-            }.start()
-        }
-
-        @JavascriptInterface
-        fun checkFileExists(fileName: String, callbackID: Int) {
-            Thread {
-                val script = "glitter.callBackList.get(${callbackID})(${
-                    File(
-                        instance().applicationContext.filesDir,
-                        fileName
-                    ).exists()
-                })"
-                handler.post {
-                    rootview.webroot.evaluateJavascript(script, null)
-                }
-                Log.e("getFile", "result-$script")
-            }.start()
-        }
-
-        @JavascriptInterface
-        fun toAssetRoot(rout: String) {
-            handler.post {
-                recreate()
-            }
-        }
-
-        @JavascriptInterface
-        fun reloadPage() {
-            handler.post { recreate() }
-        }
-
-        @JavascriptInterface
-        fun openNewTab(link: String) {
-            val intent = Intent(this@GlitterActivity, WebViewAct::class.java)
-            intent.putExtra("url", link)
-            startActivity(intent)
-        }
 
 
-        @JavascriptInterface
-        fun closeApp() {
-            this@GlitterActivity.finishAffinity();
-        }
 
-
-        @JavascriptInterface
-        fun openQrScanner() {
-            val intent = Intent(this@GlitterActivity, ScannerActivity::class.java)
-            this@GlitterActivity.startActivity(intent)
-        }
-
-        @JavascriptInterface
-        fun requestPermission(permission: Array<String>, callbackID: Int) {
-            handler.post {
-                var requestSuccess = 0
-                getPermission(permission, object : permission_C {
-                    override fun requestSuccess(a: String?) {
-                        requestSuccess += 1
-                        if (requestSuccess == permission.size) {
-                            instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(true)", null)
-                        }
-                    }
-
-                    override fun requestFalse(a: String?) {
-                        instance().webRoot.evaluateJavascript("glitter.callBackList.get(${callbackID})(false)", null)
-                    }
-                })
-            }
-        }
-
-        @JavascriptInterface
-        fun getGPS(): String {
-            if (gpsUtil == null) {
-                gpsUtil = GpsUtil(this@GlitterActivity)
-            }
-            val map: MutableMap<String, Any?> = mutableMapOf()
-            map["latitude"] = gpsUtil!!.lastKnownLocation?.latitude
-            map["longitude"] = gpsUtil!!.lastKnownLocation?.longitude
-            map["address"] = gpsUtil!!.address
-            return Gson().toJson(map)
-        }
-
-        var canPlayMedia = true
-
-        @JavascriptInterface
-        fun playSound(rout: String) {
-            if (!canPlayMedia) {
-                return
-            }
-            canPlayMedia = false
-
-            if (baseRout.contains("file:///android_asset")) {
-                val assetRout =
-                    "${baseRout.replace("file:///android_asset/", "")}/${rout.replace("file:/android_asset/", "")}"
-                Log.e("assetRout", assetRout)
-                val afd = this@GlitterActivity.assets.openFd(assetRout);
-                val mediiaplay = MediaPlayer()
-                mediiaplay.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                mediiaplay.prepare()
-                mediiaplay.setOnCompletionListener {
-                    mediiaplay.release()
-                    canPlayMedia = true
-                }
-                mediiaplay.start()
-            } else {
-                val file = File("$baseRout/$rout")
-                val mediiaplay = MediaPlayer.create(this@GlitterActivity, Uri.fromFile(file))
-                mediiaplay.setOnCompletionListener {
-                    mediiaplay.release()
-                    canPlayMedia = true
-                }
-                mediiaplay.start()
-            }
-
-
-        }
-
-        @JavascriptInterface
-        fun requestGPSPermission() {
-            if (gpsUtil == null) {
-                gpsUtil = GpsUtil(this@GlitterActivity)
-            }
-
-        }
-        @JavascriptInterface
-        fun runJsInterFace(data: String) {
-            Thread{
-                val mapData =
-                    Gson().fromJson<MutableMap<String, Any>>(data, object : TypeToken<MutableMap<String, Any>>() {}.type)
-                val functionName = mapData["functionName"] as String
-                val callbackID = (mapData["callBackId"] as Double).toInt()
-                val receiveValue: MutableMap<String, Any> =
-                    if (mapData["data"] == null) mutableMapOf() else (mapData["data"] as MutableMap<String, Any>)
-                val cFunction = javaScriptInterFace.filter { it.functionName==functionName }
-                val requestFunction = RequestFunction(receiveValue)
-                requestFunction.finish={
-                    handler.post {
-                        instance().webRoot.evaluateJavascript("""
-                glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
-                glitter.callBackList.delete(${callbackID});
-                """.trimIndent(), null)
-                    }
-                }
-                if(cFunction.isNotEmpty()){
-                    cFunction[0].function(requestFunction)
-                }else{
-                    requestFunction.finish()
-                }
-
-            }.start()
-        }
-    }
-
-    /*
-    * DataBase開發套件
-    * */
-    var dataMap: MutableMap<String, JzSqlHelper> = mutableMapOf()
-
-    inner class Database {
-        @JavascriptInterface
-        fun exSql(name: String, string: String) {
-            if (dataMap[name] == null) {
-                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
-            }
-            dataMap[name]!!.exsql(string)
-        }
-
-        @JavascriptInterface
-        fun query(name: String, string: String): String {
-            Log.e("sql", string)
-            if (dataMap[name] == null) {
-                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
-            }
-            val mapArray: ArrayList<MutableMap<String, Any>> = arrayListOf()
-            dataMap[name]!!.query(string) {
-                val map: MutableMap<String, Any> = mutableMapOf()
-                for (a in 0 until it.columnCount) {
-                    if (it.getString(a) != null) {
-                        map[it.getColumnName(a)] = it.getString(a)
-                    }
-                }
-                mapArray.add(map)
-            }
-            Log.e("DataBase", Gson().toJson(mapArray))
-            return Gson().toJson(mapArray)
-        }
-
-        @JavascriptInterface
-        fun initByFile(name: String, rout: String) {
-            if (dataMap[name] == null) {
-                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
-            }
-            dataMap[name]!!.close()
-            if (baseRout.contains("file:///android_asset")) {
-                val assetRout =
-                    "${baseRout.replace("file:///android_asset/", "")}/${rout.replace("file:/android_asset/", "")}"
-                Log.e("assetRout", assetRout)
-//                this@GlitterActivity.assets.list("")
-                dataMap[name]!!.dbinit(this@GlitterActivity.assets.open(assetRout))
-                dataMap[name]!!.create()
-            } else {
-                val file = File("$baseRout/$rout")
-                dataMap[name]!!.dbinit(file.inputStream())
-                dataMap[name]!!.create()
-            }
-        }
-
-        @JavascriptInterface
-        fun initByLocalFile(name: String, rout: String) {
-            if (dataMap[name] == null) {
-                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
-            }
-            dataMap[name]!!.close()
-            val file = File(applicationContext.filesDir, rout)
-            if (!file.exists()) {
-                if (rout.contains("/")) {
-                    if (!file.parentFile.exists()) {
-                        file.parentFile.mkdirs();
-                    }
-                }
-                file.createNewFile()
-            }
-            dataMap[name]!!.dbinit(file.inputStream())
-            dataMap[name]!!.create()
-        }
-
-        @JavascriptInterface
-        fun init(name: String) {
-            if (dataMap[name] == null) {
-                dataMap[name] = JzSqlHelper(this@GlitterActivity, name)
-            }
-            dataMap[name]!!.close()
-            dataMap[name]!!.create()
-        }
-    }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         if (event.action == 1 && event.keyCode == 4) {
@@ -584,41 +290,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
             return false
         } else {
             return keyEventListener(event)
-        }
-    }
-
-    //
-    fun fn_video() {
-        val int_position = 0
-        val uri: Uri
-        val cursor: Cursor
-        val column_index_data: Int
-        val column_index_folder_name: Int
-        val column_id: Int
-        val thum: Int
-        var absolutePathOfImage: String? = null
-        uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-        val projection = arrayOf(
-            MediaStore.MediaColumns.DATA,
-            MediaStore.Video.Media.BUCKET_DISPLAY_NAME,
-            MediaStore.Video.Media._ID,
-            MediaStore.Video.Thumbnails.DATA
-        )
-        val orderBy = MediaStore.Images.Media.DATE_TAKEN
-        cursor = applicationContext.contentResolver
-            .query(uri, projection, null, null, "$orderBy DESC")!!
-        column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
-        column_index_folder_name =
-            cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME)
-        column_id = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
-        thum = cursor.getColumnIndexOrThrow(MediaStore.Video.Thumbnails.DATA)
-        while (cursor.moveToNext()) {
-            absolutePathOfImage = cursor.getString(column_index_data)
-            Log.e("Column", absolutePathOfImage)
-            Log.e("Folder", cursor.getString(column_index_folder_name))
-            Log.e("column_id", cursor.getString(column_id))
-            Log.e("thum", cursor.getString(thum))
-            Log.e("path", absolutePathOfImage)
         }
     }
 
