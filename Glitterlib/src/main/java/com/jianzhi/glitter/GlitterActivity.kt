@@ -140,7 +140,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         HeightVisibleChangeListener(rootview.webroot);
         rootview.webroot.settings.javaScriptEnabled = true
-        rootview.webroot.loadUrl("$baseRout/home.html")
+        rootview.webroot.loadUrl("$baseRout/home.html${parameter ?: ""}")
         rootview.webroot.settings.pluginState = WebSettings.PluginState.ON_DEMAND;
         rootview.webroot.settings.javaScriptCanOpenWindowsAutomatically = true
         rootview.webroot.settings.setSupportMultipleWindows(true)
