@@ -53,6 +53,8 @@ class GlitterInterFace {
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.getPro)
         //Set SharedPreferences
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.setPro)
+        //closeApp
+        GlitterActivity.addJavacScriptInterFace(GlitterFunction.closeApp)
         //Database操作
         Service_DataBase.create()
     }
