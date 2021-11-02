@@ -14,16 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f90d3b6-cf70-436d-9115-989bc00baf84" name="Default Changelist" comment="2.2.0">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_sam38124_JzBarCodeScanner_1_2_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_dm7_barcodescanner_core_1_9_13_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_dm7_barcodescanner_zxing_1_9_13_aar.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins/GpsManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins/PerMission.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/util/JzClock.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Glitterlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins/DataBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins/DataBase.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +107,7 @@
     <property name="android-custom-view/Users/jianzhi.wang/Desktop/Android_framework/Glitter/picture_library/src/main/java/com/luck/picture/lib/instagram/process/RangeSeekBarView.java_SELECTED" value="RangeSeekBarView" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins" />
     <property name="multi-representation-preview/Users/jianzhi.wang/Desktop/Android_framework/Glitter/Glitterlib/src/main/java/com/jianzhi/glitter/VideoEnabledWebView.java_selected" value="Custom views" />
     <property name="multi-representation-preview/Users/jianzhi.wang/Desktop/Android_framework/Glitter/picture_library/src/main/java/com/luck/picture/lib/camera/CustomCameraView.java_selected" value="Custom views" />
     <property name="multi-representation-preview/Users/jianzhi.wang/Desktop/Android_framework/Glitter/picture_library/src/main/java/com/luck/picture/lib/instagram/process/RangeSeekBarView.java_selected" value="Custom views" />
@@ -125,11 +120,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Glitterlib/src/main/java/com/jianzhi/glitter/plugins" />
       <recent name="$PROJECT_DIR$/app/src/main/assets/sample" />
       <recent name="$PROJECT_DIR$/app/src/main/assets/sample/glitterBundle" />
       <recent name="$PROJECT_DIR$/Glitterlib/src/main/res/color" />
       <recent name="$PROJECT_DIR$/Glitterlib/src/main/res" />
-      <recent name="$PROJECT_DIR$/Glitterlib/src/main/res/drawable" />
     </key>
     <key name="android.template.-1458355615">
       <recent name="com.jianzhi.glitter" />
@@ -431,7 +426,7 @@
       <workItem from="1630167553769" duration="107000" />
       <workItem from="1632724893748" duration="1154000" />
       <workItem from="1634886766400" duration="1006000" />
-      <workItem from="1635730592849" duration="7811000" />
+      <workItem from="1635730592849" duration="9097000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1611207838833</created>
