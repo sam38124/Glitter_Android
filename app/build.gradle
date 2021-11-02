@@ -37,6 +37,5 @@ dependencies {
     implementation 'com.github.sam38124:JzTaskHandler:3.2'
     implementation 'com.github.sam38124:JzUtil:4.8'
     implementation project(':Glitterlib')
-
     implementation "androidx.camera:camera-camera2:1.0.0-beta07"
 }
