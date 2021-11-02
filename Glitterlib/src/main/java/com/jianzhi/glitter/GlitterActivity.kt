@@ -3,17 +3,13 @@ package com.jianzhi.glitter
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.database.Cursor
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -24,22 +20,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.camera2.Camera2Config
 import androidx.camera.core.CameraXConfig
 import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
-import com.example.jztaskhandler.TaskHandler
-import com.example.jztaskhandler.runner
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.jianzhi.glitter.util.GpsUtil
-import com.jianzhi.glitter.util.ZipUtil
-import com.jianzhi.glitter.util.downloadFile
-import com.jzsql.lib.mmySql.JzSqlHelper
 import com.orange.glitter.R
-import com.orango.electronic.jzutil.getWebResource
-import com.orango.electronic.jzutil.toHex
 import kotlinx.android.synthetic.main.glitter_page.view.*
-import java.io.File
-import java.sql.ParameterMetaData
 
 
 data class JsInterFace(var interFace: Any, var tag: String)
