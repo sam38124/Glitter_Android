@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.sam38124:JzSqlHelper:6.8@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/119602a98a26d29fd8571228a6b572a3/jetified-JzSqlHelper-6.8/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/119602a98a26d29fd8571228a6b572a3/jetified-JzSqlHelper-6.8/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/119602a98a26d29fd8571228a6b572a3/jetified-JzSqlHelper-6.8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8cf84ec2b48405d526559bae0a193bd2/jetified-JzSqlHelper-6.8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8cf84ec2b48405d526559bae0a193bd2/jetified-JzSqlHelper-6.8/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8cf84ec2b48405d526559bae0a193bd2/jetified-JzSqlHelper-6.8/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -4,7 +4,6 @@ import android.os.Handler
 import android.webkit.JavascriptInterface
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jianzhi.glitter.service.Service_DataBase
 
 class GlitterInterFace {
     var handler = Handler()
@@ -55,8 +54,7 @@ class GlitterInterFace {
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.setPro)
         //closeApp
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.closeApp)
-        //Database操作
-        Service_DataBase.create()
+
     }
 
 }
