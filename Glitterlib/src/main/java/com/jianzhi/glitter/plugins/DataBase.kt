@@ -119,14 +119,7 @@ object DataBasePlugins {
                 dataMap[name]!!.exsql(string)
                 request.responseValue["result"] = true
                 request.finish()
-            },
-            ///判斷檔案是否存在
-            JavaScriptInterFace("checkFileExists") { request ->
-                request.responseValue["result"] =
-                File(instance().applicationContext.filesDir, request.receiveValue["fileName"].toString()).exists()
-                request.finish()
             }
-
         ).map {
             GlitterActivity.addJavacScriptInterFace(it)
         }

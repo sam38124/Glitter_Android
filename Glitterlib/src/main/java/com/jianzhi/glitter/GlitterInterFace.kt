@@ -4,6 +4,10 @@ import android.os.Handler
 import android.webkit.JavascriptInterface
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jianzhi.glitter.plugins.FileManager
+import com.jianzhi.glitter.plugins.GpsManager
+import com.orange.oglite_glitter.DataBasePlugins
+import com.orange.oglite_glitter.Plugins.PerMission
 
 class GlitterInterFace {
     var handler = Handler()
@@ -54,7 +58,14 @@ class GlitterInterFace {
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.setPro)
         //closeApp
         GlitterActivity.addJavacScriptInterFace(GlitterFunction.closeApp)
-
+        //檔案管理
+        FileManager.initial()
+        //定位功能
+        GpsManager.initial()
+        //權限請求
+        PerMission.initial()
+        //資料庫請求
+        DataBasePlugins.initial()
     }
 
 }

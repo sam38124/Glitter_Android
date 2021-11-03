@@ -1,5 +1,8 @@
 package com.jianzhi.glitter.util
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 class JzClock{
     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS")
     var past = sdf.parse(sdf.format(Date()))
