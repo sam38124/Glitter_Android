@@ -314,11 +314,11 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
 
     var permissionRequestCode = 100
     var permissionCaller = object : permission_C {
-        override fun requestSuccess(a: String?) {
+        override fun requestSuccess(a: String) {
 
         }
 
-        override fun requestFalse(a: String?) {
+        override fun requestFalse(a: String) {
         }
     }
 
@@ -340,8 +340,8 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     }
 
     interface permission_C {
-        fun requestSuccess(a: String?)
-        fun requestFalse(a: String?)
+        fun requestSuccess(a: String)
+        fun requestFalse(a: String)
     }
 
     /**

@@ -15,7 +15,11 @@ object DataBasePlugins {
         ///資料庫集合
         val dataMap: MutableMap<String, JzSqlHelper> = mutableMapOf()
         arrayOf(
-            ///藉由本地路徑加載資料庫
+            /**
+             * 從本地端加載資料庫
+             * request->[rout:String,name:String]
+             * response->[result:Boolean]
+             * */
             JavaScriptInterFace("DataBase_InitByLocal") { request ->
                 try {
                     val act = instance()
@@ -45,7 +49,11 @@ object DataBasePlugins {
                 }
                 request.finish()
             },
-            ///藉由Assets路徑加載資料庫
+            /**
+             * 藉由Assets路徑加載資料庫
+             * request->[rout:String,name:String]
+             * response->[result:Boolean]
+             * */
             JavaScriptInterFace("DataBase_InitByAssets") { request ->
                 try {
                     val name = request.receiveValue["name"].toString()
@@ -78,7 +86,11 @@ object DataBasePlugins {
                 }
                 request.finish()
             },
-            ///查詢
+            /**
+             * Sql查詢
+             * request->[string:String,name:String]
+             * response->[result:Boolean,data:Map]
+             * */
             JavaScriptInterFace("DataBase_Query") { request ->
                 try {
                     val name = request.receiveValue["name"].toString()
@@ -106,7 +118,11 @@ object DataBasePlugins {
                 }
                 request.finish()
             },
-            ///執行語法
+            /**
+             * Sql操作
+             * request->[string:String,name:String]
+             * response->[result:Boolean]
+             * */
             JavaScriptInterFace("DataBase_exSql") { request ->
                 val name = request.receiveValue["name"].toString()
                 val string = request.receiveValue["string"].toString()
