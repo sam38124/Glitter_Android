@@ -57,6 +57,7 @@ object GpsManager {
                     }else{
                         request.responseValue["result"]=false
                     }
+                    request.finish()
                 }
             }
         ).map{

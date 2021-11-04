@@ -58,11 +58,11 @@ object FileManager {
                         }
                     }
                     request.responseValue["result"]=true
-                    request.finish()
                 }catch (e:Exception){
                     e.printStackTrace()
                     request.responseValue["result"]=false
                 }
+                request.finish()
             }
         ).map {
             GlitterActivity.addJavacScriptInterFace(it)
