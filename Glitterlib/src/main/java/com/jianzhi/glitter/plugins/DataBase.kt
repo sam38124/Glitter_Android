@@ -12,7 +12,6 @@ import java.lang.Exception
  * */
 object DataBasePlugins {
     fun initial() {
-        ///資料庫集合
         val dataMap: MutableMap<String, JzSqlHelper> = mutableMapOf()
         arrayOf(
             /**

@@ -10,7 +10,12 @@ import com.jianzhi.glitter.JavaScriptInterFace
 object PerMission {
     fun initial(){
         arrayOf(
-            //權限請求
+            /**
+             * 取得權限
+             * request->[permission:ArrayList<String>]
+             * response->[notPermission:ArrayList<String>?,result:Boolean]
+             * ---------------------------------
+             * */
             JavaScriptInterFace("PerMission_Request"){
             request->
             val permission=request.receiveValue["permission"] as ArrayList<String>

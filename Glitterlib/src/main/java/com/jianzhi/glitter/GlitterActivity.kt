@@ -223,9 +223,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     fun keyEventListener(event: KeyEvent): Boolean {
         rootview.webroot.evaluateJavascript(
             "glitter.keyEventListener(JSON.parse('${
-                Gson().toJson(
-                    event
-                )
+                Gson().toJson(event)
             }'));", null
         )
         return false

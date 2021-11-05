@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jianzhi.glitter.plugins.FileManager
 import com.jianzhi.glitter.plugins.GpsManager
+import com.jianzhi.glitter.plugins.SoundManager
 import com.orange.oglite_glitter.DataBasePlugins
 import com.orange.oglite_glitter.Plugins.PerMission
 
@@ -38,6 +39,15 @@ class GlitterInterFace {
                     )
                 }
             }
+            requestFunction.calb = {
+                handler.post {
+                    GlitterActivity.instance().webRoot.evaluateJavascript(
+                        """
+               glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
+                """.trimIndent(), null
+                    )
+                }
+            }
             if (cFunction.isNotEmpty()) {
                 cFunction[0].function(requestFunction)
             } else {
@@ -66,6 +76,8 @@ class GlitterInterFace {
         PerMission.initial()
         //資料庫請求
         DataBasePlugins.initial()
+        //聲音管理工具
+        SoundManager.initial()
     }
 
 }
