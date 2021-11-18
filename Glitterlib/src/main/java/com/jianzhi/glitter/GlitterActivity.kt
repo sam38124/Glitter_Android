@@ -3,6 +3,7 @@ package com.jianzhi.glitter
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
+import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -33,9 +34,8 @@ object GlitterExecute {
 }
 
 class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
-    public var uploadMessage: ValueCallback<Uri>? = null
-    public var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
-    public var handler = Handler()
+    var uploadMessage: ValueCallback<Uri>? = null
+    var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     lateinit var webRoot: WebView
     companion object {
         private val FILE_CHOOSER_RESULT_CODE = 10000
@@ -64,6 +64,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         var baseRout: String = ""
         var updateRout: String? = null
         var appName: String = ""
+        lateinit var glitterApplication:Application
         var parameter:String? = null
         lateinit var instance: () -> GlitterActivity
         fun setUp(
@@ -115,6 +116,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         super.onCreate(savedInstanceState)
         /** PictureSelector日志管理配制开始  */
         /** PictureSelector日志管理配制结束  */
+        glitterApplication=application
         setContentView(R.layout.glitter_page)
         rootview = findViewById<View>(android.R.id.content).rootView
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);

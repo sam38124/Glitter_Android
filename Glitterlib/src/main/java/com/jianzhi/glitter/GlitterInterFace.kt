@@ -1,6 +1,7 @@
 package com.jianzhi.glitter
 
 import android.os.Handler
+import android.os.Looper
 import android.webkit.JavascriptInterface
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -11,7 +12,7 @@ import com.orange.oglite_glitter.DataBasePlugins
 import com.orange.oglite_glitter.Plugins.PerMission
 
 class GlitterInterFace {
-    var handler = Handler()
+    var handler = Handler(Looper.getMainLooper())
 
     init {
         create()

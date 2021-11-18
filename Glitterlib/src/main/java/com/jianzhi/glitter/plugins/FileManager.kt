@@ -21,7 +21,7 @@ object FileManager {
             JavaScriptInterFace("FileManager_CheckFileExists") { request ->
                 request.responseValue["result"] =
                     File(
-                    GlitterActivity.instance().applicationContext.filesDir,
+                    GlitterActivity.glitterApplication.filesDir,
                     request.receiveValue["fileName"].toString()
                     ).exists()
                 request.finish()
@@ -40,19 +40,19 @@ object FileManager {
                     when(type){
                         "hex" -> {
                             request.responseValue["data"]= File(
-                                GlitterActivity.instance().applicationContext.filesDir,
+                                GlitterActivity.glitterApplication.filesDir,
                                 fileName
                             ).readBytes().toHex()
                         }
                         "bytes" -> {
                             request.responseValue["data"]= File(
-                                GlitterActivity.instance().applicationContext.filesDir,
+                                GlitterActivity.glitterApplication.filesDir,
                                 fileName
                             ).readBytes()
                         }
                         "text" -> {
                             request.responseValue["data"]= File(
-                                GlitterActivity.instance().applicationContext.filesDir,
+                                GlitterActivity.glitterApplication.filesDir,
                                 fileName
                             ).readText()
                         }

@@ -1,5 +1,8 @@
 package com.orange.oglite_glitter
 
+import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import com.jianzhi.glitter.GlitterActivity
 import com.jianzhi.glitter.GlitterActivity.Companion.instance
 import com.jianzhi.glitter.JavaScriptInterFace
@@ -12,6 +15,7 @@ import java.lang.Exception
  * */
 object DataBasePlugins {
     fun initial() {
+        val handler= Handler(Looper.getMainLooper())
         val dataMap: MutableMap<String, JzSqlHelper> = mutableMapOf()
         arrayOf(
             /**
@@ -21,17 +25,17 @@ object DataBasePlugins {
              * */
             JavaScriptInterFace("DataBase_InitByLocal") { request ->
                 try {
-                    val act = instance()
                     val rout = request.receiveValue["rout"].toString()
                     val name = request.receiveValue["name"].toString()
                     if (dataMap[name] == null) {
-                        instance().handler.post {
-                            dataMap[name] = JzSqlHelper(instance(), name)
+                        handler.post {
+                            dataMap[name] = JzSqlHelper(GlitterActivity.glitterApplication, name)
                         }
                         Thread.sleep(1000)
                     }
                     dataMap[name]!!.close()
-                    val file = File(act.filesDir, rout)
+                    
+                    val file = File(GlitterActivity.glitterApplication.filesDir, rout)
                     if (!file.exists()) {
                         if (rout.contains("/")) {
                             if (!file.parentFile.exists()) {
@@ -57,10 +61,10 @@ object DataBasePlugins {
                 try {
                     val name = request.receiveValue["name"].toString()
                     val rout = request.receiveValue["rout"].toString()
-                    val act = instance()
+                    val act = GlitterActivity.glitterApplication
                     if (dataMap[name] == null) {
-                        instance().handler.post {
-                            dataMap[name] = JzSqlHelper(instance(), name)
+                        handler.post {
+                            dataMap[name] = JzSqlHelper(GlitterActivity.glitterApplication, name)
                         }
                         Thread.sleep(1000)
                     }
@@ -95,8 +99,8 @@ object DataBasePlugins {
                     val name = request.receiveValue["name"].toString()
                     val string = request.receiveValue["string"].toString()
                     if (dataMap[name] == null) {
-                        instance().handler.post {
-                            dataMap[name] = JzSqlHelper(instance(), name)
+                        handler.post {
+                            dataMap[name] = JzSqlHelper(GlitterActivity.glitterApplication, name)
                         }
                         Thread.sleep(1000)
                     }
@@ -126,8 +130,8 @@ object DataBasePlugins {
                 val name = request.receiveValue["name"].toString()
                 val string = request.receiveValue["string"].toString()
                 if (dataMap[name] == null) {
-                    instance().handler.post {
-                        dataMap[name] = JzSqlHelper(instance(), name)
+                    handler.post {
+                        dataMap[name] = JzSqlHelper(GlitterActivity.glitterApplication, name)
                     }
                     Thread.sleep(1000)
                 }
