@@ -119,7 +119,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         glitterApplication=application
         setContentView(R.layout.glitter_page)
         rootview = findViewById<View>(android.R.id.content).rootView
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         webRoot = rootview.webroot
         rootview.webroot.settings.domStorageEnabled=true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
