@@ -15,20 +15,20 @@ object FileManager {
         arrayOf(
             /**
              * 判斷檔案是否存在
-             * request->[fileName:String]
+             * request->[route:String]
              * response->[result:Boolean]
              * */
             JavaScriptInterFace("FileManager_CheckFileExists") { request ->
                 request.responseValue["result"] =
                     File(
                     GlitterActivity.glitterApplication.filesDir,
-                    request.receiveValue["fileName"].toString()
+                    request.receiveValue["route"].toString()
                     ).exists()
                 request.finish()
             }
             /**
              * 取得檔案
-             * request->[fileName:String,type:String]
+             * request->[route:String,type:String]
              * response->[result:Boolean]
              * */
             ,
@@ -36,24 +36,24 @@ object FileManager {
                 request->
                 try {
                     val type=request.receiveValue["type"].toString()
-                    val fileName=request.receiveValue["fileName"].toString()
+                    val route=request.receiveValue["route"].toString()
                     when(type){
                         "hex" -> {
                             request.responseValue["data"]= File(
                                 GlitterActivity.glitterApplication.filesDir,
-                                fileName
+                                route
                             ).readBytes().toHex()
                         }
                         "bytes" -> {
                             request.responseValue["data"]= File(
                                 GlitterActivity.glitterApplication.filesDir,
-                                fileName
+                                route
                             ).readBytes()
                         }
                         "text" -> {
                             request.responseValue["data"]= File(
                                 GlitterActivity.glitterApplication.filesDir,
-                                fileName
+                                route
                             ).readText()
                         }
                     }
