@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.sam38124:JzUtil:4.8@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec33b1bb4c085822d769bfe268b7494d/jetified-JzUtil-4.8/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec33b1bb4c085822d769bfe268b7494d/jetified-JzUtil-4.8/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ec33b1bb4c085822d769bfe268b7494d/jetified-JzUtil-4.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/67385999cc77218b1fa26c4b31f868b5/jetified-JzUtil-4.8/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/67385999cc77218b1fa26c4b31f868b5/jetified-JzUtil-4.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/67385999cc77218b1fa26c4b31f868b5/jetified-JzUtil-4.8/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

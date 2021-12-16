@@ -10,10 +10,7 @@ class MyApp :Application(){
 
         GlitterActivity.setUp("file:///android_asset/sample",appName = "sample")
         GlitterActivity.addActivityResult(object : ResultCallBack {
-            override fun resultBack(requestCode: Int, resultCode: Int, data: Intent) {
-
-            }
-        })
+        override fun resultBack(requestCode: Int, resultCode: Int, data: Intent) {} })
     }
 
 }
