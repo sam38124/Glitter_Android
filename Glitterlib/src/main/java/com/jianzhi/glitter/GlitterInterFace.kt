@@ -14,8 +14,27 @@ import com.orange.oglite_glitter.Plugins.PerMission
 class GlitterInterFace {
     var handler = Handler(Looper.getMainLooper())
 
-    init {
-        create()
+    init { create() }
+
+    companion object{
+        //調用原生插件
+        fun run(
+            functionName: String,
+            obj: MutableMap<String, Any>,
+            finish: (MutableMap<String, Any>) -> Unit
+        ) {
+            val requestFunction = RequestFunction(obj)
+            requestFunction.fin = {
+                Handler(Looper.getMainLooper()).post {
+                    finish(requestFunction.responseValue)
+                }
+            }
+            if (GlitterActivity.javaScriptInterFace.filter { it.functionName == functionName }.size === 1) {
+                GlitterActivity.javaScriptInterFace.filter { it.functionName == functionName }[0].function(requestFunction)
+            }else{
+                finish(mutableMapOf("data" to "Function not define"))
+            }
+        }
     }
 
     /**JS函式路口**/
