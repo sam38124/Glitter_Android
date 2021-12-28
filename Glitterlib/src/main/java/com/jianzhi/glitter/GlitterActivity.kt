@@ -135,9 +135,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     private var webChromeClient: VideoEnabledWebChromeClient? = null
     var onUpdate = false
     lateinit var rootview: View
-    override fun setTheme(resId: Int) {
-        super.setTheme(R.style.SwipTheme__)
-    }
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
