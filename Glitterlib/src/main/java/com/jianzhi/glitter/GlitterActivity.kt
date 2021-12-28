@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -32,11 +33,15 @@ object GlitterExecute {
     var execute: (data: String, callback: ValueCallback<String>) -> Unit =
         { data: String, valueCallback: ValueCallback<String> -> }
 }
-
+abstract class CustomeSetting{
+    abstract fun open(activity: Activity,delay:Int=0)
+    abstract fun onCreate(callback:(activity:GlitterActivity)->Unit):CustomeSetting
+}
 class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
     var uploadMessage: ValueCallback<Uri>? = null
     var uploadMessageAboveL: ValueCallback<Array<Uri?>>? = null
     lateinit var webRoot: WebView
+
     companion object {
         private val FILE_CHOOSER_RESULT_CODE = 10000
         var webviewClient = object : WebViewClient() {
@@ -64,63 +69,83 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         var baseRout: String = ""
         var updateRout: String? = null
         var appName: String = ""
-        lateinit var glitterApplication:Application
-        var parameter:String? = null
-        lateinit var instance: () -> GlitterActivity
+        lateinit var glitterApplication: Application
+        var parameter: String? = null
+        //取得單例
+        private lateinit var instanceCopy: () -> GlitterActivity
+        fun instance():GlitterActivity{return instanceCopy()}
+        //設定延遲顯示時間
+        var openDelay=0
+        //加載完畢回調
+        var onCreateCallback: (activity: GlitterActivity) -> Unit = {}
+        //CustomeSetting
+        lateinit var customSetting:CustomeSetting
+        //定義頁面
         fun setUp(
             baseRout: String,
             updateRout: String? = null,
             appName: String,
-            parameter: String? = null
-        ) {
+            parameter: String? = null,
+        ) :CustomeSetting{
             this.appName = appName
             this.baseRout = baseRout
             this.updateRout = updateRout
             this.parameter = parameter
+            customSetting=object : CustomeSetting() {
+                override fun open(activity: Activity,delay:Int) {
+                    val intent = Intent(activity, GlitterActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION;
+                    activity.startActivity(intent)
+                    openDelay=delay
+                }
+                override fun onCreate(callback:(activity:GlitterActivity)->Unit):CustomeSetting {
+                    onCreateCallback=callback
+                    return customSetting
+                }
+            }
+            return customSetting
         }
-
         //自定義ＪＳ函式
         var javaScriptInterFace: ArrayList<JavaScriptInterFace> = arrayListOf()
         fun addJavacScriptInterFace(myInterface: JavaScriptInterFace) {
-            javaScriptInterFace=ArrayList(javaScriptInterFace.filter {
-                it.functionName!=myInterface.functionName
+            javaScriptInterFace = ArrayList(javaScriptInterFace.filter {
+                it.functionName != myInterface.functionName
             }.toList())
             javaScriptInterFace.add(myInterface)
         }
         //添加自定義Activity回調
-        var activityResultList:ArrayList<ResultCallBack> = ArrayList()
-        fun addActivityResult(callback:ResultCallBack){
+        var activityResultList: ArrayList<ResultCallBack> = ArrayList()
+        fun addActivityResult(callback: ResultCallBack) {
             activityResultList.add(callback)
         }
-        //添加創建回條
-        var onCreateCallBack:() -> Unit = { }
         //自定義圖片選擇回條
-        var setImageCallBack:(fileChooserParams: WebChromeClient.FileChooserParams?)->Unit  = {
+        var setImageCallBack: (fileChooserParams: WebChromeClient.FileChooserParams?) -> Unit = {
             val i = Intent(Intent.ACTION_GET_CONTENT)
             i.addCategory(Intent.CATEGORY_OPENABLE)
             instance().startActivityForResult(Intent.createChooser(i, "Image Chooser"), FILE_CHOOSER_RESULT_CODE)
         }
     }
+
     //Activity回調
-    interface ResultCallBack{
-       abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent)
+    interface ResultCallBack {
+        abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent)
     }
 
     var ginterFace = GlitterInterFace()
     private var webChromeClient: VideoEnabledWebChromeClient? = null
     var onUpdate = false
     lateinit var rootview: View
-
+    override fun setTheme(resId: Int) {
+        super.setTheme(R.style.SwipTheme__)
+    }
     @SuppressLint("JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /** PictureSelector日志管理配制开始  */
-        /** PictureSelector日志管理配制结束  */
-        glitterApplication=application
+        glitterApplication = application
         setContentView(R.layout.glitter_page)
         rootview = findViewById<View>(android.R.id.content).rootView
         webRoot = rootview.webroot
-        rootview.webroot.settings.domStorageEnabled=true
+        rootview.webroot.settings.domStorageEnabled = true
         rootview.webroot.addJavascriptInterface(ginterFace, "GL")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         HeightVisibleChangeListener(rootview.webroot);
@@ -217,8 +242,19 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
             }
         }
         rootview.webroot.webChromeClient = webChromeClient;
-        instance = { this }
-        onCreateCallBack()
+        instanceCopy = { this }
+        onCreateCallback(this)
+        webRoot.visibility=View.GONE
+        try {
+            Thread{
+                Thread.sleep(openDelay.toLong())
+                Handler(Looper.getMainLooper()).post {
+                    instance().window.decorView.visibility=View.VISIBLE
+                    instance().webRoot.visibility=View.VISIBLE
+                }
+            }.start()
+        }catch (e:Exception){}
+
     }
 
     fun keyEventListener(event: KeyEvent): Boolean {
@@ -237,8 +273,8 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        activityResultList.map { it.resultBack(requestCode,resultCode,data!!) }
-        Log.e("requestBack","requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
+        activityResultList.map { it.resultBack(requestCode, resultCode, data!!) }
+        Log.e("requestBack", "requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -262,9 +298,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         uploadMessageAboveL!!.onReceiveValue(results)
         uploadMessageAboveL = null
     }
-
-
-
 
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -321,7 +354,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         }
     }
 
-     fun getPermission(Permissions: Array<String>, caller: permission_C) {
+    fun getPermission(Permissions: Array<String>, caller: permission_C) {
         permissionCaller = caller
         val permissionDeniedList = ArrayList<String>()
         for (permission in Permissions) {

@@ -19,8 +19,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application>
-        <activity android:name="com.jianzhi.glitter.ScannerActivity"></activity>
         <activity android:name="com.jianzhi.glitter.WebViewAct"></activity>
+        <activity android:name="com.jianzhi.glitter.GlitterActivity"
+          android:theme="@style/SwipTheme__"
+        ></activity>
     </application>
 
 </manifest>

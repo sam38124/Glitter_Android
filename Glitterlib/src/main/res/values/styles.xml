@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="SwipTheme__" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowBackground">#00000000</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+
+    </style>
+</resources>
