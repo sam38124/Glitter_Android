@@ -3,6 +3,7 @@ package com.jianzhi.glitter
 import android.os.Handler
 import android.os.Looper
 import android.webkit.JavascriptInterface
+import android.webkit.WebView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jianzhi.glitter.plugins.FileManager
@@ -11,7 +12,7 @@ import com.jianzhi.glitter.plugins.SoundManager
 import com.orange.oglite_glitter.DataBasePlugins
 import com.orange.oglite_glitter.Plugins.PerMission
 
-class GlitterInterFace {
+class GlitterInterFace(var webview: WebView) {
     var handler = Handler(Looper.getMainLooper())
 
     init { create() }
@@ -51,7 +52,7 @@ class GlitterInterFace {
             val requestFunction = RequestFunction(receiveValue)
             requestFunction.fin = {
                 handler.post {
-                    GlitterActivity.instance().webRoot.evaluateJavascript(
+                    webview.evaluateJavascript(
                         """
                 glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
                 glitter.callBackList.delete(${callbackID});
@@ -61,7 +62,7 @@ class GlitterInterFace {
             }
             requestFunction.calb = {
                 handler.post {
-                    GlitterActivity.instance().webRoot.evaluateJavascript(
+                    webview.evaluateJavascript(
                         """
                glitter.callBackList.get(${callbackID})(${Gson().toJson(requestFunction.responseValue)});
                 """.trimIndent(), null

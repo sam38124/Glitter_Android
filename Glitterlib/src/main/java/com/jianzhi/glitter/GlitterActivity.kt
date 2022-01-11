@@ -131,7 +131,6 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent)
     }
 
-    var ginterFace = GlitterInterFace()
     private var webChromeClient: VideoEnabledWebChromeClient? = null
     var onUpdate = false
     lateinit var rootview: View
@@ -143,7 +142,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         rootview = findViewById<View>(android.R.id.content).rootView
         webRoot = rootview.webroot
         rootview.webroot.settings.domStorageEnabled = true
-        rootview.webroot.addJavascriptInterface(ginterFace, "GL")
+        rootview.webroot.addJavascriptInterface(GlitterInterFace(rootview.webroot), "GL")
         rootview.webroot.settings.allowUniversalAccessFromFileURLs = true
         HeightVisibleChangeListener(rootview.webroot);
         rootview.webroot.settings.javaScriptEnabled = true
