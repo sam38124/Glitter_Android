@@ -70,7 +70,13 @@ class GlitterInterFace(var webview: WebView) {
                 }
             }
             if (cFunction.isNotEmpty()) {
-                cFunction[0].function(requestFunction)
+                try{
+                    cFunction[0].function(requestFunction)
+                }catch (e:Exception){
+                    requestFunction.responseValue["error"]=e.message.toString()
+                    requestFunction.fin()
+                    e.printStackTrace()
+                }
             } else {
                 requestFunction.finish()
             }
