@@ -10,7 +10,8 @@ class RequestFunction(
     val receiveValue: MutableMap<String, Any>,
     var responseValue: MutableMap<String, Any> = mutableMapOf(),
     var fin: () -> Unit = {},
-    var calb:() -> Unit = {}
+    var calb:() -> Unit = {},
+    var callBackID:Int = 0
 ) {
     //運行結束時的回調
     fun finish() {

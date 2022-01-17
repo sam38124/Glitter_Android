@@ -49,7 +49,7 @@ class GlitterInterFace(var webview: WebView) {
             val receiveValue: MutableMap<String, Any> =
                 if (mapData["data"] == null) mutableMapOf() else (mapData["data"] as MutableMap<String, Any>)
             val cFunction = GlitterActivity.javaScriptInterFace.filter { it.functionName == functionName }
-            val requestFunction = RequestFunction(receiveValue)
+            val requestFunction = RequestFunction(receiveValue,callBackID=callbackID)
             requestFunction.fin = {
                 handler.post {
                     webview.evaluateJavascript(
