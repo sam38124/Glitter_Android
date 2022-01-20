@@ -336,8 +336,13 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
         super.onDestroy();
     }
 
+    //監聽畫面旋轉之類的改變
+    val onConfigurationChangedCallback:ArrayList<(newConfig: Configuration)->Unit> = arrayListOf()
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        onConfigurationChangedCallback.map {
+            it(newConfig)
+        }
     }
 
     var permissionRequestCode = 100
