@@ -24,44 +24,40 @@ import com.jianzhi.glitter.util.JzClock
  * */
 object GpsManager {
     fun initial(){
-        arrayOf(
-            /**
-             * 取得GPS權限
-             * response->
-             * [result:("notOpen","denied","grant")]
-             * */
-            JavaScriptInterFace("GpsManager_Status"){
+        /**
+         * 取得GPS權限
+         * response->
+         * [result:("notOpen","denied","grant")]
+         * */
+        JavaScriptInterFace("GpsManager_Status"){
                 request ->
-                GpsUtil.instance!!.haveLocation {
-                    request.responseValue["result"]=it
-                    request.finish()
-                }
-            },
-            /**
-             * 取得GPS位置
-             * response->
-             * [result:Boolean,data:{latitude,longitude,address}]
-             * ---------------------------------
-             * */
-            JavaScriptInterFace("GpsManager_getGps"){
-                    request ->
-                GpsUtil.instance!!.haveLocation {
-                    if(it=="grant"){
-                        val map:MutableMap<String,Any?> = mutableMapOf()
-                        val gpsutil= GpsUtil.instance
-                        map["latitude"] =  gpsutil!!.lastKnownLocation?.latitude
-                        map["longitude"] =  gpsutil.lastKnownLocation?.longitude
-                        map["address"] =  gpsutil.address
-                        request.responseValue["data"]=map
-                        request.responseValue["result"]=true
-                    }else{
-                        request.responseValue["result"]=false
-                    }
-                    request.finish()
-                }
+            GpsUtil.instance!!.haveLocation {
+                request.responseValue["result"]=it
+                request.finish()
             }
-        ).map{
-            GlitterActivity.addJavacScriptInterFace(it)
+        }
+        /**
+         * 取得GPS位置
+         * response->
+         * [result:Boolean,data:{latitude,longitude,address}]
+         * ---------------------------------
+         * */
+        JavaScriptInterFace("GpsManager_getGps"){
+                request ->
+            GpsUtil.instance!!.haveLocation {
+                if(it=="grant"){
+                    val map:MutableMap<String,Any?> = mutableMapOf()
+                    val gpsutil= GpsUtil.instance
+                    map["latitude"] =  gpsutil!!.lastKnownLocation?.latitude
+                    map["longitude"] =  gpsutil.lastKnownLocation?.longitude
+                    map["address"] =  gpsutil.address
+                    request.responseValue["data"]=map
+                    request.responseValue["result"]=true
+                }else{
+                    request.responseValue["result"]=false
+                }
+                request.finish()
+            }
         }
     }
 

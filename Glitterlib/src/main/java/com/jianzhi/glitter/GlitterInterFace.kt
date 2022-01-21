@@ -15,9 +15,10 @@ import com.orange.oglite_glitter.Plugins.PerMission
 class GlitterInterFace(var webview: WebView) {
     var handler = Handler(Looper.getMainLooper())
 
-    init { create() }
-
     companion object{
+        init {
+            create()
+        }
         //調用原生插件
         fun run(
             functionName: String,
@@ -35,6 +36,20 @@ class GlitterInterFace(var webview: WebView) {
             }else{
                 finish(mutableMapOf("data" to "Function not define"))
             }
+        }
+        /**加載所有Glitter函式**/
+        private fun create() {
+            GlitterFunction
+            //檔案管理
+            FileManager.initial()
+            //定位功能
+            GpsManager.initial()
+            //權限請求
+            PerMission.initial()
+            //資料庫請求
+            DataBasePlugins.initial()
+            //聲音管理工具
+            SoundManager.initial()
         }
     }
 
@@ -84,27 +99,6 @@ class GlitterInterFace(var webview: WebView) {
         }.start()
     }
 
-    /**加載所有Glitter函式**/
-    private fun create() {
-        /************************************************************
-         * SharedPreferences
-         *************************************************************/
-        //Get SharedPreferences
-        GlitterActivity.addJavacScriptInterFace(GlitterFunction.getPro)
-        //Set SharedPreferences
-        GlitterActivity.addJavacScriptInterFace(GlitterFunction.setPro)
-        //closeApp
-        GlitterActivity.addJavacScriptInterFace(GlitterFunction.closeApp)
-        //檔案管理
-        FileManager.initial()
-        //定位功能
-        GpsManager.initial()
-        //權限請求
-        PerMission.initial()
-        //資料庫請求
-        DataBasePlugins.initial()
-        //聲音管理工具
-        SoundManager.initial()
-    }
+
 
 }
