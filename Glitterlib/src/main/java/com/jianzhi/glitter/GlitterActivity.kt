@@ -393,8 +393,10 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
                 if (grantResults.isNotEmpty()) {
                     for (i in grantResults.indices) {
                         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            Log.e("ScannerActivity","permissionRequestCode->requestSuccess")
                             permissionCaller.requestSuccess(permissions[i])
                         } else {
+                            Log.e("ScannerActivity","permissionRequestCode->requestFalse")
                             permissionCaller.requestFalse(permissions[i])
                         }
                     }
