@@ -128,7 +128,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
 
     //Activity回調
     interface ResultCallBack {
-        abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent)
+        abstract fun resultBack(requestCode: Int, resultCode: Int, data: Intent?)
     }
 
     private var webChromeClient: VideoEnabledWebChromeClient? = null
@@ -269,7 +269,7 @@ class GlitterActivity : AppCompatActivity(), CameraXConfig.Provider {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        activityResultList.map { it.resultBack(requestCode, resultCode, data!!) }
+        activityResultList.map { it.resultBack(requestCode, resultCode, data) }
         Log.e("requestBack", "requestCode:${requestCode}-resultCode:${resultCode}-data:${data}")
     }
 
